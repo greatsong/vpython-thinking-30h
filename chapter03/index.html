@@ -1,0 +1,2682 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+        <link rel="prev" href="../chapter02/">
+      
+      
+        <link rel="next" href="../chapter04/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>색칠하고 꾸미기 — 속성과 표현 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              색칠하고 꾸미기 — 속성과 표현
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 세계에 첫 발을 내딛다
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변수와 움직임의 세계
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter07/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 조건과 선택의 힘
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 반복과 패턴의 마법
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계에 오신 것을 환영합니다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    색칠하고 꾸미기 — 속성과 표현
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    색칠하고 꾸미기 — 속성과 표현
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        색이 없는 세상은 재미없다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 사고력 포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 빛의 삼원색 — RGB 색상 원리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: VPython 내장 색상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 투명도(opacity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-texture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 텍스처(texture)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-make_trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 5: 궤적(make_trail)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 6: 장면(scene) 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 방의 구조 만들기 — 바닥과 벽
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 가구 배치하기 — 책상, 의자, 침대
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 꾸미기 — 창문, 조명, 소품 추가
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 그라데이션 색상 탐험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 나만의 방에 물체 더 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 같은 물체, 다른 느낌
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수 — 이름표를 붙여 기억하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연산과 수식 — 물체를 계산으로 배치하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    if문 — 조건에 따라 달라지는 세상
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드와 마우스 — 내가 조종하는 3D 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 100개의 별을 한 번에
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    while 반복문 — 끝나지 않는 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        색이 없는 세상은 재미없다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 사고력 포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 빛의 삼원색 — RGB 색상 원리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: VPython 내장 색상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 투명도(opacity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-texture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 텍스처(texture)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-make_trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 5: 궤적(make_trail)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 6: 장면(scene) 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 방의 구조 만들기 — 바닥과 벽
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 가구 배치하기 — 책상, 의자, 침대
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 꾸미기 — 창문, 조명, 소품 추가
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 그라데이션 색상 탐험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 나만의 방에 물체 더 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 같은 물체, 다른 느낌
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-3">Chapter 3: 색칠하고 꾸미기 — 속성과 표현<a class="headerlink" href="#chapter-3" title="Permanent link">&para;</a></h1>
+<p><strong>Part 1: 3D 세계에 첫 발을 내딛다</strong></p>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>이번 시간이 끝나면 여러분은 이런 것을 할 수 있게 됩니다.</p>
+<ul>
+<li><strong>color 속성으로 물체에 다양한 색상을 입힐 수 있다</strong> — 내장 색상부터 RGB 커스텀 색상까지</li>
+<li><strong>opacity, texture, make_trail 등 시각 속성을 활용할 수 있다</strong> — 투명도, 질감, 궤적 효과</li>
+<li><strong>여러 물체를 조합하여 하나의 장면(scene)을 구성할 수 있다</strong> — '나만의 방 꾸미기' 프로젝트</li>
+</ul>
+<blockquote>
+<p>🎨 <strong>이번 시간에 만들 것</strong>: 다양한 색상과 시각 효과를 활용하여 '나만의 방'을 3D로 꾸밉니다. 반투명 창문, 나무 질감 책상, 움직이는 궤적을 남기는 물체까지 — 코드로 예술을 하는 시간입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">색이 없는 세상은 재미없다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>지난 두 장에서 여러분은 3D 물체를 만들고, 좌표를 이용해 원하는 위치에 배치하는 법을 배웠습니다. 그런데 솔직히, 흰색 물체만 덩그러니 놓여 있으면 좀 밋밋하지 않나요?</p>
+<p>현실 세계를 떠올려 보세요. 우리 눈에 보이는 모든 것에는 <strong>색상</strong>, <strong>질감</strong>, <strong>투명도</strong>가 있습니다. 빨간 사과, 투명한 유리컵, 나뭇결이 보이는 책상, 하늘을 가로지르며 궤적을 남기는 비행기... 이런 시각적 속성들이 세상을 풍성하게 만듭니다.</p>
+<p>프로그래밍에서도 마찬가지입니다. 물체에 <strong>속성(attribute)</strong>을 부여하는 것은 단순한 꾸미기가 아닙니다. 이것은 <strong>"데이터로 시각적 의미를 표현하는 것"</strong> — 프로그래밍의 가장 강력한 능력 중 하나입니다.</p>
+<p>예를 들어, 과학 시뮬레이션에서 온도가 높은 물체를 빨간색으로, 차가운 물체를 파란색으로 표현하면 어떨까요? 데이터가 눈에 보이는 순간, 이해의 깊이가 달라집니다.</p>
+<h3 id="_4">🧠 이번 장의 사고력 포인트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>추상화(Abstraction)</strong>: 빛의 삼원색(RGB)이라는 원리를 <code>vector(R, G, B)</code> 세 숫자로 추상화합니다</li>
+<li><strong>패턴 인식</strong>: 모든 VPython 물체의 속성은 <code>속성명=값</code> 형태라는 일관된 패턴을 발견합니다</li>
+<li><strong>조합(Composition)</strong>: 단순한 물체들을 합쳐 복잡한 장면을 구성하는 "조합의 힘"을 경험합니다</li>
+</ul>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1-rgb">개념 1: 빛의 삼원색 — RGB 색상 원리<a class="headerlink" href="#1-rgb" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>물감을 섞어본 적이 있나요? 빨강과 노랑을 섞으면 주황색, 파랑과 노랑을 섞으면 초록색이 됩니다. 물감은 "색을 섞을수록 어두워지는" 방식입니다.</p>
+<p>그런데 컴퓨터 화면은 다릅니다. 컴퓨터는 <strong>빛</strong>으로 색을 만듭니다. 빛의 삼원색 — <strong>빨강(Red)</strong>, <strong>초록(Green)</strong>, <strong>파랑(Blue)</strong> — 을 섞으면 <strong>섞을수록 밝아집니다</strong>. 세 가지를 모두 최대로 켜면? 흰색이 됩니다! 모두 끄면? 검정색이죠.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>RGB 색상 모델은 빨강(R), 초록(G), 파랑(B) 세 가지 빛의 강도를 조합하여 색상을 표현하는 방식입니다. VPython에서는 각 값을 <strong>0(꺼짐)부터 1(최대 밝기)</strong> 사이의 숫자로 지정합니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: vector(R, G, B)로 색상 만들기</strong></p>
+<p>VPython에서 커스텀 색상을 만들 때는 <code>vector(R, G, B)</code> 형식을 사용합니다. 각 값은 0에서 1 사이의 소수입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># 빨강 (R만 최대)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># 초록 (G만 최대)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># 파랑 (B만 최대)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># 노랑 (R+G)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># 자홍 (R+B)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># 청록 (G+B)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># 흰색 (전부 최대)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># 검정 (전부 꺼짐)</span>
+<span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 회색 (전부 절반)</span>
+</code></pre></div>
+<p>💡 일반적으로 색상은 0~255 범위를 쓰지만, VPython은 0~1 범위를 사용합니다. 255 기준 값을 변환하려면 255로 나누면 됩니다. 예: <code>RGB(255, 128, 0)</code> → <code>vector(1, 0.5, 0)</code></p>
+</blockquote>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># RGB 색상 원리를 눈으로 확인하기</span>
+<span class="c1"># 빨강 + 초록 = 노랑</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>   <span class="c1"># 빨강</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>   <span class="c1"># 초록</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>    <span class="c1"># 노랑 (R+G)</span>
+
+<span class="c1"># 빨강 + 파랑 = 자홍</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>    <span class="c1"># 파랑</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>    <span class="c1"># 자홍 (R+B)</span>
+</code></pre></div>
+<hr />
+<h3 id="2-vpython">개념 2: VPython 내장 색상<a class="headerlink" href="#2-vpython" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>크레파스 상자를 열면 "빨강", "파랑", "초록" 같은 이름표가 붙어 있죠. 매번 물감을 섞을 필요 없이 이름만 말하면 바로 쓸 수 있습니다. VPython도 자주 쓰는 색상에 이름을 붙여 두었습니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>VPython의 <code>color</code> 모듈에는 미리 정의된 색상들이 있습니다. <code>color.이름</code> 형태로 사용합니다.</p>
+<p><strong>VPython 내장 색상 목록</strong></p>
+<ul>
+<li><strong>color.red</strong> — 빨간색 <code>vector(1, 0, 0)</code></li>
+<li><strong>color.green</strong> — 초록색 <code>vector(0, 1, 0)</code></li>
+<li><strong>color.blue</strong> — 파란색 <code>vector(0, 0, 1)</code></li>
+<li><strong>color.yellow</strong> — 노란색 <code>vector(1, 1, 0)</code></li>
+<li><strong>color.orange</strong> — 주황색 <code>vector(1, 0.6, 0)</code></li>
+<li><strong>color.cyan</strong> — 청록색 <code>vector(0, 1, 1)</code></li>
+<li><strong>color.magenta</strong> — 자홍색 <code>vector(1, 0, 1)</code></li>
+<li><strong>color.white</strong> — 흰색 <code>vector(1, 1, 1)</code></li>
+<li><strong>color.black</strong> — 검정색 <code>vector(0, 0, 0)</code></li>
+<li><strong>color.purple</strong> — 보라색 <code>vector(0.4, 0.2, 0.6)</code></li>
+</ul>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 내장 색상 팔레트 만들기</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+          <span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">purple</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">magenta</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)):</span>
+    <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mf">1.5</span> <span class="o">-</span> <span class="mf">5.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>지금은 <code>for</code>와 리스트를 아직 배우지 않았으니, 이 코드의 구조를 다 이해하지 못해도 괜찮습니다. 핵심은 <strong>VPython에 미리 이름 붙은 색상들이 있다</strong>는 것입니다. 하나하나 직접 써 봐도 됩니다!</p>
+</blockquote>
+<p><strong>내장 색상 vs 커스텀 색상 — 언제 뭘 쓸까?</strong></p>
+<ul>
+<li><strong>내장 색상</strong>: 빠르게 원하는 색을 지정할 때. <code>color.red</code>처럼 이름만 쓰면 끝!</li>
+<li><strong>커스텀 색상</strong>: 내장 색상에 없는 미묘한 색이 필요할 때. <code>vector(1, 0.4, 0.7)</code>처럼 직접 RGB 값을 조합</li>
+</ul>
+<hr />
+<h3 id="3-opacity">개념 3: 투명도(opacity)<a class="headerlink" href="#3-opacity" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>유리컵은 투명합니다. 물은 반투명하죠. 나무 블록은 완전히 불투명합니다. 같은 물체라도 투명도에 따라 완전히 다른 느낌을 줍니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>opacity</code>는 물체의 투명도를 설정하는 속성입니다. <strong>0(완전 투명, 안 보임)</strong>부터 <strong>1(완전 불투명, 기본값)</strong>까지의 값을 가집니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 키워드 인자(keyword argument)</strong></p>
+<p>VPython에서 물체를 만들 때 사용하는 <code>color=color.red</code>, <code>opacity=0.5</code> 같은 것을 <strong>키워드 인자</strong>라고 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#      ^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^   ^^^^^^^^   ^^^^^^^^^^^</span>
+<span class="c1">#      키워드=값           키워드=값        키워드=값   키워드=값</span>
+</code></pre></div>
+<p>규칙은 간단합니다.
+- <code>속성이름=값</code> 형태로 쓴다
+- 여러 개를 쓸 때는 <strong>쉼표(<code>,</code>)</strong>로 구분한다
+- 순서는 상관없다 (<code>color</code>를 먼저 쓰든 <code>radius</code>를 먼저 쓰든 결과가 같다)</p>
+</blockquote>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 투명도 비교: 1.0 → 0.2까지 점점 투명해지기</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+<p>실행하면 왼쪽의 빨간 공은 완전히 불투명하고, 오른쪽으로 갈수록 점점 투명해져서 거의 안 보이게 됩니다. 유리, 물, 안개 같은 효과를 낼 때 유용합니다!</p>
+<hr />
+<h3 id="4-texture">개념 4: 텍스처(texture)<a class="headerlink" href="#4-texture" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>아무것도 칠하지 않은 나무 블록과, 나뭇결 무늬가 보이는 나무 블록은 느낌이 전혀 다릅니다. 같은 모양이라도 <strong>표면에 어떤 무늬가 있느냐</strong>에 따라 사실감이 확 달라지죠. 이것이 텍스처(질감)입니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>texture</code>는 물체의 표면에 이미지를 입히는 속성입니다. VPython은 몇 가지 내장 텍스처를 제공합니다.</p>
+<p><strong>VPython 내장 텍스처 목록</strong></p>
+<ul>
+<li><strong>textures.wood</strong> — 나무 질감</li>
+<li><strong>textures.rock</strong> — 돌 질감</li>
+<li><strong>textures.rug</strong> — 천/카펫 질감</li>
+<li><strong>textures.metal</strong> — 금속 질감</li>
+<li><strong>textures.earth</strong> — 지구 표면</li>
+<li><strong>textures.stucco</strong> — 벽 질감</li>
+<li><strong>textures.flower</strong> — 꽃무늬 질감</li>
+<li><strong>textures.granite</strong> — 화강암 질감</li>
+</ul>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 다양한 텍스처를 상자에 적용해 보기</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">rock</span><span class="p">)</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">metal</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">earth</span><span class="p">)</span>
+</code></pre></div>
+<p>실행하면 나무 상자, 돌 상자, 금속 상자, 그리고 지구가 나란히 나타납니다. 같은 <code>box</code>인데 텍스처 하나로 완전히 다른 물체처럼 보이죠!</p>
+<blockquote>
+<p>⚠️ <strong>텍스처와 색상을 동시에 쓰면?</strong> 텍스처가 적용된 물체에 <code>color</code>를 지정하면, 텍스처에 색상 <strong>틴트(tint)</strong>가 입혀집니다. 예를 들어 나무 텍스처에 <code>color=color.red</code>를 주면 붉은 빛이 도는 나무가 됩니다.</p>
+</blockquote>
+<hr />
+<h3 id="5-make_trail">개념 5: 궤적(make_trail)<a class="headerlink" href="#5-make_trail" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>밤하늘의 별똥별을 떠올려 보세요. 별이 떨어지면서 뒤에 빛나는 꼬리를 남깁니다. 비행기 구름, 달팽이가 지나간 자리, 아이스링크 위 스케이트 날 자국... 움직이는 물체의 <strong>궤적(trail)</strong>은 "어디서 왔고 어디로 갔는지"를 보여줍니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>make_trail=True</code>는 물체가 움직일 때 지나간 경로를 선으로 표시하는 속성입니다. 나중에 애니메이션을 배우면 아주 유용하게 쓰게 됩니다.</p>
+<p><strong>💻 미리보기 — 궤적이 보이는 움직이는 공</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 궤적을 남기는 빨간 공</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+              <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trail_color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+
+<span class="c1"># 공을 오른쪽으로 이동시키기 (애니메이션 맛보기!)</span>
+<span class="k">while</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># 초당 30번 업데이트</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.05</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 물결 모양으로 이동</span>
+</code></pre></div>
+<p>실행하면 빨간 공이 물결 모양으로 움직이면서 뒤에 노란색 궤적을 남깁니다. <code>while</code>과 <code>rate()</code>는 Chapter 6에서 자세히 배우니, 지금은 "궤적이 이렇게 멋지구나!" 정도만 느껴 보세요.</p>
+<blockquote>
+<p>💡 <strong>궤적 관련 주요 속성들</strong></p>
+<ul>
+<li><strong>make_trail=True</strong> — 궤적 켜기</li>
+<li><strong>trail_color=color.yellow</strong> — 궤적 색상 지정</li>
+<li><strong>trail_radius=0.05</strong> — 궤적 선의 굵기</li>
+<li><strong>retain=50</strong> — 최근 50개 위치만 궤적으로 유지 (너무 길어지는 것 방지)</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="6-scene">개념 6: 장면(scene) 설정<a class="headerlink" href="#6-scene" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>연극 무대를 생각해 보세요. 배우(물체)도 중요하지만, 조명, 배경색, 카메라 각도도 무대의 분위기를 결정합니다. VPython에서 <code>scene</code>은 바로 이 <strong>무대 설정</strong>입니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>scene</code>은 VPython의 3D 화면(캔버스) 자체를 나타내는 객체입니다. 배경색, 화면 크기, 카메라 위치 등을 설정할 수 있습니다.</p>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>       <span class="c1"># 배경을 검정색으로 (우주 느낌!)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">800</span>                     <span class="c1"># 화면 너비</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">600</span>                    <span class="c1"># 화면 높이</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🌌 나의 우주 장면&quot;</span>      <span class="c1"># 화면 위에 제목 표시</span>
+
+<span class="c1"># 우주 장면 만들기</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+       <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># emissive=True → 스스로 빛나는 효과</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+       <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">earth</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 점(.) 표기법으로 속성 접근하기</strong></p>
+<p><code>scene.background = color.black</code>에서 점(<code>.</code>)은 "~의"라는 뜻입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>   <span class="c1"># scene의 background를 검정으로 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">800</span>                <span class="c1"># scene의 width를 800으로 설정</span>
+</code></pre></div>
+<p>이것은 물체에도 똑같이 적용됩니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>   <span class="c1"># ball의 color를 파란색으로 변경</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span>           <span class="c1"># ball의 radius를 2로 변경</span>
+</code></pre></div>
+<p>이 문법은 앞으로 매우 자주 사용됩니다!</p>
+</blockquote>
+<hr />
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>자, 이제 배운 것을 모두 합쳐서 <strong>'나만의 방'</strong>을 3D로 꾸며 봅시다! 단계별로 따라 하세요.</p>
+<h3 id="step-1">Step 1: 방의 구조 만들기 — 바닥과 벽<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>먼저 방의 기본 구조를 만듭니다. 바닥과 뒷벽, 옆벽을 배치하겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === 장면 설정 ===</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 연한 하늘색 배경</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🏠 나만의 방 꾸미기&quot;</span>
+
+<span class="c1"># === 방 구조 ===</span>
+<span class="c1"># 바닥 — 나무 질감</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+
+<span class="c1"># 뒷벽 — 연한 베이지색</span>
+<span class="n">back_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># 왼쪽 벽 — 같은 색상</span>
+<span class="n">left_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 나무 바닥과 두 면의 벽이 보입니다. 마우스로 화면을 돌려보면 방의 구조를 확인할 수 있습니다.</p>
+<p>코드를 살펴봅시다.</p>
+<ul>
+<li><code>texture=textures.wood</code> — 바닥에 나무 질감을 입혔습니다</li>
+<li><code>color=vector(1, 0.95, 0.85)</code> — 연한 베이지색을 RGB로 직접 만들었습니다</li>
+<li><code>opacity=0.9</code> — 벽을 살짝 투명하게 해서 뒤쪽이 약간 비치게 했습니다</li>
+</ul>
+<hr />
+<h3 id="step-2">Step 2: 가구 배치하기 — 책상, 의자, 침대<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>빈 방에 가구를 넣어 봅시다. 상자를 조합하면 가구를 표현할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === 장면 설정 ===</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🏠 나만의 방 꾸미기&quot;</span>
+
+<span class="c1"># === 방 구조 ===</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="n">back_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">left_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># === 책상 (왼쪽 벽 근처) ===</span>
+<span class="c1"># 책상 상판 — 나무 질감</span>
+<span class="n">desk_top</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">),</span>
+               <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="c1"># 책상 다리 4개</span>
+<span class="n">desk_leg1</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg2</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg3</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg4</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># === 의자 (책상 앞) ===</span>
+<span class="c1"># 의자 좌석</span>
+<span class="n">seat</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+           <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="c1"># 의자 등받이</span>
+<span class="n">backrest</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.15</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># === 침대 (오른쪽) ===</span>
+<span class="c1"># 매트리스 — 파란색 계열</span>
+<span class="n">mattress</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+<span class="c1"># 베개 — 흰색 구</span>
+<span class="n">pillow</span> <span class="o">=</span> <span class="n">ellipsoid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.2</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+                   <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 방 안에 나무 책상, 의자, 침대와 베개가 배치되었습니다. 물체를 조합하면 가구를 만들 수 있다는 것이 핵심입니다!</p>
+<p>주목할 점을 정리합니다.</p>
+<ul>
+<li><strong>책상 = 상판(box) + 다리 4개(cylinder)</strong> — 간단한 물체의 조합으로 복잡한 물체를 표현합니다</li>
+<li><strong>의자 = 좌석(box) + 등받이(box)</strong> — 같은 종류의 물체라도 크기와 위치를 달리하면 다른 부분이 됩니다</li>
+<li><strong>베개 = ellipsoid(타원체)</strong> — 둥글납작한 모양을 표현하기에 딱 좋습니다</li>
+<li>색상을 <code>vector(0.4, 0.25, 0.1)</code>처럼 갈색 계열로 직접 만들어 나무 느낌을 냈습니다</li>
+</ul>
+<hr />
+<h3 id="step-3">Step 3: 꾸미기 — 창문, 조명, 소품 추가<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>마지막으로 창문과 소품을 추가하여 방을 완성합시다!</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === 장면 설정 ===</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🏠 나만의 방 꾸미기&quot;</span>
+
+<span class="c1"># === 방 구조 ===</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="n">back_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">left_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># === 창문 (뒷벽에 반투명 파란색) ===</span>
+<span class="n">window_frame</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.9</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="n">window_glass</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.85</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># === 책상 ===</span>
+<span class="n">desk_top</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">),</span>
+               <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="n">desk_leg1</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg2</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg3</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg4</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># === 의자 ===</span>
+<span class="n">seat</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+           <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">backrest</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.15</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># === 침대 ===</span>
+<span class="n">mattress</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+<span class="n">pillow</span> <span class="o">=</span> <span class="n">ellipsoid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.2</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+                   <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># === 소품들 ===</span>
+<span class="c1"># 책상 위 노란 램프</span>
+<span class="n">lamp_base</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+<span class="n">lamp_shade</span> <span class="o">=</span> <span class="n">cone</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                  <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># 빨간 사과 (책상 위)</span>
+<span class="n">apple</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">apple_stem</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                      <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># 지구본 (책상 위)</span>
+<span class="n">globe</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+               <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">earth</span><span class="p">)</span>
+<span class="n">globe_stand</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">),</span>
+                       <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                       <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># 바닥 러그 — 둥근 느낌</span>
+<span class="n">rug</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+               <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 완성입니다! 나무 바닥 위에 책상, 의자, 침대가 있고, 창문으로 연한 빛이 들어오며, 책상 위에는 램프, 사과, 지구본이 놓여 있습니다. 바닥에는 따뜻한 색상의 러그까지!</p>
+<hr />
+<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>이 장에서 만든 '나만의 방' 최종 코드입니다. 복사해서 바로 실행할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 다양한 색상과 시각 속성으로 &#39;나만의 방&#39; 꾸미기 ===</span>
+<span class="c1"># --- WHY: 속성(color, opacity, texture)을 활용하여 풍부한 3D 장면을 구성하기 위해 ---</span>
+
+<span class="c1"># 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🏠 나만의 방 꾸미기&quot;</span>
+
+<span class="c1"># ─── 방 구조 ─────────────────────────────</span>
+<span class="c1"># 바닥 (나무 질감)</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+
+<span class="c1"># 뒷벽 (연한 베이지)</span>
+<span class="n">back_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># 왼쪽 벽</span>
+<span class="n">left_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># ─── 창문 (반투명 유리) ──────────────────</span>
+<span class="n">window_frame</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.9</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="n">window_glass</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.85</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># ─── 책상 (나무 질감 + 다리 4개) ─────────</span>
+<span class="n">desk_top</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">),</span>
+               <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+<span class="n">desk_leg1</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg2</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg3</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">desk_leg4</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># ─── 의자 ────────────────────────────────</span>
+<span class="n">seat</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+           <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">backrest</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.15</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># ─── 침대 ────────────────────────────────</span>
+<span class="n">mattress</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+<span class="n">pillow</span> <span class="o">=</span> <span class="n">ellipsoid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.2</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+                   <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># ─── 소품 ────────────────────────────────</span>
+<span class="c1"># 책상 위 노란 램프</span>
+<span class="n">lamp_base</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+<span class="n">lamp_shade</span> <span class="o">=</span> <span class="n">cone</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                  <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># 빨간 사과</span>
+<span class="n">apple</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">apple_stem</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                      <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># 지구본</span>
+<span class="n">globe</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+               <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">earth</span><span class="p">)</span>
+<span class="n">globe_stand</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">),</span>
+                       <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                       <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># 바닥 러그</span>
+<span class="n">rug</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+               <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>실행하면 이런 장면이 보입니다</strong>: 나무 바닥 위에 베이지색 벽으로 둘러싸인 방 안에 책상(지구본, 사과, 램프 포함), 의자, 침대, 반투명 유리 창문, 바닥 러그가 배치된 아늑한 3D 방입니다. 마우스로 드래그하여 다양한 각도에서 감상할 수 있습니다.</p>
+<hr />
+<h2 id="_8">🧠 사고력 챌린지<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>여기서부터가 진짜입니다! 색상과 속성에 대한 <strong>컴퓨팅 사고력</strong>을 키워 봅시다.</p>
+<hr />
+<h3 id="_9">🔍 코드 → 결과 예측 (⭐)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 코드를 실행하면 어떤 모습이 나올까요? <strong>실행하지 말고</strong> 머릿속으로 먼저 그려 보세요!</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>생각해 볼 것</strong></p>
+<ul>
+<li>배경은 무슨 색인가요?</li>
+<li>가운데에 있는 큰 노란 구는 무엇을 닮았나요? (<code>emissive=True</code>는 "스스로 빛나는 효과"입니다)</li>
+<li><code>vector(4, 0, 0)</code> 위치에는 구가 두 개 겹쳐 있습니다. 하나는 작고 불투명하고, 하나는 크고 거의 투명합니다. 이것은 무엇을 표현한 것 같나요?</li>
+<li>나머지 작은 구들은 무엇을 표현한 것 같나요?</li>
+</ul>
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+검정색 배경(우주)에 **태양계**를 간단하게 표현한 장면입니다!
+
+- **가운데 큰 노란 구(radius=2, emissive=True)** — 스스로 빛나는 태양
+- **오른쪽 청록색 구 2개** — 작은 구는 행성, 큰 투명한 구는 대기 또는 오로라를 표현
+- **빨강, 주황, 흰색 작은 구들** — 다른 행성이나 별들
+
+핵심 포인트: `opacity`로 투명한 대기를 표현하고, `emissive=True`로 빛나는 태양을 표현했습니다. 같은 `sphere()`라도 속성(색상, 투명도, 크기)이 달라지면 완전히 다른 의미를 가진 물체가 됩니다. 이것이 **속성의 힘**입니다!
+
+</details>
+
+<hr />
+<h3 id="_10">🔄 결과 → 코드 역추적 (⭐⭐)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래와 같은 장면을 만드는 코드를 작성해 보세요.</p>
+</blockquote>
+<p><strong>장면 설명: "신호등"</strong></p>
+<ul>
+<li>배경은 <strong>하늘색</strong> <code>vector(0.6, 0.85, 1)</code></li>
+<li>신호등 기둥: 검정색 원기둥, 위치 <code>vector(0, 0, 0)</code>에서 위쪽으로 높이 4, 반지름 0.15</li>
+<li>신호등 본체: 검정색 상자, 위치 <code>vector(0, 4, 0)</code>, 크기 가로 1, 세로 2.5, 깊이 0.8</li>
+<li>빨간 불: 빨간색 구, 위치 <code>vector(0, 4.8, 0.5)</code>, 반지름 0.3, <strong><code>emissive=True</code></strong> (빛나는 효과)</li>
+<li>노란 불: 노란색 구, 위치 <code>vector(0, 4.0, 0.5)</code>, 반지름 0.3, <strong><code>opacity=0.4</code></strong> (꺼진 상태를 표현)</li>
+<li>초록 불: 초록색 구, 위치 <code>vector(0, 3.2, 0.5)</code>, 반지름 0.3, <strong><code>opacity=0.4</code></strong> (꺼진 상태를 표현)</li>
+<li>바닥: 회색 상자, 위치 <code>vector(0, -0.05, 0)</code>, 크기 가로 6, 세로 0.1, 깊이 4</li>
+</ul>
+<p><strong>힌트</strong></p>
+<ul>
+<li>총 7개의 물체가 필요합니다 (기둥, 본체, 불 3개, 바닥, scene 설정)</li>
+<li>빨간 불만 <code>emissive=True</code>(켜진 상태), 나머지 불은 <code>opacity=0.4</code>(꺼진 상태)</li>
+<li>"빛나는 것"과 "흐릿한 것"으로 켜짐/꺼짐을 표현하는 것이 포인트입니다</li>
+</ul>
+<details>
+<summary>💡 힌트 더 보기</summary>
+
+구조를 분해하면 이렇습니다.
+
+- **scene.background** 설정 (1줄)
+- **cylinder** 1개 (기둥)
+- **box** 1개 (신호등 본체)
+- **sphere** 3개 (빨강/노랑/초록 불)
+- **box** 1개 (바닥)
+
+빨간 불에는 `emissive=True`를 주고, 노란/초록 불에는 `opacity=0.4`를 줍니다.
+
+</details>
+
+<details>
+<summary>🔑 정답 예시</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 신호등 기둥</span>
+<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+
+<span class="c1"># 신호등 본체</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+
+<span class="c1"># 빨간 불 (켜진 상태 — emissive!)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 노란 불 (꺼진 상태 — 투명하게)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># 초록 불 (꺼진 상태 — 투명하게)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># 바닥</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</code></pre></div>
+
+핵심 포인트: "켜진 불"은 `emissive=True`로, "꺼진 불"은 `opacity=0.4`로 표현했습니다. 같은 `sphere`라도 속성 하나 차이로 "켜짐"과 "꺼짐"이라는 **상태를 시각적으로 구분**할 수 있습니다. 이것이 바로 데이터를 시각화하는 첫 걸음입니다!
+
+</details>
+
+<hr />
+<h3 id="_11">💡 상상 → 코드 창작 (⭐)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 이번 장에서 배운 색상, 투명도, 텍스처 속성을 활용하여 <strong>'나만의 수족관'</strong>을 3D로 만들어 보세요!</p>
+</blockquote>
+<p><strong>아이디어 가이드</strong></p>
+<ul>
+<li>🐠 <strong>물고기</strong>: 타원체(ellipsoid)로 몸통, 삼각형(cone)으로 꼬리, 구(sphere)로 눈</li>
+<li>🌊 <strong>물</strong>: 큰 상자에 파란색 + opacity=0.2로 물을 표현</li>
+<li>🪸 <strong>산호/해초</strong>: 원기둥(cylinder)을 초록/빨강으로 배치</li>
+<li>🫧 <strong>거품</strong>: 작은 구에 opacity=0.3으로 반투명 거품</li>
+<li>🏰 <strong>장식물</strong>: 상자나 피라미드로 수중 성 만들기</li>
+<li><strong>바닥</strong>: 모래색(vector(0.9, 0.8, 0.6)) 또는 돌 텍스처</li>
+</ul>
+<p><strong>규칙</strong></p>
+<ul>
+<li><code>from vpython import *</code>로 시작할 것</li>
+<li><strong>색상을 5가지 이상</strong> 사용할 것 (내장 색상 + 커스텀 RGB 혼합)</li>
+<li><strong>opacity를 최소 2곳</strong>에 사용할 것</li>
+<li>물체를 <strong>7개 이상</strong> 사용할 것</li>
+<li>정답은 없습니다! 자유롭게 만들어 보세요</li>
+</ul>
+<details>
+<summary>🔑 예시 답안: 간단한 수족관</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;🐠 나의 수족관&quot;</span>
+
+<span class="c1"># 수조 (투명한 파란 물)</span>
+<span class="n">water</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="c1"># 바닥 (모래)</span>
+<span class="n">sand</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+           <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">))</span>
+
+<span class="c1"># 물고기 1 — 주황색</span>
+<span class="n">fish1_body</span> <span class="o">=</span> <span class="n">ellipsoid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+<span class="n">fish1_tail</span> <span class="o">=</span> <span class="n">cone</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                  <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+<span class="n">fish1_eye</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># 물고기 2 — 파란색</span>
+<span class="n">fish2_body</span> <span class="o">=</span> <span class="n">ellipsoid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">fish2_tail</span> <span class="o">=</span> <span class="n">cone</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                  <span class="n">radius</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># 해초 — 초록 원기둥들</span>
+<span class="n">seaweed1</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+<span class="n">seaweed2</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="n">seaweed3</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+
+<span class="c1"># 거품 — 반투명 흰 구</span>
+<span class="n">bubble1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">bubble2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">bubble3</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># 돌 — 회색 구</span>
+<span class="n">rock1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">rock2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</code></pre></div>
+
+이것은 하나의 예시일 뿐입니다. 산호를 추가하거나, 물고기를 더 넣거나, 해적 보물 상자를 만들어 보세요!
+
+</details>
+
+<hr />
+<h2 id="_12">⚠️ 자주 하는 실수<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>이 장에서 특히 자주 발생하는 실수들을 정리합니다.</p>
+<p><strong>실수 1: RGB 값 범위를 잘못 씀 (0~255 vs 0~1)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ RGB(255, 128, 0)을 그대로 넣으면 매우 밝은 흰색이 됩니다!</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ VPython은 0~1 범위! 255로 나누어서 변환하세요</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">255</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="o">/</span><span class="mi">255</span><span class="p">))</span>  <span class="c1"># = vector(1, 0.5, 0) 주황색</span>
+</code></pre></div>
+<blockquote>
+<p>VPython의 RGB 범위는 <strong>0~1</strong>입니다. 웹에서 찾은 RGB 값(0~255)을 쓸 때는 반드시 255로 나누세요!</p>
+</blockquote>
+<p><strong>실수 2: opacity 값을 0으로 설정하여 물체가 보이지 않음</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ opacity=0이면 완전 투명 → 안 보입니다!</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ &quot;거의 투명&quot;하게 하려면 0.1 ~ 0.2를 사용하세요</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>opacity=0</code>은 물체가 존재하지만 완전히 안 보이는 상태입니다. "투명한 유리"를 표현하고 싶다면 0.1~0.3 정도를 쓰세요.</p>
+</blockquote>
+<p><strong>실수 3: texture 이름 오타</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ textures가 아니라 texture라고 쓰면 오류!</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">box</span><span class="p">(</span><span class="n">texture</span><span class="o">=</span><span class="n">texture</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>  <span class="c1"># AttributeError!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ textures (복수형 s 포함!)</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">box</span><span class="p">(</span><span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">wood</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>textures</code>에는 <strong>s</strong>가 붙습니다! <code>textures.wood</code>, <code>textures.rock</code> 등 복수형입니다.</p>
+</blockquote>
+<p><strong>실수 4: scene 설정을 물체 생성 뒤에 씀</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ⚠️ 물체를 먼저 만들고 scene을 설정하면 깜빡임이 생길 수 있습니다</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>  <span class="c1"># 나중에 설정 → 처음에 흰 배경이 잠깐 보임</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ scene 설정은 가능하면 물체 생성 전에 합니다</span>
+<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>  <span class="c1"># 먼저 설정!</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>scene</code> 설정(배경색, 크기 등)은 코드 <strong>맨 위쪽</strong>(from vpython import * 바로 다음)에 쓰는 것이 좋습니다.</p>
+</blockquote>
+<hr />
+<h2 id="_13">✅ 스스로 점검하기<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>이 장을 잘 이해했는지 스스로 확인해 봅시다. 아래 질문에 답할 수 있다면 성공입니다!</p>
+<ul>
+<li>[ ] <strong><code>color=vector(1, 0.5, 0)</code>이 무슨 색인지 설명할 수 있나요?</strong> → R=1(빨강 최대), G=0.5(초록 절반), B=0(파랑 없음) = 주황색</li>
+<li>[ ] <strong>VPython의 내장 색상을 5가지 이상 말할 수 있나요?</strong> → color.red, color.green, color.blue, color.yellow, color.orange, color.cyan, color.magenta, color.white, color.black, color.purple</li>
+<li>[ ] <strong><code>opacity=0.3</code>이 무엇을 의미하는지 설명할 수 있나요?</strong> → 투명도 30% (꽤 투명한 상태)</li>
+<li>[ ] <strong><code>texture=textures.wood</code>가 무엇을 하는지 알고 있나요?</strong> → 물체 표면에 나무 질감 이미지를 입힙니다</li>
+<li>[ ] <strong><code>make_trail=True</code>는 어떤 효과를 주나요?</strong> → 물체가 움직일 때 지나간 경로를 선으로 표시합니다</li>
+<li>[ ] <strong><code>scene.background</code>를 어떻게 바꾸는지 알고 있나요?</strong> → <code>scene.background = color.black</code> 또는 <code>scene.background = vector(R, G, B)</code></li>
+<li>[ ] <strong>여러 물체를 조합하여 가구나 사물을 만들 수 있나요?</strong> → 상자+원기둥 = 책상, 구+원기둥 = 사과 등</li>
+</ul>
+<blockquote>
+<p>💪 체크가 5개 이상이면 다음 장으로 넘어갈 준비가 된 것입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_14">🚀 더 해보기<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>시간이 남거나 더 도전하고 싶다면 아래를 시도해 보세요!</p>
+<h3 id="1">도전 1: 그라데이션 색상 탐험<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>RGB 값을 조금씩 바꿔가며 색상이 어떻게 변하는지 관찰해 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>
+
+<span class="c1"># 빨강 → 노랑 그라데이션 (G 값을 0에서 1로 점점 올리기)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># 노랑 → 초록 그라데이션 (R 값을 1에서 0으로 점점 내리기)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>🔎 R, G, B 중 하나의 값만 조금씩 바꾸면 어떤 색 변화가 일어나는지 패턴을 찾아 보세요!</p>
+</blockquote>
+<h3 id="2">도전 2: 나만의 방에 물체 더 추가하기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>전체 코드에서 출발하여, 아래 것들을 추가로 만들어 보세요.</p>
+<ul>
+<li><strong>시계</strong>: 원기둥(flat) + 화살표(arrow)로 벽에 붙은 시계</li>
+<li><strong>책장</strong>: 상자를 여러 개 쌓아 올리기</li>
+<li><strong>화분</strong>: 원기둥(화분) + 구 또는 cone(식물)</li>
+<li><strong>창밖 풍경</strong>: 초록색 구(나무)를 창문 뒤에 배치</li>
+</ul>
+<h3 id="3">도전 3: 같은 물체, 다른 느낌<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>같은 구(sphere)를 다양한 속성으로 만들어 보고, 어떻게 다른 느낌을 주는지 비교해 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># 같은 크기, 같은 위치 패턴 — 속성만 다르게!</span>
+<span class="c1"># 금속 느낌</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span>
+       <span class="n">shininess</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 지구</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">texture</span><span class="o">=</span><span class="n">textures</span><span class="o">.</span><span class="n">earth</span><span class="p">)</span>
+
+<span class="c1"># 유리구슬 느낌</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+       <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># 태양 느낌</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
+       <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>🎨 같은 <code>sphere(radius=1)</code>인데 속성에 따라 금속, 지구, 유리구슬, 태양 — 완전히 다른 물체로 느껴집니다. <strong>속성이 곧 표현력</strong>입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_15">🔗 다음 장으로<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 우리는 3D 물체에 <strong>생명력</strong>을 불어넣었습니다.</p>
+<p><strong>배운 것 정리</strong></p>
+<ul>
+<li><strong>RGB 색상</strong>: <code>vector(R, G, B)</code>로 어떤 색이든 만들 수 있다 (각 값은 0~1)</li>
+<li><strong>내장 색상</strong>: <code>color.red</code>, <code>color.blue</code> 등 이름으로 바로 쓸 수 있는 색상들</li>
+<li><strong>투명도</strong>: <code>opacity=0~1</code>로 유리, 물, 안개 같은 투명한 물체를 표현</li>
+<li><strong>텍스처</strong>: <code>texture=textures.wood</code> 등으로 표면에 질감을 입히기</li>
+<li><strong>궤적</strong>: <code>make_trail=True</code>로 물체의 이동 경로를 추적</li>
+<li><strong>장면 설정</strong>: <code>scene.background</code>, <code>scene.title</code> 등으로 무대를 꾸미기</li>
+<li><strong>조합의 힘</strong>: 단순한 물체들을 합치면 책상, 가구, 방 전체를 만들 수 있다</li>
+</ul>
+<p>지금까지 우리는 물체를 만들고, 위치를 잡고, 색칠하고 꾸미는 법을 배웠습니다. 하지만 아직 한 가지 아쉬운 점이 있습니다. 물체를 만들 때마다 <code>sphere(...)</code>, <code>sphere(...)</code>, <code>sphere(...)</code> 하고 매번 새로 써야 한다는 것이죠. 같은 공을 100개 만들려면 코드 100줄을 써야 할까요?</p>
+<p><strong>다음 장 "변수 — 이름표를 붙여 기억하기"</strong> 에서는 물체에 이름(변수)을 붙여서 나중에 다시 찾아 속성을 바꾸는 방법을 배웁니다. <code>ball = sphere(color=color.red)</code>라고 이름을 붙이면, 나중에 <code>ball.color = color.blue</code>로 색을 바꿀 수 있습니다. 물체를 "기억"하는 법을 배우는 시간입니다! 🏷️</p>
+<blockquote>
+<p>🌟 <strong>오늘의 한마디</strong>: 여러분은 오늘 코드로 색을 입히고, 질감을 부여하고, 투명도를 조절하면서 3D 세계를 꾸몄습니다. 프로그래밍은 단순히 논리적인 작업이 아니라, <strong>표현의 도구</strong>이기도 합니다. 코드 한 줄로 물체에 영혼을 불어넣는 이 감각을 기억하세요!</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2710 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+        <link rel="prev" href="../chapter08/">
+      
+      
+        <link rel="next" href="../chapter10/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>충돌 감지 — 부딪히면 어떻게 될까? - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-9" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              충돌 감지 — 부딪히면 어떻게 될까?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 세계에 첫 발을 내딛다
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변수와 움직임의 세계
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter07/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 조건과 선택의 힘
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 반복과 패턴의 마법
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계에 오신 것을 환영합니다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    색칠하고 꾸미기 — 속성과 표현
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수 — 이름표를 붙여 기억하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연산과 수식 — 물체를 계산으로 배치하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    if문 — 조건에 따라 달라지는 세상
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드와 마우스 — 내가 조종하는 3D 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부딪힘을 감지하는 것, 왜 중요할까?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 컴퓨팅 사고력
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 두 점 사이의 거리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: mag() 함수와 벡터 뺄셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 충돌 판정 — "충분히 가까우면 부딪힌 것이다"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 두 공의 거리 측정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 충돌하면 튕기기!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 벽돌깨기 게임 만들기! 🧱
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 공 10개 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 벽돌깨기 업그레이드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 간단한 당구 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 100개의 별을 한 번에
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    while 반복문 — 끝나지 않는 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부딪힘을 감지하는 것, 왜 중요할까?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 컴퓨팅 사고력
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 두 점 사이의 거리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: mag() 함수와 벡터 뺄셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 충돌 판정 — "충분히 가까우면 부딪힌 것이다"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 두 공의 거리 측정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 충돌하면 튕기기!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 벽돌깨기 게임 만들기! 🧱
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 공 10개 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 벽돌깨기 업그레이드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 간단한 당구 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-9">Chapter 9: 충돌 감지 — 부딪히면 어떻게 될까?<a class="headerlink" href="#chapter-9" title="Permanent link">&para;</a></h1>
+<p><strong>Part 3: 조건과 선택의 힘</strong></p>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>이번 시간이 끝나면 여러분은 이런 것을 할 수 있게 됩니다.</p>
+<ul>
+<li><strong>두 물체 사이의 거리를 계산</strong>할 수 있다 — 벡터 뺄셈과 <code>mag()</code> 함수 활용</li>
+<li><strong><code>mag()</code> 함수로 벡터의 크기를 구</strong>할 수 있다 — 3D 공간에서의 거리 측정</li>
+<li><strong>충돌 조건을 설정하고 반응을 프로그래밍</strong>할 수 있다 — 색 변환, 튕기기, 게임 로직까지</li>
+</ul>
+<blockquote>
+<p>🎮 <strong>이번 시간에 만들 것</strong>: 공 두 개가 움직이다가 부딪히면 색이 바뀌는 시뮬레이션, 그리고 패들로 공을 튕겨 벽돌을 깨는 미니 '벽돌깨기' 게임을 만듭니다. 물리 시뮬레이션과 게임의 핵심인 <strong>충돌 감지(Collision Detection)</strong>를 직접 구현합니다!</p>
+</blockquote>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">부딪힘을 감지하는 것, 왜 중요할까?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>여러분이 좋아하는 게임을 떠올려 보세요. 마리오가 적에게 닿으면 죽고, 총알이 벽에 맞으면 사라지고, 공이 라켓에 닿으면 튕겨 나갑니다. 이 모든 것의 기본은 <strong>"두 물체가 부딪혔는가?"</strong>를 판단하는 것입니다.</p>
+<p>현실 세계에서는 부딪힘이 자연스럽게 일어납니다. 공을 벽에 던지면 알아서 튕겨 나오죠. 하지만 컴퓨터 세계에서는 다릅니다. <strong>우리가 직접 "부딪혔다"는 조건을 정의하고, 부딪혔을 때 어떻게 할지 명령해야</strong> 합니다.</p>
+<p>이전 장에서 배운 <code>if</code> 문이 여기서 빛을 발합니다. "만약 두 물체의 거리가 충분히 가까우면 → 충돌!" 이 한 줄의 논리가 게임, 물리 시뮬레이션, 로봇 제어, 자율주행까지 모든 곳에서 사용됩니다.</p>
+<h3 id="_4">🧠 이번 장의 컴퓨팅 사고력<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>이번 장에서 훈련하는 핵심 사고는 <strong>추상화(Abstraction)</strong>입니다. 현실의 복잡한 "충돌"을 <strong>"두 점 사이의 거리가 특정 값보다 작은가?"</strong>라는 단순한 수학 문제로 바꿉니다. 복잡한 현상을 핵심만 뽑아 단순화하는 것 — 이것이 추상화이고, 프로그래머의 가장 강력한 무기입니다.</p>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 두 점 사이의 거리<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>놀이터에서 친구와 술래잡기를 한다고 상상해 보세요. "잡았다!"를 외치려면, 친구가 충분히 가까이 있어야 합니다. 여러분의 뇌는 순간적으로 <strong>거리를 판단</strong>하고 있는 겁니다.</p>
+<p>1차원에서 거리는 간단합니다. 숫자 직선 위에서 3과 7 사이의 거리는 <code>7 - 3 = 4</code>입니다.</p>
+<p>2차원에서는? 수학 시간에 배운 피타고라스 정리를 써야 합니다. 점 (1, 0)과 점 (4, 4) 사이의 거리는 <code>sqrt((4-1)² + (4-0)²) = sqrt(9 + 16) = sqrt(25) = 5</code>입니다.</p>
+<p>3차원에서는? 축이 하나 더 늘어날 뿐입니다. <code>sqrt((x2-x1)² + (y2-y1)² + (z2-z1)²)</code>.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>두 점 A(x1, y1, z1)과 B(x2, y2, z2) 사이의 <strong>거리(distance)</strong>는 두 점을 잇는 직선의 길이입니다. 3D 공간에서의 거리 공식은 피타고라스 정리를 3차원으로 확장한 것입니다.</p>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 파이썬으로 직접 거리를 계산해 보자</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># 1D: 두 점 사이의 거리</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
+<span class="n">distance_1d</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1D 거리:&quot;</span><span class="p">,</span> <span class="n">distance_1d</span><span class="p">)</span>  <span class="c1"># 4</span>
+
+<span class="c1"># 2D: 피타고라스 정리</span>
+<span class="n">point_a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">point_b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">distance_2d</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">point_b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">point_a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">point_b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">point_a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2D 거리:&quot;</span><span class="p">,</span> <span class="n">distance_2d</span><span class="p">)</span>  <span class="c1"># 5.0</span>
+
+<span class="c1"># 3D: 축이 하나 더!</span>
+<span class="n">point_c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">point_d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">distance_3d</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3D 거리:&quot;</span><span class="p">,</span> <span class="n">distance_3d</span><span class="p">)</span>  <span class="c1"># 3.0</span>
+</code></pre></div>
+<p>하지만 이렇게 매번 공식을 직접 쓰는 것은 번거롭죠? VPython에는 이것을 한 방에 해결해 주는 함수가 있습니다!</p>
+<hr />
+<h3 id="2-mag">개념 2: <code>mag()</code> 함수와 벡터 뺄셈<a class="headerlink" href="#2-mag" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>내비게이션을 생각해 보세요. "현재 위치"에서 "목적지"까지의 거리를 알려면, 먼저 <strong>방향과 거리를 합친 화살표</strong>(벡터)를 구한 다음, 그 <strong>화살표의 길이</strong>(크기)를 재면 됩니다.</p>
+<p>VPython에서는 이 과정이 딱 두 단계입니다.</p>
+<ul>
+<li><strong>벡터 뺄셈</strong>: <code>ball2.pos - ball1.pos</code> → 두 물체 사이의 "화살표"를 구한다</li>
+<li><strong><code>mag()</code> 함수</strong>: <code>mag(화살표)</code> → 그 화살표의 "길이"를 구한다</li>
+</ul>
+<blockquote>
+<p>📖 <strong>파이썬 문법: <code>mag()</code> 함수</strong></p>
+<p><strong><code>mag()</code></strong>은 magnitude(크기)의 줄임말로, 벡터의 길이(크기)를 반환합니다.</p>
+<ul>
+<li><strong>사용법</strong>: <code>mag(벡터)</code> → 숫자 하나를 반환</li>
+<li><strong>예시</strong>: <code>mag(vector(3, 4, 0))</code> → <code>5.0</code> (3-4-5 삼각형!)</li>
+<li><strong>원리</strong>: 내부적으로 <code>sqrt(x² + y² + z²)</code>을 계산</li>
+<li><strong>핵심 패턴</strong>: <code>mag(물체A.pos - 물체B.pos)</code> → 두 물체 사이의 거리</li>
+</ul>
+</blockquote>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># mag() 함수로 벡터의 크기 구하기</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;v1의 크기:&quot;</span><span class="p">,</span> <span class="n">mag</span><span class="p">(</span><span class="n">v1</span><span class="p">))</span>  <span class="c1"># 5.0 (3-4-5 삼각형)</span>
+
+<span class="n">v2</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;v2의 크기:&quot;</span><span class="p">,</span> <span class="n">mag</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>  <span class="c1"># 3.0</span>
+
+<span class="c1"># 두 위치 사이의 거리 = 벡터 뺄셈 후 mag()</span>
+<span class="n">pos_a</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pos_b</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">pos_b</span> <span class="o">-</span> <span class="n">pos_a</span>           <span class="c1"># vector(3, 4, 0)</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>           <span class="c1"># 5.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;두 점 사이의 거리:&quot;</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+
+<span class="c1"># 한 줄로 쓸 수도 있다!</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">pos_b</span> <span class="o">-</span> <span class="n">pos_a</span><span class="p">)</span>  <span class="c1"># 5.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;한 줄로:&quot;</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 벡터 뺄셈</strong></p>
+<p>VPython의 <code>vector</code>끼리는 뺄셈이 가능합니다.</p>
+<ul>
+<li><code>vector(4, 4, 0) - vector(1, 0, 0)</code> → <code>vector(3, 4, 0)</code></li>
+<li>각 성분(x, y, z)끼리 따로 빼는 것입니다</li>
+<li>결과는 <strong>A에서 B로 향하는 방향과 거리</strong>를 담은 벡터입니다</li>
+<li><code>물체B.pos - 물체A.pos</code>는 "A에서 B까지의 화살표"라고 생각하면 됩니다</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="3">개념 3: 충돌 판정 — "충분히 가까우면 부딪힌 것이다"<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>축구에서 골키퍼가 공을 잡으려면, 골키퍼의 손과 공의 거리가 거의 0이 되어야 합니다. 정확히 0은 아니지만, <strong>충분히 가까우면</strong> "잡았다"고 판정합니다.</p>
+<p>컴퓨터에서도 마찬가지입니다. 두 공이 "닿았다"를 어떻게 판단할까요?</p>
+<p><strong>두 공의 중심 사이 거리 &lt; 두 공의 반지름의 합</strong></p>
+<p>이 조건이 참이면, 두 공의 표면이 겹치고 있다는 뜻입니다. 즉, <strong>충돌</strong>입니다!</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><strong>충돌 감지(Collision Detection)</strong>란 두 물체가 접촉하거나 겹치는 순간을 프로그래밍적으로 판별하는 것입니다. 가장 기본적인 방법은 <strong>원(구) 충돌 감지</strong>로, 두 원(구)의 중심 사이 거리가 두 반지름의 합보다 작으면 충돌로 판정합니다.</p>
+<p><strong>💻 핵심 패턴</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 충돌 감지의 핵심 패턴</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">ball2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="c1"># 거리 계산</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># 충돌 판정</span>
+<span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;충돌!&quot;</span><span class="p">)</span>  <span class="c1"># 두 공의 표면이 겹쳤다</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;아직 안 부딪혔다&quot;</span><span class="p">)</span>  <span class="c1"># 거리: 6, 반지름 합: 1.2 → 충돌 아님</span>
+</code></pre></div>
+<blockquote>
+<p>📖 <strong>파이썬 문법: <code>abs()</code> 함수</strong></p>
+<p><code>abs()</code>는 절댓값을 반환하는 파이썬 내장 함수입니다.</p>
+<ul>
+<li><code>abs(-5)</code> → <code>5</code></li>
+<li><code>abs(3)</code> → <code>3</code></li>
+<li>1D 거리 계산에 유용: <code>abs(ball1.pos.x - ball2.pos.x)</code></li>
+<li><code>mag()</code>는 3D 전체 거리, <code>abs()</code>는 한 축 방향 거리에 사용</li>
+<li>벽과의 충돌처럼 특정 축만 비교할 때 <code>abs()</code>가 편리합니다</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>자, 이제 직접 충돌을 감지하는 프로그램을 만들어 봅시다!</p>
+<h3 id="step-1">Step 1: 두 공의 거리 측정하기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>먼저 두 공을 놓고, 실시간으로 거리를 측정하는 프로그램을 만들어 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 두 공 사이의 거리를 실시간으로 표시하기 ===</span>
+
+<span class="c1"># 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;두 공 사이의 거리를 관찰하세요!&quot;</span>
+
+<span class="c1"># 두 공 생성</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">ball2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="c1"># 두 공을 잇는 선 (거리 시각화)</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span>
+                      <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># 거리 텍스트 표시</span>
+<span class="n">dist_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># ball1을 오른쪽으로 이동시키며 거리 변화 관찰</span>
+<span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># ball1 이동</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 거리 계산</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="c1"># 연결선 업데이트</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span>
+
+    <span class="c1"># 거리 텍스트 업데이트</span>
+    <span class="n">dist_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;거리: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># 충돌 판정!</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">dist_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;충돌! 거리: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">dist_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 멈춤</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 빨간 공이 오른쪽으로 천천히 이동하면서, 화면 위에 두 공 사이의 거리가 실시간으로 표시됩니다. 거리가 줄어들다가 반지름의 합(1.0) 이하가 되면 "충돌!"이 표시되고 빨간 공이 멈춥니다.</p>
+<p><strong>핵심 코드 분석</strong></p>
+<ul>
+<li><code>mag(ball1.pos - ball2.pos)</code> — 두 공 중심 사이의 3D 거리</li>
+<li><code>distance &lt; ball1.radius + ball2.radius</code> — 충돌 조건: 거리가 반지름의 합보다 작으면 표면이 겹침</li>
+<li><code>round(distance, 2)</code> — 소수점 둘째 자리까지 반올림 (보기 편하게)</li>
+</ul>
+<hr />
+<h3 id="step-2">Step 2: 충돌하면 튕기기!<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>이번에는 두 공이 서로를 향해 움직이다가 부딪히면 <strong>튕겨 나가는</strong> 시뮬레이션을 만들어 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 두 공이 부딪히면 색이 바뀌고 튕겨 나가기 ===</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="c1"># 두 공 생성 — 서로를 향해 움직인다</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1"># 오른쪽으로</span>
+
+<span class="n">ball2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 왼쪽으로</span>
+
+<span class="c1"># 충돌 횟수 추적</span>
+<span class="n">collision_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;충돌 횟수: 0&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">60</span>  <span class="c1"># 시간 간격</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 공 이동</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 거리 계산</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="c1"># 충돌 판정</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="c1"># 충돌! 속도를 반대로 (튕기기)</span>
+        <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span>
+        <span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span>
+
+        <span class="c1"># 색상 변경으로 충돌 시각 효과</span>
+        <span class="n">ball1</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">ball2</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+
+        <span class="n">collision_count</span> <span class="o">=</span> <span class="n">collision_count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">info</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;충돌 횟수: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">collision_count</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 충돌이 아닐 때 원래 색상으로 복귀</span>
+        <span class="n">ball1</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">ball2</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+
+    <span class="c1"># 화면 밖으로 나가면 방향 전환 (벽 반사)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 빨간 공과 파란 공이 서로를 향해 달려가다가, 부딪히는 순간 둘 다 노란색으로 변하면서 튕겨 나갑니다. 벽에 반사되어 다시 돌아와 또 부딪히고... 충돌 횟수가 계속 올라갑니다!</p>
+<p><strong>핵심 포인트</strong></p>
+<ul>
+<li><strong><code>-ball1.velocity</code></strong> — 속도 벡터에 마이너스를 붙이면 방향이 반대로 바뀝니다. 이것이 "튕기기"의 핵심!</li>
+<li><strong><code>abs(ball1.pos.x) &gt; 6</code></strong> — 특정 축의 좌표만 비교할 때는 <code>abs()</code>를 사용합니다. 여기서는 x좌표가 -6보다 작거나 6보다 큰지(벽에 닿았는지)를 확인합니다.</li>
+<li>충돌 순간에만 색이 바뀌고, 떨어지면 원래 색으로 돌아옵니다.</li>
+</ul>
+<hr />
+<h3 id="step-3">Step 3: 벽돌깨기 게임 만들기! 🧱<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>자, 지금까지 배운 것을 총동원해서 간단한 벽돌깨기 게임을 만들어 봅시다. 키보드로 패들을 조작하고, 공이 벽돌에 닿으면 벽돌이 사라집니다!</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 벽돌깨기 미니 게임 ===</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;← → 화살표 키로 패들을 움직이세요!&quot;</span>
+
+<span class="c1"># --- 게임 영역 경계 ---</span>
+<span class="n">wall_left</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">wall_right</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">wall_top</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="c1"># --- 패들 (아래쪽) ---</span>
+<span class="n">paddle</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">paddle_speed</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="c1"># --- 공 ---</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trail_type</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span>
+              <span class="n">retain</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># --- 벽돌 만들기 ---</span>
+<span class="n">bricks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">brick_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.5</span> <span class="o">+</span> <span class="n">col</span> <span class="o">*</span> <span class="mf">1.3</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">row</span> <span class="o">*</span> <span class="mf">0.6</span>
+        <span class="n">brick</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">brick_colors</span><span class="p">[</span><span class="n">row</span><span class="p">])</span>
+        <span class="n">bricks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brick</span><span class="p">)</span>
+
+<span class="c1"># --- 점수 표시 ---</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">score_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">text</span><span class="o">=</span><span class="s2">&quot;점수: 0 / &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bricks</span><span class="p">)),</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># --- 키보드 입력 처리 ---</span>
+<span class="n">keys_pressed</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">keydown</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+        <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span>
+        <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">keyup</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+        <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span>
+        <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="n">keydown</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;keyup&quot;</span><span class="p">,</span> <span class="n">keyup</span><span class="p">)</span>
+
+<span class="c1"># --- 게임 루프 ---</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">60</span>
+<span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">game_over</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 패들 이동 (키보드)</span>
+    <span class="k">if</span> <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">:</span>
+        <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">paddle_speed</span>
+    <span class="k">if</span> <span class="n">keys_pressed</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">4.5</span><span class="p">:</span>
+        <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">paddle_speed</span>
+
+    <span class="c1"># 공 이동</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 벽 충돌 (좌/우)</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">5.9</span> <span class="ow">or</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">5.9</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="c1"># 벽 충돌 (위)</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">5.9</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># 패들 충돌</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 공이 아래로 내려올 때만</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">paddle</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">paddle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">paddle</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># 위로 튕기기</span>
+                <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+    <span class="c1"># 벽돌 충돌 검사</span>
+    <span class="k">for</span> <span class="n">brick</span> <span class="ow">in</span> <span class="n">bricks</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">brick</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>  <span class="c1"># 아직 안 깨진 벽돌만 검사</span>
+            <span class="c1"># 벽돌과의 거리 (간단한 박스 충돌)</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">brick</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">brick</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="n">brick</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="ow">and</span> <span class="n">dy</span> <span class="o">&lt;</span> <span class="n">brick</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="c1"># 충돌! 벽돌 제거</span>
+                <span class="n">brick</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;점수: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; / &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bricks</span><span class="p">))</span>
+
+                <span class="c1"># 어느 방향에서 부딪혔는지에 따라 반사</span>
+                <span class="k">if</span> <span class="n">dx</span> <span class="o">&gt;</span> <span class="n">dy</span><span class="p">:</span>
+                    <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span>
+
+                <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">brick</span><span class="o">.</span><span class="n">color</span>  <span class="c1"># 깬 벽돌의 색을 공에 입히기</span>
+                <span class="k">break</span>  <span class="c1"># 한 프레임에 하나의 벽돌만 처리</span>
+
+    <span class="c1"># 바닥에 떨어지면 게임 오버</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">6</span><span class="p">:</span>
+        <span class="n">game_over</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;게임 오버! 최종 점수: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; / &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bricks</span><span class="p">))</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 전부 깨면 승리</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">bricks</span><span class="p">):</span>
+        <span class="n">game_over</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;축하합니다! 모든 벽돌을 깼습니다!&quot;</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 화면에 형형색색의 벽돌 40개가 줄지어 있고, 흰 공이 위아래로 튕기며 움직입니다. 화살표 키로 패들을 좌우로 움직여 공을 튕겨 올리면, 공이 벽돌에 닿을 때마다 벽돌이 사라지고 점수가 올라갑니다. 공을 놓치면 게임 오버!</p>
+<p><strong>핵심 코드 분석</strong></p>
+<ul>
+<li><strong>벽돌 생성</strong>: <code>for</code> 반복문 두 개를 중첩해서 5행 8열의 벽돌을 자동으로 배치합니다</li>
+<li><strong>패들 충돌</strong>: <code>abs(ball.pos.x - paddle.pos.x) &lt; paddle.size.x/2 + ball.radius</code> — 공의 x좌표가 패들 범위 안에 있는지 확인합니다</li>
+<li><strong>벽돌 충돌</strong>: 각 벽돌과의 x/y 거리를 <code>abs()</code>로 계산하여 상자형 충돌(AABB)을 판정합니다</li>
+<li><strong><code>brick.visible = False</code></strong> — 벽돌을 "보이지 않게" 만들어 제거 효과를 냅니다</li>
+<li><strong><code>ball.color = brick.color</code></strong> — 깬 벽돌의 색이 공에 입혀지는 재미있는 시각 효과!</li>
+</ul>
+<hr />
+<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>이 장의 핵심 시뮬레이션 전체 코드입니다. 두 공이 충돌하면 색이 바뀌고 튕기는 프로그램입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 여러 공의 충돌 감지 + 튕기기 시뮬레이션 ===</span>
+<span class="c1"># --- WHY: mag()와 충돌 판정의 원리를 종합적으로 체험하기 ---</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">700</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># 경계 벽 만들기</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+<span class="n">ceiling</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+<span class="n">left_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+<span class="n">right_wall</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+
+<span class="c1"># 공 3개 생성</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ball1</span><span class="o">.</span><span class="n">original_color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+
+<span class="n">ball2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ball2</span><span class="o">.</span><span class="n">original_color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+
+<span class="n">ball3</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ball3</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ball3</span><span class="o">.</span><span class="n">original_color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+
+<span class="n">balls</span> <span class="o">=</span> <span class="p">[</span><span class="n">ball1</span><span class="p">,</span> <span class="n">ball2</span><span class="p">,</span> <span class="n">ball3</span><span class="p">]</span>
+
+<span class="c1"># 충돌 횟수 표시</span>
+<span class="n">collision_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;충돌: 0회&quot;</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">60</span>  <span class="c1"># 시간 간격</span>
+<span class="n">flash_timer</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 충돌 시각 효과 타이머</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">balls</span><span class="p">:</span>
+        <span class="c1"># 공 이동</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+        <span class="c1"># 벽 반사</span>
+        <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">5.9</span> <span class="ow">or</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">5.9</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">3.9</span> <span class="ow">or</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.9</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># 공끼리 충돌 검사 (모든 쌍을 비교)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">balls</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">balls</span><span class="p">)):</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="n">min_dist</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span>
+
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
+                <span class="c1"># 충돌! 속도 교환 (간단한 탄성 충돌)</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">temp</span>
+
+                <span class="c1"># 노란색 플래시</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+                <span class="n">flash_timer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># 15프레임 동안 유지</span>
+                <span class="n">flash_timer</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>
+
+                <span class="n">collision_count</span> <span class="o">=</span> <span class="n">collision_count</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">info</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;충돌: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">collision_count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;회&quot;</span>
+
+    <span class="c1"># 플래시 타이머: 시간이 지나면 원래 색으로 복귀</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">flash_timer</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">flash_timer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">flash_timer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">flash_timer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">balls</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">original_color</span>
+            <span class="k">del</span> <span class="n">flash_timer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>실행하면 이런 장면이 보입니다</strong>: 빨강, 파랑, 초록 세 개의 공이 상자 안에서 여기저기 튕기며 돌아다닙니다. 두 공이 부딪힐 때마다 노란색으로 반짝이며, 충돌 횟수가 계속 올라갑니다. 각 공의 궤적(trail)이 그려져서 움직임의 패턴도 관찰할 수 있습니다.</p>
+<hr />
+<h2 id="_8">🧠 사고력 챌린지<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">🔍 코드 → 결과 예측 (⭐⭐)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 코드를 실행하면 어떤 일이 일어날까요? <strong>실행하지 말고</strong> 머릿속으로 시뮬레이션해 보세요!</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball_a</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">ball_b</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="n">ball_a</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">ball_a</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball_a</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball_a</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball_a</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball_b</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball_a</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball_b</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_a</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">ball_b</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">ball_a</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>생각해 볼 것</strong>:</p>
+<ul>
+<li>ball_a는 어떤 방향으로 움직이나요?</li>
+<li>ball_b는 움직이나요?</li>
+<li>두 공 사이의 초기 거리는 얼마인가요? (힌트: <code>mag(vector(4,0,0))</code> = 4)</li>
+<li>반지름의 합은 얼마인가요?</li>
+<li>충돌은 대략 언제 일어나나요?</li>
+<li>충돌 후에는 어떤 상태인가요?</li>
+</ul>
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+**초기 상태**: ball_a는 (-2, 0, 0), ball_b는 (2, 0, 0). 거리 = 4, 반지름 합 = 2.
+
+**진행**: ball_a가 초당 1의 속도로 오른쪽으로 이동합니다. ball_b는 가만히 있습니다.
+
+**충돌 시점**: 거리가 2(반지름 합) 이하가 되려면, ball_a가 2만큼 이동해야 합니다. 초속 1이므로 **약 2초 후** 충돌합니다. 이때 ball_a의 위치는 약 (0, 0, 0)입니다.
+
+**충돌 후**: 두 공 모두 노란색으로 변하고, ball_a의 속도가 0이 되어 **그 자리에 멈춥니다**. 노란 공 두 개가 나란히 붙어 있는 장면이 됩니다.
+
+**핵심 포인트**: `ball_a.velocity = vector(0, 0, 0)`이 실행되면 더 이상 `if` 안으로 들어갈 일이 없습니다. 공은 영원히 노란색 상태로 멈춰 있습니다.
+
+</details>
+
+<hr />
+<h3 id="_10">🔄 결과 → 코드 역추적 (⭐⭐⭐)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 다음과 같이 동작하는 프로그램의 충돌 감지 부분 코드를 작성해 보세요.</p>
+</blockquote>
+<p><strong>동작 설명</strong>:</p>
+<ul>
+<li>공(ball)이 화면 안에서 움직이고 있습니다</li>
+<li>화면 중앙에 큰 장애물 구(obstacle)가 있습니다 (반지름 1.5)</li>
+<li>공이 장애물에 부딪히면 <strong>공의 색이 빨간색으로 변하고</strong>, <strong>공의 속도 방향이 반대로</strong> 바뀝니다</li>
+<li>부딪히지 않은 동안에는 공의 색이 흰색입니다</li>
+</ul>
+<p><strong>이미 작성된 코드</strong> (빈칸을 채우세요):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">obstacle</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># === 여기에 충돌 감지 코드를 작성하세요 ===</span>
+    <span class="c1"># 힌트 1: 거리를 계산하세요</span>
+    <span class="c1"># 힌트 2: 충돌 조건을 판정하세요</span>
+    <span class="c1"># 힌트 3: 충돌이면 색 변경 + 방향 반전</span>
+    <span class="c1"># 힌트 4: 충돌이 아니면 원래 색으로</span>
+</code></pre></div>
+<details>
+<summary>💡 힌트 더 보기</summary>
+
+- 거리: `mag(ball.pos - obstacle.pos)`
+- 충돌 조건: `distance < ??? + ???`
+- 방향 반전: `ball.velocity = ???`
+- 조건에 따라 다른 동작: `if ... else ...`
+
+</details>
+
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">obstacle</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 거리 계산</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">obstacle</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="c1"># 충돌 판정</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">obstacle</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+</code></pre></div>
+
+**핵심**: `mag()`로 거리를 구하고, `ball.radius + obstacle.radius`와 비교하는 패턴은 항상 동일합니다. 반지름이 다른 두 물체라도 이 패턴 그대로 적용하면 됩니다!
+
+</details>
+
+<hr />
+<h3 id="_11">💡 상상 → 코드 창작 (⭐⭐)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 지금까지 배운 충돌 감지를 활용하여 <strong>"먹이를 먹는 물고기"</strong> 시뮬레이션을 만들어 보세요!</p>
+</blockquote>
+<p><strong>요구사항</strong>:</p>
+<ul>
+<li>물고기(큰 구): 키보드 화살표로 상하좌우 이동</li>
+<li>먹이(작은 구): 화면 안 랜덤한 위치에 3개 이상 배치</li>
+<li>물고기가 먹이에 닿으면(충돌하면) 먹이가 사라짐 (<code>visible = False</code>)</li>
+<li>모든 먹이를 먹으면 "완료!" 메시지 표시</li>
+<li>자유롭게 색상, 크기, 개수를 정하세요</li>
+</ul>
+<p><strong>힌트</strong>:</p>
+<ul>
+<li>먹이를 리스트에 담아서 <code>for food in foods:</code> 반복으로 충돌 검사</li>
+<li><code>food.visible</code>이 <code>True</code>인 것만 검사</li>
+<li>랜덤 위치는 <code>import random</code>으로 <code>random.uniform(-5, 5)</code> 사용</li>
+</ul>
+<details>
+<summary>🔑 예시 답안</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>  <span class="c1"># 바다색</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;← → ↑ ↓ 키로 물고기를 움직여 먹이를 모두 먹으세요!&quot;</span>
+
+<span class="c1"># 물고기 (플레이어)</span>
+<span class="n">fish</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+<span class="n">fish_speed</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="c1"># 먹이 생성</span>
+<span class="n">foods</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">food</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">foods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">food</span><span class="p">)</span>
+
+<span class="c1"># 점수</span>
+<span class="n">eaten</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">score_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">text</span><span class="o">=</span><span class="s2">&quot;남은 먹이: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">foods</span><span class="p">)),</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 키보드 처리</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">kd</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">def</span> <span class="nf">ku</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="n">kd</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;keyup&quot;</span><span class="p">,</span> <span class="n">ku</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 물고기 이동</span>
+    <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]:</span>
+        <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">fish_speed</span>
+    <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]:</span>
+        <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">fish_speed</span>
+    <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">]:</span>
+        <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">fish_speed</span>
+    <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="s2">&quot;down&quot;</span><span class="p">]:</span>
+        <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">fish_speed</span>
+
+    <span class="c1"># 먹이 충돌 검사</span>
+    <span class="k">for</span> <span class="n">food</span> <span class="ow">in</span> <span class="n">foods</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">food</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">fish</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">food</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">fish</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">food</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">food</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">eaten</span> <span class="o">=</span> <span class="n">eaten</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;남은 먹이: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">foods</span><span class="p">)</span> <span class="o">-</span> <span class="n">eaten</span><span class="p">)</span>
+
+    <span class="c1"># 전부 먹으면 완료</span>
+    <span class="k">if</span> <span class="n">eaten</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">foods</span><span class="p">):</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;완료! 모든 먹이를 먹었습니다!&quot;</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+</code></pre></div>
+
+이 코드를 기반으로 자유롭게 확장해 보세요. 먹이가 움직이게 하거나, 먹을 때마다 물고기가 커지거나, 피해야 할 적을 추가하는 것도 재미있습니다!
+
+</details>
+
+<hr />
+<h2 id="_12">⚠️ 자주 하는 실수<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><strong>실수 1: <code>mag()</code> 대신 벡터를 직접 비교</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 벡터는 &lt; 연산자로 비교할 수 없습니다!</span>
+<span class="k">if</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;충돌&quot;</span><span class="p">)</span>
+<span class="c1"># TypeError 발생!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ mag()로 크기(숫자)를 구한 후 비교하세요</span>
+<span class="k">if</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;충돌&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>ball1.pos - ball2.pos</code>는 벡터(방향+크기)이고, <code>mag()</code>를 씌워야 비로소 숫자(거리)가 됩니다. 숫자끼리만 크기 비교를 할 수 있습니다!</p>
+</blockquote>
+<p><strong>실수 2: 충돌 조건에서 반지름을 빠뜨림</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 중심끼리 겹칠 때만 충돌? 너무 늦습니다!</span>
+<span class="k">if</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;충돌&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 반지름의 합을 기준으로 판정해야 표면에서 닿을 때 감지됩니다</span>
+<span class="k">if</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;충돌&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>두 공의 <strong>표면</strong>이 닿는 순간은, 중심 사이 거리가 <strong>반지름의 합</strong>과 같아지는 순간입니다. 반지름을 포함하지 않으면 충돌을 감지하지 못하거나 너무 늦게 감지합니다.</p>
+</blockquote>
+<p><strong>실수 3: 충돌 후 공이 내부에 갇힘</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 충돌 시 속도만 반전하면 다음 프레임에도 여전히 충돌 중!</span>
+<span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span>
+    <span class="c1"># → 다음 프레임: 아직도 거리 &lt; 반지름 합 → 또 반전 → 또 반전...</span>
+    <span class="c1"># → 공이 덜덜 떨면서 갇혀 버립니다!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 속도 교환이나 위치 보정으로 겹침을 해소하세요</span>
+<span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+    <span class="c1"># 방법 1: 속도 교환</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span>
+    <span class="n">ball2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">temp</span>
+
+    <span class="c1"># 방법 2: 겹침 해소 — 살짝 밀어내기</span>
+    <span class="n">overlap</span> <span class="o">=</span> <span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">ball2</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">distance</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">direction</span> <span class="o">*</span> <span class="p">(</span><span class="n">overlap</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">direction</span> <span class="o">*</span> <span class="p">(</span><span class="n">overlap</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>이것은 충돌 감지에서 가장 흔한 버그입니다. 공이 겹친 상태에서 속도만 뒤집으면 다음 프레임에도 여전히 겹쳐 있어 무한 반전이 일어납니다. 속도 교환이나 위치 보정으로 해결하세요!</p>
+</blockquote>
+<p><strong>실수 4: <code>abs()</code>와 <code>mag()</code>를 혼동</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ abs()는 숫자 하나의 절댓값 — 벡터에는 쓸 수 없습니다</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>  <span class="c1"># 오류!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 벡터의 크기 → mag(), 숫자의 절댓값 → abs()</span>
+<span class="n">distance_3d</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>     <span class="c1"># 3D 거리 (벡터 → 숫자)</span>
+<span class="n">distance_x</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ball1</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">ball2</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># x축 거리만 (숫자 → 숫자)</span>
+</code></pre></div>
+<blockquote>
+<p><strong><code>mag()</code></strong>는 벡터를 받아서 숫자(크기)를 반환합니다. <strong><code>abs()</code></strong>는 숫자를 받아서 절댓값을 반환합니다. 목적이 다르니 상황에 맞게 사용하세요!</p>
+</blockquote>
+<hr />
+<h2 id="_13">✅ 스스로 점검하기<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>이 장을 잘 이해했는지 스스로 확인해 봅시다.</p>
+<ul>
+<li>[ ] <strong><code>mag(vector(3, 4, 0))</code>의 결과를 바로 말할 수 있나요?</strong> → 5.0 (3-4-5 삼각형)</li>
+<li>[ ] <strong>두 물체 사이의 거리를 구하는 코드를 쓸 수 있나요?</strong> → <code>mag(a.pos - b.pos)</code></li>
+<li>[ ] <strong>충돌 조건을 <code>if</code>문으로 작성할 수 있나요?</strong> → <code>if distance &lt; r1 + r2</code></li>
+<li>[ ] <strong><code>mag()</code>와 <code>abs()</code>의 차이를 설명할 수 있나요?</strong> → <code>mag()</code>는 벡터 크기, <code>abs()</code>는 숫자 절댓값</li>
+<li>[ ] <strong>충돌 후 "튕기기"를 구현하는 방법을 알고 있나요?</strong> → 속도 반전 또는 속도 교환</li>
+<li>[ ] <strong>벽돌깨기 게임의 충돌 로직 흐름을 설명할 수 있나요?</strong> → 공-벽, 공-패들, 공-벽돌 각각 검사</li>
+</ul>
+<blockquote>
+<p>💪 체크가 4개 이상이면 다음 장으로 넘어갈 준비가 된 것입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_14">🚀 더 해보기<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>시간이 남거나 더 도전하고 싶다면 아래를 시도해 보세요!</p>
+<h3 id="1-10">도전 1: 공 10개 시뮬레이션<a class="headerlink" href="#1-10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+<span class="n">balls</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">vx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">original_color</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="n">balls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">balls</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">balls</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">balls</span><span class="p">)):</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">temp</span>
+</code></pre></div>
+<blockquote>
+<p>🔎 공의 개수를 늘려 보세요. 20개, 50개... 컴퓨터가 매 프레임마다 몇 번의 거리 계산을 하는지 생각해 보세요. (힌트: 공 n개일 때 비교 횟수는 n(n-1)/2 입니다!)</p>
+</blockquote>
+<h3 id="2">도전 2: 벽돌깨기 업그레이드<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>Step 3의 벽돌깨기에 다음 기능을 추가해 보세요.</p>
+<ul>
+<li><strong>공 속도 점점 빨라지기</strong>: 벽돌을 깰 때마다 <code>ball.velocity</code>의 크기를 5%씩 증가</li>
+<li><strong>목숨 3개</strong>: 바닥에 떨어져도 바로 게임 오버 대신 목숨이 줄어들기</li>
+<li><strong>특수 벽돌</strong>: 특정 색 벽돌을 깨면 패들이 길어지거나 공이 커지기</li>
+</ul>
+<h3 id="3_1">도전 3: 간단한 당구 시뮬레이션<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># 당구대 초록색</span>
+
+<span class="c1"># 당구대 경계</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># 큐볼 (흰 공)</span>
+<span class="n">cue</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">cue</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 타겟 공들</span>
+<span class="n">target1</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">target1</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">target2</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+<span class="n">target2</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">all_balls</span> <span class="o">=</span> <span class="p">[</span><span class="n">cue</span><span class="p">,</span> <span class="n">target1</span><span class="p">,</span> <span class="n">target2</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">all_balls</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+        <span class="c1"># 마찰 (서서히 느려짐)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">velocity</span> <span class="o">*</span> <span class="mf">0.998</span>
+        <span class="c1"># 벽 반사</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">4.8</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">2.8</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># 충돌 검사</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_balls</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_balls</span><span class="p">)):</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">all_balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">all_balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">all_balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">all_balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">all_balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">all_balls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">all_balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span>
+                <span class="n">all_balls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">temp</span>
+</code></pre></div>
+<blockquote>
+<p>🔎 당구에서는 마찰(<code>velocity * 0.998</code>)이 중요합니다. 이 값을 바꿔 보면서 공이 얼마나 빨리/느리게 멈추는지 관찰해 보세요!</p>
+</blockquote>
+<hr />
+<h2 id="_15">🔗 다음 장으로<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 우리는 프로그래밍에서 가장 흥미진진한 주제 중 하나인 <strong>충돌 감지</strong>를 정복했습니다.</p>
+<p><strong>배운 것 정리</strong>:</p>
+<ul>
+<li><code>mag()</code> = 벡터의 크기(길이)를 구하는 함수</li>
+<li><code>mag(A.pos - B.pos)</code> = 두 물체 사이의 거리</li>
+<li><code>distance &lt; r1 + r2</code> = 충돌 조건 (구-구)</li>
+<li><code>abs()</code> = 한 축 방향의 거리 계산에 유용</li>
+<li>충돌 후 반응: 색 변경, 속도 반전, 속도 교환, 물체 제거</li>
+<li>벽돌깨기의 핵심: 공-벽, 공-패들, 공-벽돌 충돌을 각각 처리</li>
+</ul>
+<p><strong>컴퓨팅 사고력 포인트</strong>: 현실의 "부딪힘"을 <strong>"두 점 사이 거리 &lt; 기준값"</strong>이라는 수학적 조건으로 <strong>추상화</strong>했습니다. 이 단순한 아이디어 하나가 모든 게임과 시뮬레이션의 기초입니다.</p>
+<p>우리는 이제 물체를 움직이고, 조건을 판단하고, 충돌까지 처리할 수 있게 되었습니다. 하지만 아직 해결하지 못한 것이 있습니다 — 같은 종류의 물체를 수십, 수백 개 다룰 때 어떻게 효율적으로 관리할까요?</p>
+<p><strong>다음 장 "리스트와 반복 — 수백 개의 별을 다루는 법"</strong> 에서는 리스트(list)를 활용하여 대량의 물체를 우아하게 다루는 방법을 배웁니다. 별이 쏟아지는 밤하늘을 코드로 만들어 볼 거예요! 🌌</p>
+<blockquote>
+<p>🌟 <strong>오늘의 한마디</strong>: 여러분은 오늘 게임의 핵심 원리를 직접 구현했습니다. 마리오가 적에게 닿으면 죽는 것도, 당구공이 서로 부딪혀 흩어지는 것도, 전부 오늘 배운 <code>mag()</code>와 <code>if</code>의 조합입니다. 이제 여러분도 게임을 "만드는 사람"의 시선으로 세상을 볼 수 있습니다!</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

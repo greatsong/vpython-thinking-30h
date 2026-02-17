@@ -1,0 +1,2631 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+        <link rel="prev" href="../chapter06/">
+      
+      
+        <link rel="next" href="../chapter08/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>if문 — 조건에 따라 달라지는 세상 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-7-if" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              if문 — 조건에 따라 달라지는 세상
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 세계에 첫 발을 내딛다
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변수와 움직임의 세계
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 조건과 선택의 힘
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 반복과 패턴의 마법
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계에 오신 것을 환영합니다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    색칠하고 꾸미기 — 속성과 표현
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수 — 이름표를 붙여 기억하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연산과 수식 — 물체를 계산으로 배치하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    if문 — 조건에 따라 달라지는 세상
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    if문 — 조건에 따라 달라지는 세상
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로그램이 "생각"하기 시작하는 순간
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 사고 훈련
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: if문 — "만약 ~이면 ~해라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 비교 연산자 — "두 값을 비교하라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 불리언과 논리 연산자 — "여러 조건을 조합하라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 영역에 따라 색이 바뀌는 공
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 벽에 부딪히면 튕기는 공 🏓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 온도에 따라 색이 변하는 3D 온도계 🌡️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 다중 벽 튕기기 — 3D 버전
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 점수 표시 — 충돌 횟수 세기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 중력이 있는 튕기는 공
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드와 마우스 — 내가 조종하는 3D 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 100개의 별을 한 번에
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    while 반복문 — 끝나지 않는 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로그램이 "생각"하기 시작하는 순간
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 이번 장의 사고 훈련
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: if문 — "만약 ~이면 ~해라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 비교 연산자 — "두 값을 비교하라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 불리언과 논리 연산자 — "여러 조건을 조합하라"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 영역에 따라 색이 바뀌는 공
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 벽에 부딪히면 튕기는 공 🏓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 온도에 따라 색이 변하는 3D 온도계 🌡️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 다중 벽 튕기기 — 3D 버전
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 점수 표시 — 충돌 횟수 세기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: 중력이 있는 튕기는 공
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-7-if">Chapter 7: if문 — 조건에 따라 달라지는 세상<a class="headerlink" href="#chapter-7-if" title="Permanent link">&para;</a></h1>
+<p><strong>Part 3: 조건과 선택의 힘</strong></p>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>이번 시간이 끝나면 여러분은 이런 것을 할 수 있게 됩니다.</p>
+<ul>
+<li><strong>if, elif, else 문</strong>으로 조건에 따른 분기를 구현할 수 있다</li>
+<li><strong>비교 연산자</strong>(==, !=, &lt;, &gt;, &lt;=, &gt;=)를 활용할 수 있다</li>
+<li>물체의 상태에 따라 <strong>색상이나 방향을 바꾸는</strong> 프로그램을 만들 수 있다</li>
+</ul>
+<blockquote>
+<p>🖥️ <strong>이번 시간에 만들 것</strong>: 벽에 부딪히면 튕기는 공, 위치에 따라 색이 변하는 구, 그리고 온도에 따라 색이 변하는 3D 온도계 시뮬레이션을 만듭니다. 코드가 "판단"하는 순간을 눈으로 확인하게 됩니다!</p>
+</blockquote>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">프로그램이 "생각"하기 시작하는 순간<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>지금까지 우리가 만든 프로그램은 <strong>무조건 같은 일만</strong> 했습니다. 공은 한 방향으로만 움직이고, 색은 절대 변하지 않았죠. 마치 "앞으로만 가!" 라는 명령만 받은 로봇처럼요.</p>
+<p>하지만 현실 세계는 그렇지 않습니다.</p>
+<blockquote>
+<p>"비가 오면 우산을 쓴다. 안 오면 그냥 나간다."
+"신호가 빨간불이면 멈춘다. 초록불이면 건넌다."
+"시험 점수가 90점 이상이면 A, 80점 이상이면 B, 나머지는 C."</p>
+</blockquote>
+<p>우리는 매 순간 <strong>조건을 판단하고 다른 행동을 선택</strong>합니다. 프로그램도 이렇게 할 수 있다면 어떨까요?</p>
+<p><strong><code>if</code>문은 프로그램에게 "판단력"을 주는 마법의 도구입니다.</strong> <code>if</code>를 배우는 순간, 여러분의 프로그램은 단순한 반복 기계에서 "상황에 맞게 반응하는 지능적인 시스템"으로 변신합니다.</p>
+<h3 id="_4">🧠 이번 장의 사고 훈련<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🔍 <strong>코드 → 결과 예측</strong>: 조건문이 있는 코드를 읽고, 어떤 분기가 실행될지 머릿속으로 따라가기</li>
+<li>🔄 <strong>결과 → 코드 역추적</strong>: 공이 튕기는 장면을 보고, 어떤 조건문이 필요한지 역추적하기</li>
+<li>💡 <strong>상상 → 코드 창작</strong>: 나만의 조건 로직을 설계하고 3D로 구현하기</li>
+</ul>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1-if">개념 1: if문 — "만약 ~이면 ~해라"<a class="headerlink" href="#1-if" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>여러분이 아침에 일어났을 때를 생각해 보세요.</p>
+<blockquote>
+<p>"만약 비가 오면 → 우산을 챙긴다"</p>
+</blockquote>
+<p>이것이 바로 <code>if</code>문의 핵심입니다. <strong>조건을 확인하고, 참(True)이면 실행</strong>합니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>if</code>문은 주어진 조건이 <strong>참(True)</strong>일 때만 특정 코드 블록을 실행하는 제어 구조입니다. 조건이 <strong>거짓(False)</strong>이면 해당 블록을 건너뜁니다.</p>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># 공의 x좌표가 양수인지 확인</span>
+<span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>   <span class="c1"># 오른쪽에 있으면 초록색</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;프로그램 끝!&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>이 코드에서 공의 x좌표는 0이므로 <code>ball.pos.x &gt;= 0</code>은 <strong>참(True)</strong>입니다. 따라서 공이 초록색으로 바뀝니다.</p>
+<blockquote>
+<p>📌 <strong>핵심 포인트</strong>: <code>if</code> 다음에 오는 조건이 참이면 들여쓴 코드가 실행되고, 거짓이면 건너뜁니다.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>📖 <strong>파이썬 문법: if / elif / else</strong></p>
+<p><strong>기본 if문</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">조건</span><span class="p">:</span>
+    <span class="n">실행할_코드</span>   <span class="c1"># 반드시 들여쓰기(4칸 스페이스)!</span>
+</code></pre></div>
+<p><strong>if-else문</strong> — "~이면 A, 아니면 B"</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">조건</span><span class="p">:</span>
+    <span class="n">조건이_참일_때_실행</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">조건이_거짓일_때_실행</span>
+</code></pre></div>
+<p><strong>if-elif-else문</strong> — "~이면 A, ~이면 B, 아니면 C"</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">조건1</span><span class="p">:</span>
+    <span class="n">조건1이_참일_때_실행</span>
+<span class="k">elif</span> <span class="n">조건2</span><span class="p">:</span>
+    <span class="n">조건1은_거짓이고_조건2가_참일_때_실행</span>
+<span class="k">elif</span> <span class="n">조건3</span><span class="p">:</span>
+    <span class="n">조건1</span><span class="p">,</span><span class="mi">2</span><span class="n">_모두_거짓이고_조건3이_참일_때_실행</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">모든_조건이_거짓일_때_실행</span>
+</code></pre></div>
+<p><strong>규칙 정리</strong></p>
+<ul>
+<li><code>if</code>는 반드시 <strong>하나</strong> 있어야 합니다</li>
+<li><code>elif</code>는 <strong>0개 이상</strong> 여러 개 쓸 수 있습니다</li>
+<li><code>else</code>는 <strong>0개 또는 1개</strong>만 쓸 수 있습니다</li>
+<li>조건 뒤에 반드시 <strong>콜론(<code>:</code>)</strong> 을 붙여야 합니다</li>
+<li>실행할 코드는 반드시 <strong>들여쓰기</strong> 해야 합니다 (보통 스페이스 4칸)</li>
+<li>위에서 아래로 조건을 검사하다가 <strong>처음으로 참인 조건 하나만</strong> 실행합니다</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="2">개념 2: 비교 연산자 — "두 값을 비교하라"<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>"키가 120cm 이상이면 놀이기구를 탈 수 있습니다." 놀이공원에서 본 적 있죠? 이때 "이상"이라는 말이 바로 <strong>비교</strong>입니다. 파이썬에서도 두 값을 비교하는 기호가 있습니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>비교 연산자는 두 값의 관계를 판단하여 <strong>True(참)</strong> 또는 <strong>False(거짓)</strong>을 돌려주는 연산자입니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 비교 연산자</strong></p>
+<ul>
+<li><code>==</code> : 같다 ("5 == 5 → True, 5 == 3 → False")</li>
+<li><code>!=</code> : 같지 않다 ("5 != 3 → True, 5 != 5 → False")</li>
+<li><code>&lt;</code> : 작다 ("3 &lt; 5 → True")</li>
+<li><code>&gt;</code> : 크다 ("5 &gt; 3 → True")</li>
+<li><code>&lt;=</code> : 작거나 같다 ("3 &lt;= 3 → True, 3 &lt;= 5 → True")</li>
+<li><code>&gt;=</code> : 크거나 같다 ("5 &gt;= 5 → True, 5 &gt;= 3 → True")</li>
+</ul>
+<p>비교 결과는 항상 <strong>True</strong> 또는 <strong>False</strong> 입니다. 이 두 값을 <strong>불리언(boolean)</strong> 타입이라고 부릅니다.</p>
+</blockquote>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A 등급입니다!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B 등급입니다!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C 등급입니다!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;더 노력하세요!&quot;</span><span class="p">)</span>
+
+<span class="c1"># 결과: &quot;B 등급입니다!&quot; (85는 90보다 작지만 80 이상이므로)</span>
+</code></pre></div>
+<blockquote>
+<p>⚡ <strong>중요</strong>: <code>score &gt;= 90</code>이 거짓이므로 넘어가고, <code>score &gt;= 80</code>이 참이므로 "B 등급입니다!"가 출력됩니다. <strong>한 번 참인 조건을 만나면 나머지는 검사하지 않습니다.</strong></p>
+</blockquote>
+<hr />
+<h3 id="3">개념 3: 불리언과 논리 연산자 — "여러 조건을 조합하라"<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>"비가 오고 <strong>그리고</strong> 우산이 없으면 → 편의점에서 우산을 산다." 여기서 "그리고"는 두 조건이 <strong>모두 참</strong>이어야 합니다. "주말이<strong>거나</strong> 공휴일이면 → 학교에 안 간다." 여기서 "거나"는 <strong>하나만 참</strong>이어도 됩니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>논리 연산자는 여러 조건을 하나로 결합하는 연산자입니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 불리언과 논리 연산자 (and / or / not)</strong></p>
+<p><strong>불리언(boolean) 타입</strong></p>
+<ul>
+<li><code>True</code> — 참 (조건이 맞을 때)</li>
+<li><code>False</code> — 거짓 (조건이 틀릴 때)</li>
+<li>비교 연산자의 결과는 항상 불리언입니다</li>
+</ul>
+<p><strong>논리 연산자</strong></p>
+<ul>
+<li><code>and</code> : 두 조건이 <strong>모두 참</strong>이면 True</li>
+<li><code>True and True → True</code></li>
+<li><code>True and False → False</code></li>
+<li><code>False and True → False</code></li>
+<li>
+<p><code>False and False → False</code></p>
+</li>
+<li>
+<p><code>or</code> : 두 조건 중 <strong>하나라도 참</strong>이면 True</p>
+</li>
+<li><code>True or False → True</code></li>
+<li><code>False or True → True</code></li>
+<li><code>True or True → True</code></li>
+<li>
+<p><code>False or False → False</code></p>
+</li>
+<li>
+<p><code>not</code> : 조건을 <strong>뒤집는다</strong> (참→거짓, 거짓→참)</p>
+</li>
+<li><code>not True → False</code></li>
+<li><code>not False → True</code></li>
+</ul>
+<p><strong>사용 예시</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x는 0과 10 사이&quot;</span><span class="p">)</span>     <span class="c1"># 두 조건 모두 참 → 실행!</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x는 0 미만이거나 3 초과&quot;</span><span class="p">)</span>  <span class="c1"># 두 번째 조건이 참 → 실행!</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x는 0이 아님&quot;</span><span class="p">)</span>        <span class="c1"># x == 0이 거짓이므로 not으로 뒤집으면 참 → 실행!</span>
+</code></pre></div>
+</blockquote>
+<p><strong>💻 VPython에서 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># 공이 x &gt; 0 이고 동시에 y &gt; 0 인 영역에 있는지 확인</span>
+<span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;공은 1사분면에 있습니다!&quot;</span><span class="p">)</span>  <span class="c1"># 이것이 실행됩니다</span>
+</code></pre></div>
+<hr />
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>자, 이제 직접 만들어 봅시다! 점점 풍성해지는 3D 세상을 경험하세요.</p>
+<h3 id="step-1">Step 1: 영역에 따라 색이 바뀌는 공<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>먼저 가장 단순한 형태부터 시작합니다. 공의 <strong>x 좌표에 따라 색이 달라지는</strong> 프로그램을 만들어 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: x 좌표에 따라 공의 색이 바뀌는 프로그램 ===</span>
+<span class="c1"># --- WHY: if-elif-else의 기본 동작을 눈으로 확인하기 ---</span>
+
+<span class="c1"># 장면 설정: 영역 경계를 보여주는 반투명 벽</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># 영역 라벨</span>
+<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;왼쪽 (빨강)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;가운데 (초록)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;오른쪽 (파랑)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="c1"># 공 생성</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
+              <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trail_color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">trail_radius</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 오른쪽으로 이동</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 🌟 핵심: 위치에 따라 색상 변경!</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>       <span class="c1"># 왼쪽 영역 → 빨강</span>
+    <span class="k">elif</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>      <span class="c1"># 오른쪽 영역 → 파랑</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>     <span class="c1"># 가운데 영역 → 초록</span>
+
+    <span class="c1"># 화면 밖으로 나가면 되돌리기</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 공이 왼쪽에서 오른쪽으로 이동하면서 빨강 → 초록 → 파랑으로 색이 부드럽게 바뀝니다. 공이 경계선(반투명 벽)을 지날 때마다 색이 딱 바뀌는 것을 확인하세요!</p>
+<p>코드를 하나씩 살펴봅시다.</p>
+<ul>
+<li><code>if ball.pos.x &lt; -3:</code> — "공의 x좌표가 -3보다 작으면" (왼쪽 영역)</li>
+<li><code>elif ball.pos.x &gt; 3:</code> — "아니고, x좌표가 3보다 크면" (오른쪽 영역)</li>
+<li><code>else:</code> — "둘 다 아니면" (가운데 영역, 즉 -3 이상 3 이하)</li>
+</ul>
+<blockquote>
+<p>💡 <code>elif</code>는 "else if"의 줄임말입니다. "앞의 조건이 거짓이고, 이 조건이 참이면"이라는 뜻이죠. 조건을 여러 개 연결할 때 사용합니다.</p>
+</blockquote>
+<hr />
+<h3 id="step-2">Step 2: 벽에 부딪히면 튕기는 공 🏓<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>이번에는 프로그래밍의 고전! <strong>벽에 닿으면 방향이 반대로 바뀌는 공</strong>을 만듭니다. 이것은 if문의 가장 대표적인 활용 사례입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 벽에 부딪히면 튕기는 공 ===</span>
+<span class="c1"># --- WHY: if문으로 물체의 행동을 제어하는 패턴 배우기 ---</span>
+
+<span class="c1"># 양쪽 벽 만들기</span>
+<span class="n">wall_right</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">wall_left</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">wall_top</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">wall_bottom</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># 바닥</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># 공 생성</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span>
+              <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trail_color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">trail_radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+
+<span class="c1"># 속도: 오른쪽 위 방향으로 출발</span>
+<span class="n">ball_velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># 공 이동</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball_velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 🌟 핵심: 벽 충돌 감지 + 방향 반전!</span>
+
+    <span class="c1"># 오른쪽 벽에 닿으면 x 방향 반전</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>      <span class="c1"># 충돌 시 빨강!</span>
+
+    <span class="c1"># 왼쪽 벽에 닿으면 x 방향 반전</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">6</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>   <span class="c1"># 충돌 시 노랑!</span>
+
+    <span class="c1"># 위쪽 벽에 닿으면 y 방향 반전</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>    <span class="c1"># 충돌 시 초록!</span>
+
+    <span class="c1"># 아래쪽 벽에 닿으면 y 방향 반전</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">magenta</span>  <span class="c1"># 충돌 시 자홍!</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 공이 사각형 공간 안에서 계속 튕깁니다! 벽에 부딪힐 때마다 색이 바뀌면서 어디에 충돌했는지 시각적으로 보여줍니다.</p>
+<p>핵심 패턴을 분석해 봅시다.</p>
+<ul>
+<li><code>if ball.pos.x &gt; 6 - ball.radius:</code> — "공의 오른쪽 끝이 벽에 닿으면"</li>
+<li><code>ball_velocity.x = -ball_velocity.x</code> — "x 방향 속도를 반대로!" (양수→음수, 음수→양수)</li>
+</ul>
+<blockquote>
+<p>🧩 <strong>왜 <code>6 - ball.radius</code>인가요?</strong> 공의 중심(pos)이 벽 위치(6)에 닿을 때는 이미 공의 절반이 벽을 뚫은 상태입니다. 공의 반지름만큼 미리 감지해야 자연스럽게 튕깁니다.</p>
+<p>💡 <strong>주목!</strong> 여기서 네 개의 <code>if</code>문을 별도로 사용했습니다. <code>if-elif-else</code>가 아닌 <strong>독립적인 <code>if</code>문 네 개</strong>입니다. 왜일까요? 만약 공이 모서리(코너)에 부딪히면 x와 y 방향 <strong>모두</strong> 반전해야 하기 때문입니다. <code>elif</code>를 쓰면 하나만 실행되고 나머지는 건너뛰게 되죠!</p>
+</blockquote>
+<hr />
+<h3 id="step-3-3d">Step 3: 온도에 따라 색이 변하는 3D 온도계 🌡️<a class="headerlink" href="#step-3-3d" title="Permanent link">&para;</a></h3>
+<p>이제 if-elif-else를 총동원하는 프로젝트입니다! <strong>온도가 올라갔다 내려갔다 하면서</strong> 온도계의 색과 높이가 변하는 시뮬레이션을 만듭니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 온도에 따라 색이 변하는 3D 온도계 ===</span>
+<span class="c1"># --- WHY: 여러 조건 분기를 하나의 시뮬레이션에서 종합 연습 ---</span>
+
+<span class="c1"># 온도계 외관: 유리관 (반투명 원기둥)</span>
+<span class="n">glass_tube</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                      <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># 온도계 구부 (아래쪽 동그란 부분)</span>
+<span class="n">bulb</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="c1"># 수은주 (온도에 따라 높이가 변하는 원기둥)</span>
+<span class="n">mercury</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                   <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="c1"># 눈금 표시</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">y_pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">1.5</span>
+    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">temp_value</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">20</span>
+    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">temp_value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;°C&quot;</span><span class="p">,</span>
+          <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 상태 표시 라벨</span>
+<span class="n">status_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;온도: 0°C&quot;</span><span class="p">,</span>
+                     <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">condition_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 온도 변수</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span>       <span class="c1"># 현재 온도 (0~100)</span>
+<span class="n">temp_change</span> <span class="o">=</span> <span class="mf">0.5</span>     <span class="c1"># 온도 변화량 (양수면 상승, 음수면 하강)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># 온도 변화 (올라갔다 내려갔다)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">+</span> <span class="n">temp_change</span>
+
+    <span class="c1"># 온도 범위 제한: 벽에서 튕기듯!</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">temp_change</span> <span class="o">=</span> <span class="o">-</span><span class="n">temp_change</span>   <span class="c1"># 100도 도달 → 하강으로 전환</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">temp_change</span> <span class="o">=</span> <span class="o">-</span><span class="n">temp_change</span>   <span class="c1"># 0도 도달 → 상승으로 전환</span>
+
+    <span class="c1"># 🌟 핵심: 온도에 따라 색상과 상태 메시지 변경!</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="c1"># 🥶 추움 (0~19도)</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🥶 추움&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="c1"># 😊 선선함 (20~39도)</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;😊 선선함&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="c1"># 😄 따뜻함 (40~59도)</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;😄 따뜻함&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="c1"># 🔥 더움 (60~79도)</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🔥 더움&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 🌋 매우 더움 (80~100도)</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🌋 매우 더움!&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+
+    <span class="c1"># 수은주 높이 업데이트 (온도에 비례)</span>
+    <span class="n">mercury_height</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mf">7.5</span>
+    <span class="n">mercury</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">mercury_height</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 상태 라벨 업데이트</span>
+    <span class="n">status_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;온도: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;°C&quot;</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>: 온도계의 수은주가 올라갔다 내려갔다 하면서 파란색(추움) → 하늘색(선선함) → 노란색(따뜻함) → 주황색(더움) → 빨간색(매우 더움)으로 색이 변합니다. 화면 위쪽에 현재 온도와 상태 이모지가 표시됩니다.</p>
+<p>코드의 핵심 구조를 분석합시다.</p>
+<ul>
+<li><strong>온도 변화 로직</strong>: <code>temperature = temperature + temp_change</code>로 온도가 매 프레임 변합니다</li>
+<li><strong>범위 제한</strong>: 0도와 100도에서 <code>temp_change</code>의 부호를 뒤집어 왕복 운동을 만듭니다 (Step 2의 벽 튕기기와 같은 패턴!)</li>
+<li><strong>5단계 분기</strong>: <code>if → elif → elif → elif → else</code>로 온도 구간을 5개로 나누어 각각 다른 색과 메시지를 보여줍니다</li>
+</ul>
+<blockquote>
+<p>🧩 <strong>패턴 발견!</strong> Step 2의 "벽 튕기기"와 Step 3의 "온도 왕복"은 본질적으로 <strong>같은 패턴</strong>입니다. "경계에 닿으면 방향을 반전한다." 이처럼 하나의 패턴을 다양한 상황에 적용하는 것이 <strong>추상화(Abstraction)</strong> — 컴퓨팅 사고력의 핵심 요소입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>이 장의 최종 프로젝트 — <strong>온도계 시뮬레이션</strong>의 전체 코드입니다. 복사해서 바로 실행할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 온도에 따라 색이 변하는 3D 온도계 시뮬레이션 ===</span>
+<span class="c1"># --- WHY: if-elif-else로 다단계 조건 분기를 3D로 체험하기 ---</span>
+
+<span class="c1"># 온도계 외관</span>
+<span class="n">glass_tube</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                      <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">bulb</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">mercury</span> <span class="o">=</span> <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                   <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="c1"># 눈금 표시</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">y_pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">1.5</span>
+    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">temp_value</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">20</span>
+    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">temp_value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;°C&quot;</span><span class="p">,</span>
+          <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 상태 라벨</span>
+<span class="n">status_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;온도: 0°C&quot;</span><span class="p">,</span>
+                     <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">condition_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 온도 변수</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">temp_change</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># 온도 변화</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">+</span> <span class="n">temp_change</span>
+
+    <span class="c1"># 범위 제한 (0~100도 왕복)</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">temp_change</span> <span class="o">=</span> <span class="o">-</span><span class="n">temp_change</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">temp_change</span> <span class="o">=</span> <span class="o">-</span><span class="n">temp_change</span>
+
+    <span class="c1"># 온도에 따라 색상과 메시지 변경</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🥶 추움&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;😊 선선함&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;😄 따뜻함&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+    <span class="k">elif</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🔥 더움&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mercury</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">bulb</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🌋 매우 더움!&quot;</span>
+        <span class="n">condition_label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+
+    <span class="c1"># 수은주 높이 업데이트</span>
+    <span class="n">mercury_height</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mf">7.5</span>
+    <span class="n">mercury</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">mercury_height</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 라벨 업데이트</span>
+    <span class="n">status_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;온도: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;°C&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">🧠 사고력 챌린지<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>여기서부터 진짜 실력이 자랍니다! 천천히, 연필과 종이를 꺼내서 풀어보세요.</p>
+<hr />
+<h3 id="_9">🔍 코드 → 결과 예측 (⭐⭐)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 코드를 <strong>실행하지 말고</strong> 머릿속으로 따라가 보세요. 공은 최종적으로 어디에 있고, 무슨 색일까요?</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># 100번 반복</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">speed</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># 반복이 끝난 뒤 조건 검사</span>
+<span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+<span class="k">elif</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+</code></pre></div>
+<p><strong>생각해 볼 것</strong>:
+- <code>speed * dt</code>는 한 번에 얼마만큼 이동하나요?
+- 100번 반복하면 총 이동 거리는?
+- 최종 x좌표가 어떤 조건에 해당하나요?
+- 공의 최종 색상은?</p>
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+하나씩 계산해 봅시다.
+
+- 한 번 이동 거리: `speed * dt = 2 * 0.01 = 0.02`
+- 100번 반복 후 총 이동 거리: `0.02 * 100 = 2.0`
+- 최종 x좌표: `0 + 2.0 = 2.0`
+
+조건 검사:
+- `ball.pos.x > 3` → `2.0 > 3` → **거짓** (넘어감)
+- `ball.pos.x > 1` → `2.0 > 1` → **참!**
+- 따라서 공의 색은 **노란색(color.yellow)**
+
+공은 **x = 2.0 위치에 노란색**으로 멈춰 있습니다.
+
+핵심 포인트: while 반복의 총 이동 거리를 계산하고, 그 결과로 조건문이 어떻게 분기되는지 따라가는 것이 이 문제의 핵심입니다. 수학적 사고와 논리적 사고가 결합되는 순간입니다!
+
+</details>
+
+<hr />
+<h3 id="_10">🔄 결과 → 코드 역추적 (⭐⭐)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 시뮬레이션의 동작을 읽고, <code># 여기에 코드 작성</code> 부분을 완성하세요.</p>
+</blockquote>
+<p><strong>동작 설명</strong>:
+- 공이 x축 방향으로 왕복 운동을 합니다
+- x &gt; 0 (오른쪽)에 있으면 공이 <strong>커집니다</strong> (radius가 증가)
+- x &lt; 0 (왼쪽)에 있으면 공이 <strong>작아집니다</strong> (radius가 감소)
+- 공의 반지름은 최소 0.2, 최대 1.5를 넘지 않아야 합니다</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span>
+              <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trail_radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="n">ball_velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball_velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 벽 튕기기 (x = -5, 5)</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="c1"># 여기에 코드 작성:</span>
+    <span class="c1"># 1) x &gt; 0이면 radius를 0.01 증가, 아니면 0.01 감소</span>
+    <span class="c1"># 2) radius가 0.2보다 작아지지 않도록, 1.5보다 커지지 않도록 제한</span>
+</code></pre></div>
+<details>
+<summary>💡 힌트</summary>
+
+- `ball.radius`로 현재 반지름에 접근할 수 있습니다
+- 반지름 증가: `ball.radius = ball.radius + 0.01`
+- 범위 제한도 if문으로!
+
+</details>
+
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+<div class="highlight"><pre><span></span><code>    <span class="c1"># 1) x &gt; 0이면 radius를 0.01 증가, 아니면 0.01 감소</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="mf">0.01</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">-</span> <span class="mf">0.01</span>
+
+    <span class="c1"># 2) radius 범위 제한</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">1.5</span>
+</code></pre></div>
+
+핵심 포인트: "오른쪽이면 커지고, 왼쪽이면 작아진다"는 동작 설명을 if-else로 변환했습니다. 범위 제한은 별도의 if문 두 개로 처리합니다. 이것은 결과에서 코드로 **역방향 사고**하는 연습입니다!
+
+</details>
+
+<hr />
+<h3 id="_11">💡 상상 → 코드 창작 (⭐⭐)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: "신호등 시뮬레이션"을 만들어 보세요!</p>
+</blockquote>
+<p><strong>요구사항</strong>:
+- 세로로 서 있는 검은 상자(신호등 몸체) 안에 구 3개(빨강, 노랑, 초록)가 세로로 배치되어 있습니다
+- 시간이 흐르면서 순환합니다: 초록(3초) → 노랑(1초) → 빨강(3초) → 다시 초록...
+- <strong>현재 켜진 신호만</strong> 밝은 색, 나머지는 어두운 색(<code>vector(0.2, 0, 0)</code> 같은)으로 표시합니다
+- 시간 추적에는 변수를 사용하세요 (힌트: <code>timer</code>라는 변수를 매 프레임 증가)</p>
+<p><strong>힌트</strong>:
+- 전체 주기는 7초 (초록 3 + 노랑 1 + 빨강 3)
+- <code>timer</code>가 0~3이면 초록, 3~4이면 노랑, 4~7이면 빨강
+- 7초가 지나면 timer를 0으로 초기화</p>
+<details>
+<summary>🔑 예시 답안</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 3D 신호등 시뮬레이션 ===</span>
+<span class="c1"># --- WHY: 시간 조건 + if-elif-else 종합 활용 ---</span>
+
+<span class="c1"># 신호등 몸체</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+
+<span class="c1"># 신호등 기둥</span>
+<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+
+<span class="c1"># 불 3개 (위에서 아래로: 빨강, 노랑, 초록)</span>
+<span class="n">red_light</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">yellow_light</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">green_light</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+
+<span class="c1"># 상태 라벨</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;🟢 건너세요!&quot;</span><span class="p">,</span>
+               <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">+</span> <span class="n">dt</span>
+
+    <span class="c1"># 7초 주기로 초기화</span>
+    <span class="k">if</span> <span class="n">timer</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 신호 상태 결정</span>
+    <span class="k">if</span> <span class="n">timer</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># 초록불 (0~3초)</span>
+        <span class="n">red_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">yellow_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">green_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🟢 건너세요!&quot;</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+    <span class="k">elif</span> <span class="n">timer</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="c1"># 노란불 (3~4초)</span>
+        <span class="n">red_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">yellow_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+        <span class="n">green_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🟡 주의하세요!&quot;</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 빨간불 (4~7초)</span>
+        <span class="n">red_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+        <span class="n">yellow_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">green_light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;🔴 멈추세요!&quot;</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+</code></pre></div>
+
+이것은 하나의 예시입니다. 자동차가 신호에 따라 움직이게 추가한다면 더욱 멋진 시뮬레이션이 될 것입니다!
+
+</details>
+
+<hr />
+<h2 id="_12">⚠️ 자주 하는 실수<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>프로그래밍을 하다 보면 누구나 실수합니다. 아래는 if문에서 가장 흔한 실수들입니다.</p>
+<p><strong>실수 1: <code>=</code>와 <code>==</code> 혼동 (가장 흔함!)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ = 는 &quot;값을 넣어라&quot; (대입)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span>      <span class="c1"># SyntaxError!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5입니다&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ == 는 &quot;같은가?&quot; (비교)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5입니다&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>=</code>는 <strong>대입</strong>(값을 변수에 저장), <code>==</code>는 <strong>비교</strong>(두 값이 같은지 확인)입니다. 프로그래밍에서 가장 자주 하는 실수 1위! 글자 하나 차이로 에러가 나니 항상 주의하세요.</p>
+</blockquote>
+<p><strong>실수 2: 들여쓰기 오류 (IndentationError)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ if 다음 줄에 들여쓰기가 없으면 오류!</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수입니다&quot;</span><span class="p">)</span>    <span class="c1"># IndentationError!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 반드시 4칸(또는 탭) 들여쓰기</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수입니다&quot;</span><span class="p">)</span>    <span class="c1"># 올바른 들여쓰기</span>
+</code></pre></div>
+<blockquote>
+<p>파이썬에서 들여쓰기는 단순한 스타일이 아니라 <strong>문법의 일부</strong>입니다. <code>if</code>, <code>elif</code>, <code>else</code> 다음에 오는 코드는 반드시 들여써야 합니다.</p>
+</blockquote>
+<p><strong>실수 3: 콜론(<code>:</code>) 빠뜨리기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 콜론을 빼먹으면 오류!</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수입니다&quot;</span><span class="p">)</span>    <span class="c1"># SyntaxError!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 조건 뒤에 콜론 필수!</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수입니다&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>if</code>, <code>elif</code>, <code>else</code> 줄 끝에는 <strong>반드시 콜론(:)</strong>을 붙여야 합니다.</p>
+</blockquote>
+<p><strong>실수 4: elif와 else의 위치</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ else 뒤에 elif가 올 수 없습니다!</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0 이하&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>           <span class="c1"># SyntaxError! else 뒤에 elif 불가!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;영&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 순서: if → elif → else (else는 항상 마지막)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;양수&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;영&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;음수&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>조건문의 순서는 반드시 <code>if</code> → <code>elif</code>(여러 개 가능) → <code>else</code> 입니다. <code>else</code>는 항상 맨 마지막에 와야 합니다.</p>
+</blockquote>
+<hr />
+<h2 id="_13">✅ 스스로 점검하기<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>이 장을 잘 이해했는지 확인해 봅시다.</p>
+<ul>
+<li>[ ] <strong><code>if</code>문의 기본 구조를 설명할 수 있나요?</strong> → <code>if 조건:</code> 다음에 들여쓴 코드가 조건이 참일 때 실행된다</li>
+<li>[ ] <strong><code>=</code>와 <code>==</code>의 차이를 명확히 알고 있나요?</strong> → <code>=</code>는 대입, <code>==</code>는 비교</li>
+<li>[ ] <strong><code>elif</code>와 <code>else</code>의 역할을 설명할 수 있나요?</strong> → <code>elif</code>는 추가 조건, <code>else</code>는 모든 조건이 거짓일 때</li>
+<li>[ ] <strong>비교 연산자 6가지를 모두 알고 있나요?</strong> → <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>[ ] <strong>벽 튕기기 패턴을 직접 작성할 수 있나요?</strong> → <code>if pos &gt; 벽: velocity = -velocity</code></li>
+<li>[ ] <strong><code>and</code>, <code>or</code>, <code>not</code>의 의미를 설명할 수 있나요?</strong> → and는 모두 참, or는 하나라도 참, not은 뒤집기</li>
+<li>[ ] <strong>온도계 코드에서 if-elif-else의 역할을 이해했나요?</strong> → 온도 구간별로 다른 색과 메시지를 적용</li>
+</ul>
+<blockquote>
+<p>💪 체크가 5개 이상이면 다음 장으로 넘어갈 준비가 된 것입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_14">🚀 더 해보기<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>시간이 남거나 더 도전하고 싶다면 아래를 시도해 보세요!</p>
+<h3 id="1-3d">도전 1: 다중 벽 튕기기 — 3D 버전<a class="headerlink" href="#1-3d" title="Permanent link">&para;</a></h3>
+<p>Step 2의 벽 튕기기를 <strong>z축까지 확장</strong>해 보세요. 앞뒤 벽(z 방향)도 추가하면 공이 3D 상자 안에서 튀어다닙니다!</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 6면 벽을 만들고 공이 x, y, z 모든 방향에서 튕기도록 구현해 보세요</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ball_velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c1"># x, y, z 모두 속도가 있음!</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball_velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 힌트: x, y, z 각각에 대해 벽 충돌 검사 if문을 추가하세요!</span>
+    <span class="c1"># if ball.pos.x &gt; 5: ...</span>
+    <span class="c1"># if ball.pos.x &lt; -5: ...</span>
+    <span class="c1"># if ball.pos.y &gt; ... : ...</span>
+    <span class="c1"># (총 6개의 if문이 필요합니다)</span>
+</code></pre></div>
+<h3 id="2_1">도전 2: 점수 표시 — 충돌 횟수 세기<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>벽 튕기기 프로그램에 <strong>충돌 횟수를 세는 기능</strong>을 추가해 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">bounce_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">score_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;충돌: 0회&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># ... 벽 튕기기 코드 ...</span>
+<span class="c1"># 충돌이 발생할 때마다:</span>
+<span class="c1">#   bounce_count = bounce_count + 1</span>
+<span class="c1">#   score_label.text = &quot;충돌: &quot; + str(bounce_count) + &quot;회&quot;</span>
+</code></pre></div>
+<h3 id="3_1">도전 3: 중력이 있는 튕기는 공<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>공에 <strong>중력</strong>을 추가해 보세요. 바닥에 부딪히면 튕기지만, 매번 속도가 줄어들어 결국 멈추는 시뮬레이션입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ball_velocity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="c1"># 중력 가속도</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">ball_velocity</span> <span class="o">=</span> <span class="n">ball_velocity</span> <span class="o">+</span> <span class="n">gravity</span> <span class="o">*</span> <span class="n">dt</span>   <span class="c1"># 중력으로 속도 변화</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ball_velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 바닥(y=0)에 부딪히면 튕기기 (에너지 손실!)</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+        <span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ball_velocity</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="mf">0.85</span>   <span class="c1"># 85%만 반사 → 점점 낮아짐!</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">radius</span>
+</code></pre></div>
+<blockquote>
+<p>🎯 <code>0.85</code>를 <code>0.5</code>나 <code>0.95</code>로 바꿔보세요. 에너지 손실이 다르면 어떻게 달라지나요?</p>
+</blockquote>
+<hr />
+<h2 id="_15">🔗 다음 장으로<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 우리는 프로그램에 <strong>판단력</strong>을 부여했습니다.</p>
+<p><strong>배운 것 정리</strong>:
+- <code>if</code>, <code>elif</code>, <code>else</code> — 조건에 따라 다른 코드를 실행
+- 비교 연산자 — <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>
+- 논리 연산자 — <code>and</code>, <code>or</code>, <code>not</code>으로 조건을 조합
+- 벽 튕기기 패턴 — <code>if pos &gt; 벽: velocity = -velocity</code>
+- 구간 분기 패턴 — <code>if-elif-elif-else</code>로 여러 범위를 나누기</p>
+<p>이제 프로그램은 상황을 "판단"하고 다른 행동을 "선택"할 수 있게 되었습니다. 하지만 아직 우리 코드에는 아쉬운 점이 있습니다. 같은 물체를 여러 개 만들 때 같은 코드를 반복해서 써야 한다는 것이죠. 벽 4개를 만들려면 <code>box()</code>를 4번, 공 10개를 만들려면 <code>sphere()</code>를 10번...</p>
+<p><strong>다음 장 "리스트와 for문 — 반복의 예술"</strong> 에서는 <code>for</code>문과 리스트를 사용하여 반복되는 코드를 깔끔하게 줄이는 방법을 배웁니다. 공 100개가 동시에 튕기는 장면도 만들어 볼 거예요! 🎪</p>
+<blockquote>
+<p>🌟 <strong>오늘의 한마디</strong>: 프로그래밍의 세 기둥은 <strong>순차</strong>(위에서 아래로), <strong>반복</strong>(while), <strong>선택</strong>(if)입니다. 여러분은 오늘 세 번째 기둥을 세웠습니다. 이제 이 세 가지를 조합하면 거의 모든 프로그램을 만들 수 있습니다. 정말 대단하지 않나요?</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

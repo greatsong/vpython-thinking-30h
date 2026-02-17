@@ -1,0 +1,2943 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+        <link rel="prev" href="../chapter13/">
+      
+      
+        <link rel="next" href="../chapter15/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-14" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 세계에 첫 발을 내딛다
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변수와 움직임의 세계
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter07/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 조건과 선택의 힘
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 반복과 패턴의 마법
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 세계에 첫 발을 내딛다
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계에 오신 것을 환영합니다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    색칠하고 꾸미기 — 속성과 표현
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변수와 움직임의 세계
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수 — 이름표를 붙여 기억하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연산과 수식 — 물체를 계산으로 배치하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 조건과 선택의 힘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    if문 — 조건에 따라 달라지는 세상
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드와 마우스 — 내가 조종하는 3D 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 반복과 패턴의 마법
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 100개의 별을 한 번에
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    while 반복문 — 끝나지 않는 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실험실을 코드로 만든다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: VPython 위젯 시스템
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: VPython의 주요 위젯들
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-graph-gcurve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: graph와 gcurve — 실시간 그래프
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 슬라이더로 중력 가속도 조절하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 버튼으로 시작/정지 제어하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 실시간 그래프 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 물리 실험 대시보드 완성하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 바운스 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 두 공 비교 실험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-winput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: winput으로 정확한 값 입력받기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실험실을 코드로 만든다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: VPython 위젯 시스템
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vpython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: VPython의 주요 위젯들
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-graph-gcurve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: graph와 gcurve — 실시간 그래프
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 슬라이더로 중력 가속도 조절하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 버튼으로 시작/정지 제어하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 실시간 그래프 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 물리 실험 대시보드 완성하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 전체 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 사고력 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 코드 → 결과 예측 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 결과 → 코드 역추적 (⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 → 코드 창작 (⭐⭐⭐)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 자주 하는 실수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 더 해보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 바운스 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 두 공 비교 실험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-winput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 3: winput으로 정확한 값 입력받기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 다음 장으로
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-14">Chapter 14: 위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기<a class="headerlink" href="#chapter-14" title="Permanent link">&para;</a></h1>
+<p><strong>Part 5: 함수, 위젯, 그리고 종합 프로젝트</strong></p>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>이번 시간이 끝나면 여러분은 이런 것을 할 수 있게 됩니다.</p>
+<ul>
+<li><strong>슬라이더, 버튼, 메뉴 등 VPython 위젯을 생성하고 이벤트를 연결</strong>할 수 있다 — 사용자 입력으로 시뮬레이션을 제어</li>
+<li><strong>graph와 gcurve로 실시간 그래프를 그릴</strong> 수 있다 — 물리량의 변화를 시각적으로 추적</li>
+<li><strong>위젯을 조합하여 인터랙티브 물리 대시보드를 만들</strong> 수 있다 — 슬라이더로 중력 조절, 버튼으로 시작/정지, 그래프로 결과 확인</li>
+</ul>
+<blockquote>
+<p>🖥️ <strong>이번 시간에 만들 것</strong>: 공의 자유낙하를 시뮬레이션하는 <strong>물리 실험 대시보드</strong>를 만듭니다. 슬라이더로 중력 가속도를 조절하고, 버튼으로 시뮬레이션을 시작/정지하며, 실시간 그래프로 속도와 위치의 변화를 관찰합니다. 마치 진짜 물리 실험실처럼요!</p>
+</blockquote>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">실험실을 코드로 만든다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>지금까지 우리는 멋진 3D 시뮬레이션을 만들었습니다. 공이 떨어지고, 충돌하고, 키보드로 조종하는 프로그램도 만들었죠. 하지만 뭔가 아쉽지 않았나요? 중력의 세기를 바꾸려면 코드를 수정하고 다시 실행해야 했습니다. 공을 잠깐 멈추려면 프로그램 자체를 종료해야 했죠. 실행 중간에 조건을 바꿔볼 수 없었습니다.</p>
+<p><strong>진짜 과학 실험실에서는 어떤가요?</strong></p>
+<p>과학 시간에 실험을 떠올려 보세요. 전원 공급 장치의 손잡이를 돌리면 전압이 바뀌고, 스위치를 누르면 회로에 전류가 흐르기 시작하고, 오실로스코프 화면에는 전압 변화가 실시간 그래프로 그려집니다. 실험 조건을 자유롭게 바꿔가며 결과를 관찰할 수 있죠. 손잡이 하나를 돌리면 그 결과가 즉시 눈앞에 나타납니다.</p>
+<p><strong>VPython 위젯은 여러분의 코드를 진짜 실험실로 바꿔줍니다.</strong></p>
+<p>슬라이더를 드래그하면 중력이 바뀌고, 버튼을 클릭하면 시뮬레이션이 멈추고, 그래프에는 데이터가 실시간으로 찍힙니다. 코드를 전혀 건드리지 않고도, 마우스만으로 다양한 실험을 해볼 수 있습니다. "만약 중력이 두 배라면?" "달에서 이 공을 떨어뜨리면?" 이런 궁금증이 떠오르는 순간, 슬라이더 하나만 움직이면 답을 바로 확인할 수 있습니다.</p>
+<p>이것이 바로 <strong>인터랙티브 시뮬레이션</strong>의 힘입니다. 실제로 과학자와 공학자들은 이런 방식으로 컴퓨터 실험을 수행합니다. 조건을 바꿔가며 결과를 관찰하고, 패턴을 발견하고, 법칙을 확인하죠. 오늘 여러분도 같은 도구를 손에 넣게 됩니다.</p>
+<hr />
+<h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1-vpython">개념 1: VPython 위젯 시스템<a class="headerlink" href="#1-vpython" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>TV 리모컨을 생각해 보세요. 리모컨에는 다양한 버튼이 있습니다. 전원 버튼을 누르면 TV가 켜지고, 볼륨 버튼을 누르면 소리가 커지고, 채널 버튼을 누르면 방송이 바뀝니다. 버튼 하나하나에 <strong>"이 버튼을 누르면 이런 일을 해라"</strong>라는 기능이 연결되어 있죠.</p>
+<p>VPython 위젯도 같은 원리입니다. 화면에 버튼, 슬라이더, 메뉴 같은 조작 도구를 만들고, 각각에 <strong>"이걸 조작하면 이 함수를 실행해라"</strong>라고 연결합니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>VPython 위젯(widget)은 <strong>사용자가 마우스로 조작할 수 있는 UI 요소</strong>입니다. 위젯이 조작될 때 실행되는 함수를 <strong>콜백 함수(callback function)</strong>라고 하며, <code>bind</code> 매개변수로 연결합니다.</p>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 슬라이더를 움직이면 공의 크기가 바뀐다</span>
+<span class="k">def</span> <span class="nf">change_size</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">공의 크기: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">change_size</span><span class="p">)</span>
+</code></pre></div>
+<p>이 코드를 실행하면 빨간 공 아래에 슬라이더가 나타납니다. 슬라이더를 드래그하면 공의 크기가 실시간으로 변합니다! <code>bind=change_size</code>가 "슬라이더를 움직이면 <code>change_size</code> 함수를 실행해라"라는 연결 고리입니다.</p>
+<p>여기서 중요한 것은 <code>change_size</code> 함수의 매개변수 <code>s</code>입니다. 이 <code>s</code>는 슬라이더 위젯 자체를 가리킵니다. 그래서 <code>s.value</code>로 슬라이더의 현재 값에 접근할 수 있습니다. 모든 위젯 콜백 함수는 이렇게 <strong>위젯 자신을 매개변수로 받는다</strong>는 것을 기억하세요.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: 콜백 함수 (Callback Function)</strong></p>
+<p>콜백 함수란 <strong>지금 당장 실행하는 것이 아니라, 나중에 특정 이벤트가 발생했을 때 실행되도록 등록해 두는 함수</strong>입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 콜백 함수 정의 — 매개변수 s는 위젯 자신을 가리킨다</span>
+<span class="k">def</span> <span class="nf">my_callback</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># 위젯의 현재 값에 접근</span>
+
+<span class="c1"># 위젯에 콜백 함수를 연결 — bind에 함수 이름만 적는다 (괄호 없음!)</span>
+<span class="n">slider</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">my_callback</span><span class="p">)</span>  <span class="c1"># ✅ 올바름</span>
+<span class="n">slider</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">my_callback</span><span class="p">())</span>  <span class="c1"># ❌ 잘못됨 — 괄호를 붙이면 즉시 실행됨</span>
+</code></pre></div>
+<p>핵심: <code>bind=</code>에는 <strong>함수 이름만</strong> 적습니다. 괄호 <code>()</code>를 붙이지 않습니다!</p>
+</blockquote>
+<hr />
+<h3 id="2-vpython">개념 2: VPython의 주요 위젯들<a class="headerlink" href="#2-vpython" title="Permanent link">&para;</a></h3>
+<p>VPython은 다양한 위젯을 제공합니다. 하나씩 알아봅시다.</p>
+<p><strong>슬라이더(slider) — 값을 연속적으로 조절</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;밝기 조절: &#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">adjust</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;현재 값:&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>min, max</strong>: 슬라이더의 최솟값과 최댓값</li>
+<li><strong>value</strong>: 초기값</li>
+<li><strong>step</strong>: 한 칸의 크기 (생략 가능)</li>
+<li><strong>bind</strong>: 값이 바뀔 때 호출할 함수</li>
+</ul>
+<p><strong>버튼(button) — 클릭으로 동작 실행</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">change_color</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;색상 변경&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">change_color</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>text</strong>: 버튼에 표시할 글자</li>
+<li><strong>bind</strong>: 클릭 시 호출할 함수</li>
+</ul>
+<p><strong>메뉴(menu) — 여러 선택지 중 하나 고르기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">choose_color</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;빨강&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+    <span class="k">elif</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;파랑&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+    <span class="k">elif</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;초록&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+
+<span class="n">menu</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;빨강&#39;</span><span class="p">,</span> <span class="s1">&#39;파랑&#39;</span><span class="p">,</span> <span class="s1">&#39;초록&#39;</span><span class="p">],</span> <span class="n">bind</span><span class="o">=</span><span class="n">choose_color</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>choices</strong>: 선택지 목록 (리스트)</li>
+<li><strong>m.selected</strong>: 사용자가 선택한 항목</li>
+</ul>
+<p><strong>텍스트 표시(wtext) — 화면에 변하는 텍스트 표시</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">현재 값: &#39;</span><span class="p">)</span>
+<span class="n">display_text</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+
+<span class="c1"># 나중에 값을 업데이트할 때:</span>
+<span class="c1"># display_text.text = &#39;42&#39;</span>
+</code></pre></div>
+<ul>
+<li><code>wtext</code>는 캡션 영역에 텍스트를 표시하며, 나중에 <code>.text</code> 속성으로 내용을 변경할 수 있습니다</li>
+</ul>
+<p><strong>캡션에 텍스트 배치하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># scene.append_to_caption()으로 위젯 사이에 텍스트나 줄바꿈을 넣을 수 있다</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;첫 번째 줄</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;버튼1&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">두 번째 줄</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;버튼2&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p><code>scene.append_to_caption()</code>은 3D 장면 아래의 캡션 영역에 텍스트를 추가합니다. <code>'\n'</code>으로 줄바꿈을 넣을 수 있습니다. 위젯들을 보기 좋게 배치하려면 이 함수를 위젯 사이사이에 넣어서 줄바꿈이나 설명 텍스트를 추가하면 됩니다. 위젯은 만들어진 순서대로 캡션 영역에 나란히 배치되므로, 레이아웃을 생각하면서 순서를 정하는 것이 중요합니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: global 키워드</strong></p>
+<p>함수 안에서 함수 바깥의 변수를 <strong>읽는 것</strong>은 자유롭게 할 수 있지만, <strong>값을 바꾸려면</strong> <code>global</code> 키워드가 필요합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 함수 바깥의 변수</span>
+
+<span class="k">def</span> <span class="nf">update_speed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">speed</span>          <span class="c1"># &quot;바깥의 speed를 수정하겠다&quot;고 선언</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>       <span class="c1"># 이제 바깥 변수가 바뀜</span>
+
+<span class="k">def</span> <span class="nf">read_speed</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>          <span class="c1"># 읽기만 할 때는 global 불필요</span>
+</code></pre></div>
+<p><strong>왜 필요한가요?</strong> 파이썬은 함수 안에서 <code>=</code>로 값을 할당하면 자동으로 "이건 지역 변수구나"라고 판단합니다. <code>global</code>을 쓰면 "아니, 바깥에 있는 그 변수를 말하는 거야"라고 알려주는 것입니다.</p>
+</blockquote>
+<hr />
+<h3 id="3-graph-gcurve">개념 3: graph와 gcurve — 실시간 그래프<a class="headerlink" href="#3-graph-gcurve" title="Permanent link">&para;</a></h3>
+<p><strong>🎭 비유로 시작하기</strong></p>
+<p>병원에서 심전도 모니터를 본 적 있나요? 화면에 심장 박동 그래프가 실시간으로 그려지죠. 데이터가 들어올 때마다 선이 한 칸씩 오른쪽으로 이어집니다.</p>
+<p>VPython의 <code>graph</code>와 <code>gcurve</code>가 바로 그것입니다. 시뮬레이션이 진행될 때마다 데이터를 하나씩 찍으면, 실시간 그래프가 그려집니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<ul>
+<li><strong>graph</strong>: 그래프 창을 생성합니다 (제목, 축 이름, 크기 등 설정)</li>
+<li><strong>gcurve</strong>: 그래프 위에 그려지는 곡선입니다 (데이터를 하나씩 추가하여 선을 이어감)</li>
+</ul>
+<p><strong>💻 예시로 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 그래프 창 만들기</span>
+<span class="n">my_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;사인 함수&#39;</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;값&#39;</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># 곡선 만들기 — 이 그래프 창에 그려진다</span>
+<span class="n">sine_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="c1"># 데이터를 하나씩 추가하면 그래프가 그려진다</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">sine_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="mf">0.05</span>
+</code></pre></div>
+<p>실행하면 파란색 사인 곡선이 왼쪽에서 오른쪽으로 실시간으로 그려지는 것을 볼 수 있습니다. 마치 심전도 모니터처럼 데이터가 하나씩 추가되면서 선이 이어지죠. <code>plot(x, y)</code> 한 번 호출이 점 하나를 찍고, 이전 점과 선으로 연결합니다.</p>
+<p><strong>graph의 주요 속성</strong></p>
+<ul>
+<li><strong>title</strong>: 그래프 제목</li>
+<li><strong>xtitle, ytitle</strong>: x축, y축 이름</li>
+<li><strong>width, height</strong>: 그래프 크기 (픽셀)</li>
+</ul>
+<p><strong>gcurve의 주요 속성과 메서드</strong></p>
+<ul>
+<li><strong>color</strong>: 곡선의 색상</li>
+<li><strong>plot(x, y)</strong>: 데이터 한 점을 추가하고 선으로 이어 그린다</li>
+</ul>
+<p>한 그래프에 여러 곡선을 겹쳐 그릴 수도 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">my_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;사인과 코사인&#39;</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;값&#39;</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">sine_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin&#39;</span><span class="p">)</span>
+<span class="n">cosine_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos&#39;</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">sine_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">cosine_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="mf">0.05</span>
+</code></pre></div>
+<p><code>label</code> 속성을 쓰면 어떤 곡선이 어떤 데이터인지 범례가 표시됩니다.</p>
+<hr />
+<h2 id="_5">🔨 따라하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>자, 이제 직접 해 봅시다! 단계별로 <strong>물리 실험 대시보드</strong>를 만들어 가겠습니다.</p>
+<h3 id="step-1">Step 1: 슬라이더로 중력 가속도 조절하기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>먼저 가장 기본적인 위젯인 슬라이더부터 시작합니다. 슬라이더를 움직이면 중력 가속도 값이 바뀌는 것을 확인해 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 중력 가속도 (기본값: 지구)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+
+<span class="c1"># 3D 장면 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;중력 가속도 조절기&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+<span class="c1"># 바닥</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># 공</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 슬라이더 콜백 — 값이 바뀌면 g를 업데이트</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">gravity_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="c1"># 위젯 배치</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">중력 가속도(m/s²): &#39;</span><span class="p">)</span>
+<span class="n">gravity_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">9.8</span><span class="p">,</span>
+                        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_gravity</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">gravity_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;9.8&#39;</span><span class="p">)</span>
+
+<span class="c1"># 시뮬레이션</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># 바닥에 닿으면 리셋</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+</code></pre></div>
+<p>실행해 보세요! 슬라이더를 왼쪽으로 끌면 공이 천천히 떨어지고(달 표면처럼), 오른쪽으로 끌면 빠르게 떨어집니다(목성처럼). <strong>코드를 고치지 않고도 중력을 마음대로 바꿀 수 있습니다!</strong></p>
+<p>코드의 흐름을 정리하면 이렇습니다. 먼저 <code>adjust_gravity</code> 콜백 함수가 정의됩니다. 이 함수는 슬라이더가 움직일 때마다 자동으로 호출되며, <code>global g</code>를 통해 바깥의 중력 변수 <code>g</code>를 업데이트합니다. 동시에 <code>wtext</code>를 이용해 현재 중력 값을 화면에 표시합니다. <code>while</code> 루프에서는 매 프레임마다 이 <code>g</code> 값을 사용하여 속도와 위치를 계산하므로, 슬라이더를 움직이는 순간 물리 시뮬레이션의 결과가 달라집니다.</p>
+<hr />
+<h3 id="step-2">Step 2: 버튼으로 시작/정지 제어하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>이제 시뮬레이션을 시작하거나 멈출 수 있는 버튼을 추가합니다. 이 패턴은 거의 모든 인터랙티브 시뮬레이션에서 사용되므로 꼭 익혀 두세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># 처음에는 정지 상태</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;자유낙하 실험&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># --- 콜백 함수들 ---</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">gravity_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle_run</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;⏸ 정지&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+
+<span class="k">def</span> <span class="nf">reset_sim</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+
+<span class="c1"># --- 위젯 배치 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;▶ 시작&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">toggle_run</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;↺ 리셋&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset_sim</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">중력 가속도(m/s²): &#39;</span><span class="p">)</span>
+<span class="n">gravity_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">9.8</span><span class="p">,</span>
+                        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_gravity</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">gravity_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;9.8&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 시뮬레이션 루프 ---</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">:</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+</code></pre></div>
+<p>이제 버튼을 눌러야 공이 떨어지기 시작합니다. 다시 누르면 멈춥니다. 리셋 버튼을 누르면 공이 처음 위치로 돌아갑니다.</p>
+<p>핵심은 <code>running</code> 변수입니다. 이 변수가 <code>True</code>일 때만 물리 계산이 실행됩니다. 버튼은 이 변수를 <code>True</code>/<code>False</code>로 토글(toggle, 전환)할 뿐입니다. <code>while True</code> 루프는 항상 돌아가고 있지만, <code>if running:</code> 조건 때문에 실제 물리 계산은 <code>running</code>이 <code>True</code>일 때만 수행됩니다.</p>
+<p>이 <strong>"시작/정지 토글"</strong> 패턴은 거의 모든 인터랙티브 시뮬레이션에서 사용됩니다. <code>running</code> 변수 하나로 전체 시뮬레이션의 진행을 제어하는 것이죠. 간단하지만 매우 강력한 설계 패턴입니다.</p>
+<p>또한 <code>toggle_run</code> 함수에서 버튼의 텍스트를 바꾸는 것도 주목하세요. <code>b.text = '⏸ 정지'</code>처럼 콜백 함수의 매개변수 <code>b</code>를 통해 버튼 자체의 속성을 변경할 수 있습니다. 사용자에게 현재 상태를 알려주는 좋은 방법입니다.</p>
+<blockquote>
+<p>📖 <strong>파이썬 문법: global과 여러 함수에서의 변수 공유</strong></p>
+<p>여러 콜백 함수가 같은 변수를 수정해야 할 때, 각 함수마다 <code>global</code> 선언을 해야 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">toggle_run</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>       <span class="c1"># running을 수정하므로 global 필요</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+
+<span class="k">def</span> <span class="nf">reset_sim</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span>  <span class="c1"># 쉼표로 여러 변수를 한 번에 선언</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<p><strong>주의</strong>: <code>ball.pos.y = 5</code>처럼 <strong>객체의 속성을 변경</strong>하는 것은 <code>global</code>이 필요 없습니다. <code>ball</code> 변수 자체를 재할당하는 것이 아니라, <code>ball</code>이 가리키는 객체의 속성을 바꾸는 것이기 때문입니다.</p>
+</blockquote>
+<hr />
+<h3 id="step-3">Step 3: 실시간 그래프 추가하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>이제 시뮬레이션의 핵심인 실시간 그래프를 추가합니다. 공의 높이와 속도가 시간에 따라 어떻게 변하는지 눈으로 확인할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;자유낙하 + 실시간 그래프&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># --- 그래프 설정 ---</span>
+<span class="n">position_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;높이-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">pos_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;높이&#39;</span><span class="p">)</span>
+
+<span class="n">velocity_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;속도-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;속도(m/s)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">vel_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;속도&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 콜백 함수들 ---</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">gravity_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle_run</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;⏸ 정지&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+
+<span class="k">def</span> <span class="nf">reset_sim</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">t</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+    <span class="n">pos_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">vel_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="c1"># --- 위젯 배치 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;▶ 시작&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">toggle_run</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;↺ 리셋&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset_sim</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">중력 가속도(m/s²): &#39;</span><span class="p">)</span>
+<span class="n">gravity_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">9.8</span><span class="p">,</span>
+                        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_gravity</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">gravity_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;9.8&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 시뮬레이션 루프 ---</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span>
+
+        <span class="c1"># 그래프에 데이터 추가</span>
+        <span class="n">pos_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">vel_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
+
+        <span class="c1"># 바닥에 닿으면 리셋</span>
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">:</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+</code></pre></div>
+<p>실행하고 시작 버튼을 누르면, 3D 장면에서 공이 떨어지는 동시에 아래쪽 그래프에 높이와 속도가 실시간으로 그려집니다. 높이 그래프는 포물선 모양(2차 함수!)이고, 속도 그래프는 직선(1차 함수!)입니다. <strong>수학 시간에 배운 그래프가 실시간으로 만들어지는 것</strong>을 눈으로 확인해 보세요!</p>
+<p>여기서 <code>pos_curve.delete()</code>와 <code>vel_curve.delete()</code>는 그래프의 모든 데이터를 지우는 메서드입니다. 리셋 버튼을 누르면 그래프도 깨끗하게 초기화되어야 하니까요. 곡선 객체 자체는 그대로 남아 있으므로, 다시 시작하면 새 데이터를 처음부터 그릴 수 있습니다.</p>
+<p>또한 주목할 점은 <strong>그래프 두 개를 각각 별도의 <code>graph</code> 객체로 만들었다</strong>는 것입니다. 높이 그래프와 속도 그래프를 따로 만들면 각각 독립적인 y축 범위를 가지므로 데이터를 더 명확하게 볼 수 있습니다. 하나의 그래프에 두 곡선을 겹치면 스케일이 달라서 읽기 어려울 수 있거든요.</p>
+<hr />
+<h3 id="step-4">Step 4: 물리 실험 대시보드 완성하기<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p>마지막으로 모든 요소를 합쳐서 완성된 대시보드를 만듭니다. 여기에 <strong>초기 높이 슬라이더</strong>, <strong>시간/속도 표시</strong>, <strong>행성 선택 메뉴</strong>를 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === 물리 실험 대시보드: 자유낙하 시뮬레이터 ===</span>
+
+<span class="c1"># --- 전역 변수 ---</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">initial_height</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># --- 3D 장면 설정 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&lt;b&gt;자유낙하 물리 실험 대시보드&lt;/b&gt;&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="c1"># 바닥</span>
+<span class="n">ground</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+
+<span class="c1"># 공</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">trail_color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+
+<span class="c1"># 높이 표시 기둥 (눈금 역할)</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+             <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">5.8</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;m&#39;</span><span class="p">,</span>
+          <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># --- 그래프 설정 ---</span>
+<span class="n">position_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;b&gt;높이&lt;/b&gt;-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">pos_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">)</span>
+
+<span class="n">velocity_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;b&gt;속도&lt;/b&gt;-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;속도(m/s)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">vel_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;속도(m/s)&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 콜백 함수들 ---</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">g_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">adjust_height</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">initial_height</span>
+    <span class="n">initial_height</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">height_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">initial_height</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">initial_height</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">toggle_run</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;⏸ 정지&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+
+<span class="k">def</span> <span class="nf">reset_sim</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">t</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">initial_height</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+    <span class="n">pos_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">vel_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">time_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;0.00 s&#39;</span>
+    <span class="n">speed_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;0.0 m/s&#39;</span>
+
+<span class="k">def</span> <span class="nf">choose_planet</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">planet</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span>
+    <span class="k">if</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;지구 (9.8)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;달 (1.6)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">1.6</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;화성 (3.7)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">3.7</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;목성 (24.8)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">24.8</span>
+    <span class="n">gravity_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">g</span>
+    <span class="n">g_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="c1"># --- 위젯 배치 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;▶ 시작&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">toggle_run</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;↺ 리셋&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset_sim</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;    &#39;</span><span class="p">)</span>
+<span class="n">menu</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;지구 (9.8)&#39;</span><span class="p">,</span> <span class="s1">&#39;달 (1.6)&#39;</span><span class="p">,</span> <span class="s1">&#39;화성 (3.7)&#39;</span><span class="p">,</span> <span class="s1">&#39;목성 (24.8)&#39;</span><span class="p">],</span>
+     <span class="n">bind</span><span class="o">=</span><span class="n">choose_planet</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">중력 가속도: &#39;</span><span class="p">)</span>
+<span class="n">gravity_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">9.8</span><span class="p">,</span>
+                        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_gravity</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">g_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;9.8 m/s²&#39;</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">초기 높이: &#39;</span><span class="p">)</span>
+<span class="n">height_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                       <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_height</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">height_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;10 m&#39;</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;경과 시간: &#39;</span><span class="p">)</span>
+<span class="n">time_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0.00 s&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;    속도: &#39;</span><span class="p">)</span>
+<span class="n">speed_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0.0 m/s&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 시뮬레이션 루프 ---</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span>
+
+        <span class="c1"># 그래프에 데이터 추가</span>
+        <span class="n">pos_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">vel_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
+
+        <span class="c1"># 실시간 수치 표시</span>
+        <span class="n">time_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">speed_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">velocity</span><span class="p">))</span>
+
+        <span class="c1"># 바닥에 닿으면 정지</span>
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.4</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+</code></pre></div>
+<p>축하합니다! 이것이 완성된 <strong>물리 실험 대시보드</strong>입니다. 코드가 길어 보이지만, 하나씩 뜯어보면 앞서 배운 패턴들이 반복되고 있을 뿐입니다.</p>
+<p>만들어진 대시보드의 기능을 정리합니다.</p>
+<ul>
+<li><strong>시작/정지 버튼</strong>: 시뮬레이션을 제어</li>
+<li><strong>리셋 버튼</strong>: 모든 것을 초기 상태로 되돌림</li>
+<li><strong>행성 메뉴</strong>: 지구, 달, 화성, 목성 중력을 한 번에 선택</li>
+<li><strong>중력 슬라이더</strong>: 중력 가속도를 세밀하게 조절</li>
+<li><strong>초기 높이 슬라이더</strong>: 공의 시작 높이를 변경</li>
+<li><strong>실시간 수치 표시</strong>: 경과 시간과 현재 속도</li>
+<li><strong>실시간 그래프</strong>: 높이-시간, 속도-시간 그래프</li>
+</ul>
+<p><strong>이제 실험을 해 보세요!</strong> 다양한 실험 시나리오를 시도해 볼 수 있습니다.</p>
+<ul>
+<li><strong>지구 vs 달</strong>: 행성 메뉴에서 '지구'를 선택하고 실험한 뒤, 리셋하고 '달'을 선택해 보세요. 같은 높이에서 떨어뜨렸을 때 속도 그래프의 기울기가 완전히 다릅니다!</li>
+<li><strong>높이 변경</strong>: 초기 높이를 2m에서 20m까지 바꿔가며 바닥에 도달하는 시간을 비교해 보세요. 높이가 4배가 되면 시간은 2배가 됩니다. 왜 그럴까요?</li>
+<li><strong>중력 극단값</strong>: 중력을 0.5까지 낮추면 거의 무중력 상태를 볼 수 있고, 30까지 올리면 엄청난 속도로 떨어집니다.</li>
+</ul>
+<p>이것이 바로 <strong>시뮬레이션을 통한 과학 탐구</strong>입니다! 실제 실험실에서는 중력을 바꿀 수 없지만, 컴퓨터 시뮬레이션에서는 자유롭게 바꿀 수 있다는 것이 큰 장점입니다.</p>
+<hr />
+<h2 id="_6">📝 전체 코드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>이 장의 최종 작품인 <strong>물리 실험 대시보드</strong>의 전체 코드입니다. 복사해서 바로 실행할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># === WHAT: 자유낙하 물리 실험 대시보드 ===</span>
+<span class="c1"># --- WHY: 위젯, 이벤트, 그래프를 종합하여 인터랙티브 실험 환경 구현 ---</span>
+
+<span class="c1"># --- 전역 변수 ---</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">initial_height</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># --- 3D 장면 설정 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&lt;b&gt;자유낙하 물리 실험 대시보드&lt;/b&gt;&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="c1"># 바닥</span>
+<span class="n">ground</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+
+<span class="c1"># 공</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">trail_color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+
+<span class="c1"># 높이 눈금</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+             <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">5.8</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;m&#39;</span><span class="p">,</span>
+          <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+
+<span class="c1"># --- 그래프 설정 ---</span>
+<span class="n">position_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;b&gt;높이&lt;/b&gt;-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">pos_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">)</span>
+
+<span class="n">velocity_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;b&gt;속도&lt;/b&gt;-시간 그래프&#39;</span><span class="p">,</span>
+                       <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;속도(m/s)&#39;</span><span class="p">,</span>
+                       <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">vel_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;속도(m/s)&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 콜백 함수들 ---</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">g_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">adjust_height</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">initial_height</span>
+    <span class="n">initial_height</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">height_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">initial_height</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">initial_height</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">toggle_run</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;⏸ 정지&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+
+<span class="k">def</span> <span class="nf">reset_sim</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">t</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">initial_height</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+    <span class="n">pos_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">vel_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">time_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;0.00 s&#39;</span>
+    <span class="n">speed_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;0.0 m/s&#39;</span>
+
+<span class="k">def</span> <span class="nf">choose_planet</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">planet</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span>
+    <span class="k">if</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;지구 (9.8)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;달 (1.6)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">1.6</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;화성 (3.7)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">3.7</span>
+    <span class="k">elif</span> <span class="n">planet</span> <span class="o">==</span> <span class="s1">&#39;목성 (24.8)&#39;</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">24.8</span>
+    <span class="n">gravity_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">g</span>
+    <span class="n">g_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="c1"># --- 위젯 배치 ---</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;▶ 시작&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">toggle_run</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;↺ 리셋&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset_sim</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;    &#39;</span><span class="p">)</span>
+<span class="n">menu</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;지구 (9.8)&#39;</span><span class="p">,</span> <span class="s1">&#39;달 (1.6)&#39;</span><span class="p">,</span> <span class="s1">&#39;화성 (3.7)&#39;</span><span class="p">,</span> <span class="s1">&#39;목성 (24.8)&#39;</span><span class="p">],</span>
+     <span class="n">bind</span><span class="o">=</span><span class="n">choose_planet</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">중력 가속도: &#39;</span><span class="p">)</span>
+<span class="n">gravity_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">9.8</span><span class="p">,</span>
+                        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_gravity</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">g_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;9.8 m/s²&#39;</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">초기 높이: &#39;</span><span class="p">)</span>
+<span class="n">height_slider</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                       <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">adjust_height</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">height_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;10 m&#39;</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;경과 시간: &#39;</span><span class="p">)</span>
+<span class="n">time_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0.00 s&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;    속도: &#39;</span><span class="p">)</span>
+<span class="n">speed_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0.0 m/s&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- 시뮬레이션 루프 ---</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span>
+
+        <span class="c1"># 그래프에 데이터 추가</span>
+        <span class="n">pos_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">vel_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
+
+        <span class="c1"># 실시간 수치 표시</span>
+        <span class="n">time_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">speed_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1"> m/s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">velocity</span><span class="p">))</span>
+
+        <span class="c1"># 바닥에 닿으면 정지</span>
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.4</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">run_button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;▶ 시작&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">🧠 사고력 챌린지<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>여기서부터가 진짜입니다! 위젯과 그래프를 다루는 <strong>컴퓨팅 사고력의 근육</strong>을 키워 봅시다. 위젯 문제는 "이 위젯을 조작하면 어떤 함수가 호출되고, 그 함수가 무엇을 바꾸는지"를 추적하는 능력이 핵심입니다.</p>
+<hr />
+<h3 id="_8">🔍 코드 → 결과 예측 (⭐⭐)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 코드를 실행하고 슬라이더를 오른쪽 끝(값 5)으로 드래그하면 어떤 일이 벌어질까요? <strong>실행하지 말고</strong> 머릿속으로 먼저 그려 보세요!</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">)</span>
+    <span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">change_count</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">보이는 상자 수: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">change_count</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>생각해 볼 것</strong>:
+- 처음에 상자는 몇 개가 보이나요?
+- 슬라이더의 초기값은 얼마인가요?
+- 슬라이더를 0으로 옮기면 어떻게 되나요?
+- 슬라이더를 3으로 옮기면 어떤 상자들이 보이나요?
+- <code>visible = False</code>는 물체를 삭제하나요, 숨기나요?</p>
+<details>
+<summary>🔑 정답 확인하기</summary>
+
+처음에는 하늘색 상자 5개가 일렬로 보입니다 (슬라이더 초기값이 5이므로).
+
+슬라이더를 5로 유지하면 모든 상자가 보입니다. 슬라이더를 0으로 옮기면 모든 상자가 사라집니다. 슬라이더를 3으로 옮기면 왼쪽 3개만 보이고 오른쪽 2개는 사라집니다.
+
+핵심 포인트:
+- **`visible = False`는 삭제가 아니라 숨기기**입니다. 다시 `True`로 바꾸면 나타납니다.
+- `int(s.value)`로 슬라이더 값을 정수로 변환합니다. 슬라이더 값은 기본적으로 실수(float)이기 때문입니다.
+- `for` 루프에서 `i < n` 조건으로 앞에서부터 n개만 보이도록 합니다.
+
+이 패턴은 "슬라이더로 몇 개를 보여줄지 제어하기"라는 매우 유용한 기법입니다!
+
+</details>
+
+<hr />
+<h3 id="_9">🔄 결과 → 코드 역추적 (⭐⭐)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래와 같은 프로그램을 만드는 코드를 작성해 보세요.</p>
+</blockquote>
+<p><strong>프로그램 설명</strong>:
+- 화면에 <strong>흰색 구</strong>가 하나 있습니다
+- <strong>'빨강', '초록', '파랑'</strong> 세 가지 선택지가 있는 <strong>메뉴(menu)</strong>가 있습니다
+- 메뉴에서 색상을 선택하면 구의 색상이 해당 색으로 바뀝니다
+- 구 아래에 <strong>슬라이더</strong>가 있어서 구의 <strong>반지름을 0.5에서 3까지</strong> 조절할 수 있습니다
+- 슬라이더 옆에 현재 반지름 값이 <strong>wtext</strong>로 표시됩니다</p>
+<p><strong>힌트</strong>:
+- 위젯은 총 3개 필요합니다: menu, slider, wtext
+- 콜백 함수는 2개 필요합니다: 메뉴용 하나, 슬라이더용 하나
+- <code>m.selected</code>로 메뉴의 선택 값을 가져옵니다</p>
+<details>
+<summary>💡 힌트 더 보기</summary>
+
+프로그램의 구조를 분해하면 이렇습니다.
+
+- **물체**: `sphere()` 1개 — 변수에 저장해야 나중에 색과 크기를 바꿀 수 있음
+- **메뉴 콜백**: `m.selected` 값에 따라 `ball.color`를 변경
+- **슬라이더 콜백**: `s.value`로 `ball.radius`를 변경하고, `wtext`의 텍스트도 업데이트
+
+</details>
+
+<details>
+<summary>🔑 정답 예시</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 메뉴로 색상 변경</span>
+<span class="k">def</span> <span class="nf">pick_color</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span> <span class="o">==</span> <span class="s1">&#39;빨강&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+    <span class="k">elif</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span> <span class="o">==</span> <span class="s1">&#39;초록&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span>
+    <span class="k">elif</span> <span class="n">m</span><span class="o">.</span><span class="n">selected</span> <span class="o">==</span> <span class="s1">&#39;파랑&#39;</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">색상 선택: &#39;</span><span class="p">)</span>
+<span class="n">menu</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;빨강&#39;</span><span class="p">,</span> <span class="s1">&#39;초록&#39;</span><span class="p">,</span> <span class="s1">&#39;파랑&#39;</span><span class="p">],</span> <span class="n">bind</span><span class="o">=</span><span class="n">pick_color</span><span class="p">)</span>
+
+<span class="c1"># 슬라이더로 크기 변경</span>
+<span class="k">def</span> <span class="nf">change_radius</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">radius_display</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">반지름: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">change_radius</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">radius_display</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+핵심 포인트: 결과물(동작)을 보고 "어떤 위젯이 필요한지, 어떤 콜백이 필요한지"를 분해하는 것이 핵심입니다. 이것이 **분해(Decomposition)**와 **패턴 인식(Pattern Recognition)** — 컴퓨팅 사고력의 두 가지 핵심 요소입니다!
+
+</details>
+
+<hr />
+<h3 id="_10">💡 상상 → 코드 창작 (⭐⭐⭐)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문제</strong>: 아래 조건을 만족하는 <strong>나만의 인터랙티브 장면</strong>을 만들어 보세요.</p>
+</blockquote>
+<p><strong>필수 조건</strong>:
+- <strong>위젯 2개 이상</strong> 사용 (slider, button, menu 중 선택)
+- <strong>그래프 1개 이상</strong> 사용 (graph + gcurve)
+- <code>while True</code>와 <code>rate()</code> 루프 안에서 <strong>무언가가 움직이거나 변해야</strong> 함</p>
+<p><strong>아이디어가 안 떠오른다면</strong>:
+- 슬라이더로 진자의 줄 길이를 바꾸며 진동 주기를 그래프로 관찰하기
+- 버튼을 누르면 공이 발사되고, 슬라이더로 발사 각도를 조절하고, 비행 궤적을 그래프로 그리기
+- 두 개의 슬라이더로 x속도와 y속도를 제어하며 움직이는 공의 궤적을 그래프로 추적하기</p>
+<p><strong>규칙</strong>:
+- <code>from vpython import *</code>로 시작할 것
+- 모든 위젯에 콜백 함수를 연결할 것
+- 정답은 없습니다! 자유롭게 만들어 보세요</p>
+<details>
+<summary>🔑 예시 답안: 포물선 운동 실험기</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 포물선 운동 실험기</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">angle_deg</span> <span class="o">=</span> <span class="mi">45</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;포물선 운동 실험&#39;</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+
+<span class="n">ground</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 그래프</span>
+<span class="n">trajectory_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;궤적 (높이 vs 거리)&#39;</span><span class="p">,</span>
+                         <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;거리(m)&#39;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">,</span>
+                         <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">traj_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;궤적&#39;</span><span class="p">)</span>
+
+<span class="c1"># 콜백 함수</span>
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">v0</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">speed_text</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1"> m/s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">angle_deg</span>
+    <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">angle_text</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1">도&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">angle_rad</span> <span class="o">=</span> <span class="n">angle_deg</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+    <span class="n">vx</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">traj_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="c1"># 위젯</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;발사!&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">fire</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">초기 속도: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">set_speed</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">speed_text</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;10 m/s&#39;</span><span class="p">)</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">발사 각도: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">set_angle</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">angle_text</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;45도&#39;</span><span class="p">)</span>
+
+<span class="c1"># 시뮬레이션</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vy</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">vy</span> <span class="o">=</span> <span class="n">vy</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">vx</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">vy</span> <span class="o">*</span> <span class="n">dt</span>
+
+        <span class="n">traj_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">vy</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+이것은 하나의 예시입니다. 속도와 각도를 바꿔가며 어떤 조합이 가장 멀리 날아가는지 실험해 보세요!
+
+</details>
+
+<hr />
+<h2 id="_11">⚠️ 자주 하는 실수<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>위젯과 그래프를 처음 다루면 누구나 겪는 실수와 해결법입니다.</p>
+<p><strong>실수 1: bind에 함수를 호출해 버림 (괄호를 붙임)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 함수를 호출해 버림 — 즉시 실행되고, 이후 위젯이 작동하지 않음</span>
+<span class="n">slider</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">my_function</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 함수 이름만 전달 — 위젯이 조작될 때 자동 호출됨</span>
+<span class="n">slider</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">my_function</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>bind=</code>에는 함수 <strong>이름만</strong> 적습니다. 괄호 <code>()</code>를 붙이면 함수가 그 자리에서 바로 실행되어 버리고, 위젯에는 아무것도 연결되지 않습니다. 가장 흔한 실수이니 꼭 기억하세요!</p>
+</blockquote>
+<p><strong>실수 2: global을 빠뜨려서 변수가 바뀌지 않음</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+
+<span class="c1"># ❌ global 없이 값을 변경 — 바깥 g는 그대로이고 지역 변수만 만들어짐</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># 이건 새로운 지역 변수 g</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+
+<span class="c1"># ✅ global 선언 후 변경 — 바깥 g가 실제로 바뀜</span>
+<span class="k">def</span> <span class="nf">adjust_gravity</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">g</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+</code></pre></div>
+<blockquote>
+<p>콜백 함수 안에서 바깥 변수의 값을 바꾸려면 반드시 <code>global</code>을 선언하세요. 없으면 같은 이름의 새 지역 변수가 만들어질 뿐, 원래 변수에는 아무 영향이 없습니다.</p>
+</blockquote>
+<p><strong>실수 3: gcurve.plot()을 루프 밖에서 한 번만 호출함</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ while 루프 밖에서 호출 — 점이 하나만 찍힘</span>
+<span class="n">pos_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1"># ... 물리 계산 ...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ while 루프 안에서 매번 호출 — 실시간 그래프가 그려짐</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1"># ... 물리 계산 ...</span>
+    <span class="n">pos_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># 매 프레임마다 데이터 추가</span>
+</code></pre></div>
+<blockquote>
+<p><code>gcurve.plot()</code>은 호출할 때마다 데이터 한 점이 추가됩니다. 실시간 그래프를 원한다면 <strong><code>while</code> 루프 안에서 매 프레임마다 호출</strong>해야 합니다.</p>
+</blockquote>
+<p><strong>실수 4: graph를 여러 개 만들 때 gcurve가 엉뚱한 그래프에 그려짐</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ graph를 만든 직후에 gcurve를 만들지 않으면 마지막 graph에 그려질 수 있음</span>
+<span class="n">graph1</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;높이&#39;</span><span class="p">)</span>
+<span class="n">graph2</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;속도&#39;</span><span class="p">)</span>
+<span class="n">height_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>  <span class="c1"># 이건 graph2에 그려짐!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ graph를 만든 직후에 해당 gcurve를 만든다</span>
+<span class="n">graph1</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;높이&#39;</span><span class="p">)</span>
+<span class="n">height_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>  <span class="c1"># graph1에 그려짐</span>
+
+<span class="n">graph2</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;속도&#39;</span><span class="p">)</span>
+<span class="n">speed_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>    <span class="c1"># graph2에 그려짐</span>
+</code></pre></div>
+<blockquote>
+<p>여러 그래프를 사용할 때는 <code>gcurve(graph=그래프변수)</code> 형식으로 어떤 그래프에 그릴지 명시하는 것이 안전합니다. 또는 그래프를 만든 <strong>직후에</strong> 해당 곡선을 만드세요.</p>
+</blockquote>
+<hr />
+<h2 id="_12">✅ 스스로 점검하기<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>이 장을 잘 이해했는지 스스로 확인해 봅시다. 아래 질문에 답할 수 있다면 성공입니다!</p>
+<ul>
+<li>[ ] <strong>slider, button, menu의 차이를 설명할 수 있나요?</strong> → slider는 연속적인 값 조절, button은 클릭 동작, menu는 여러 선택지 중 하나 고르기</li>
+<li>[ ] <strong>bind의 역할을 설명할 수 있나요?</strong> → 위젯이 조작될 때 실행할 콜백 함수를 연결하는 것</li>
+<li>[ ] <strong>global 키워드가 언제 필요한지 알고 있나요?</strong> → 함수 안에서 함수 바깥 변수의 값을 변경할 때</li>
+<li>[ ] <strong>graph와 gcurve로 실시간 그래프를 그릴 수 있나요?</strong> → graph로 창을 만들고, while 루프 안에서 gcurve.plot()으로 데이터를 추가</li>
+<li>[ ] <strong>wtext로 실시간 수치를 표시할 수 있나요?</strong> → wtext를 만들고 .text 속성을 갱신</li>
+<li>[ ] <strong>scene.append_to_caption()의 용도를 알고 있나요?</strong> → 3D 장면 아래 캡션 영역에 텍스트나 줄바꿈을 추가</li>
+</ul>
+<blockquote>
+<p>💪 체크가 4개 이상이면 다음 장으로 넘어갈 준비가 된 것입니다!</p>
+</blockquote>
+<hr />
+<h2 id="_13">🚀 더 해보기<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>시간이 남거나 더 도전하고 싶다면 아래를 시도해 보세요!</p>
+<h3 id="1">도전 1: 바운스 추가하기<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>대시보드의 공이 바닥에 닿으면 정지하는 대신, <strong>반발 계수(restitution)</strong> 슬라이더를 추가하여 공이 튀어오르게 만들어 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 반발 계수: 0이면 완전 비탄성, 1이면 완전 탄성</span>
+<span class="n">restitution</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span>
+<span class="n">ground</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">bounce_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;바운스 높이&#39;</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s1">&#39;시간(s)&#39;</span><span class="p">,</span>
+                     <span class="n">ytitle</span><span class="o">=</span><span class="s1">&#39;높이(m)&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">h_curve</span> <span class="o">=</span> <span class="n">gcurve</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_restitution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">restitution</span>
+    <span class="n">restitution</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">r_text</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">restitution</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">running</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;정지&#39;</span> <span class="k">if</span> <span class="n">running</span> <span class="k">else</span> <span class="s1">&#39;시작&#39;</span>
+
+<span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">t</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+    <span class="n">h_curve</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;시작&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">toggle</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;리셋&#39;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">반발 계수: &#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">set_restitution</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">r_text</span> <span class="o">=</span> <span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;0.80&#39;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span>
+        <span class="n">h_curve</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.4</span>
+            <span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="n">velocity</span> <span class="o">*</span> <span class="n">restitution</span>
+</code></pre></div>
+<blockquote>
+<p>반발 계수를 1로 놓으면 영원히 같은 높이로 튀고, 0으로 놓으면 바닥에 착 달라붙습니다. 0.8 정도로 놓으면 현실적인 바운스를 관찰할 수 있습니다. 그래프에서 높이가 점점 줄어드는 패턴을 확인해 보세요!</p>
+</blockquote>
+<h3 id="2">도전 2: 두 공 비교 실험<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>같은 대시보드에 공을 두 개 만들어서, 하나는 지구 중력, 다른 하나는 달 중력으로 동시에 떨어뜨려 보세요. 두 공의 높이를 같은 그래프에 겹쳐 그리면 차이를 한눈에 볼 수 있습니다!</p>
+<h3 id="3-winput">도전 3: winput으로 정확한 값 입력받기<a class="headerlink" href="#3-winput" title="Permanent link">&para;</a></h3>
+<p>슬라이더 대신 <strong><code>winput</code></strong> 위젯을 사용하여 사용자가 정확한 숫자를 직접 입력할 수 있게 해 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ball</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_exact_radius</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">number</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">val</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">append_to_caption</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">반지름 입력: &#39;</span><span class="p">)</span>
+<span class="n">winput</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">set_exact_radius</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;numeric&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>winput</code>의 <code>type='numeric'</code>으로 설정하면 숫자만 입력받을 수 있고, <code>.number</code> 속성으로 입력된 숫자 값에 접근합니다.</p>
+<hr />
+<h2 id="_14">🔗 다음 장으로<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 우리는 VPython의 위젯 시스템을 정복했습니다.</p>
+<p><strong>배운 것 정리</strong>:
+- <strong>위젯</strong>: slider(연속 값 조절), button(클릭 동작), menu(선택), wtext(텍스트 표시)
+- <strong>콜백 함수</strong>: 위젯 이벤트에 연결하는 함수 (<code>bind=함수이름</code>, 괄호 붙이지 않기!)
+- <strong>global 키워드</strong>: 콜백 함수 안에서 바깥 변수를 수정할 때 필수 (객체 속성 변경 시에는 불필요)
+- <strong>graph + gcurve</strong>: 실시간 그래프 생성, <code>plot(x, y)</code>로 데이터 한 점씩 추가
+- <strong>물리 대시보드</strong>: 위젯 + 3D 시뮬레이션 + 그래프를 결합한 인터랙티브 실험 환경</p>
+<p>여러분은 이제 <strong>코드를 실행한 뒤에도 동작을 바꿀 수 있는</strong> 인터랙티브 프로그램을 만들 수 있습니다. 이것은 정적인 프로그램에서 동적인 애플리케이션으로의 큰 도약입니다! 지금까지 배운 것을 돌아보면, 1장에서 공 하나를 만들던 것에서 시작하여, 이제는 슬라이더와 버튼과 그래프가 어우러진 대시보드를 만들 수 있게 되었습니다. 정말 대단한 성장이 아닌가요?</p>
+<p><strong>다음 장 "종합 프로젝트 — 나만의 물리 시뮬레이션 완성하기"</strong> 에서는 지금까지 배운 모든 것을 총동원하여 하나의 완성된 프로젝트를 만듭니다. 변수, 조건문, 반복문, 함수, 충돌, 키보드, 위젯, 그래프... 14장에 걸쳐 배운 모든 도구가 하나로 합쳐지는 순간입니다!</p>
+<blockquote>
+<p>🌟 <strong>오늘의 한마디</strong>: 여러분은 오늘 진짜 실험실을 코드로 만들었습니다. 슬라이더를 드래그하고, 버튼을 누르고, 그래프가 실시간으로 그려지는 것을 보았죠. "생각을 코드로, 코드를 3차원으로" — 그리고 이제는 <strong>코드를 실험실로</strong>! 과학자처럼 조건을 바꿔가며 탐구하는 힘을 여러분은 이미 갖고 있습니다.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
