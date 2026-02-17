@@ -1,0 +1,21 @@
+{
+  "name": "vpython-thinking-30h",
+  "title": "VPython으로 키우는 사고력 — 파이썬 기초 30시간",
+  "author": "greatsong",
+  "description": "VPython 3D 시각화를 활용하여 공간적 사고력과 논리적 사고력을 키우는 파이썬 기초 프로그래밍 교재. 30시간(15챕터 × 2시간) 구성.",
+  "claude_model": "claude-opus-4-6",
+  "settings": {
+    "batch_generation_enabled": true,
+    "auto_save": true,
+    "max_tokens": 16000,
+    "temperature": 1.0
+  },
+  "deployment": {
+    "auto_commit": false,
+    "auto_deploy": false,
+    "build_docx": true,
+    "build_website": true
+  },
+  "created_at": "2026-02-17T09:00:00.000Z",
+  "updated_at": "2026-02-17T09:00:00.000Z"
+}

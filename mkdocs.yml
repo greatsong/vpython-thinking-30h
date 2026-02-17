@@ -1,0 +1,54 @@
+site_name: "VPython으로 키우는 사고력 — 파이썬 기초 30시간"
+site_description: "컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다."
+site_author: Created with EduFlow
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+
+docs_dir: docs
+site_dir: site
+
+nav:
+  - Home: index.md
+  - "Part 1 - 3D 세계에 첫 발을 내딛다":
+    - "VPython의 세계에 오신 것을 환영합니다": chapter01.md
+    - "좌표의 비밀 — 3D 공간 이해하기": chapter02.md
+    - "색칠하고 꾸미기 — 속성과 표현": chapter03.md
+  - "Part 2 - 변수와 움직임의 세계":
+    - "변수 — 이름표를 붙여 기억하기": chapter04.md
+    - "연산과 수식 — 물체를 계산으로 배치하기": chapter05.md
+    - "움직여라! — 애니메이션의 원리": chapter06.md
+  - "Part 3 - 조건과 선택의 힘":
+    - "if문 — 조건에 따라 달라지는 세상": chapter07.md
+    - "키보드와 마우스 — 내가 조종하는 3D 세계": chapter08.md
+    - "충돌 감지 — 부딪히면 어떻게 될까?": chapter09.md
+  - "Part 4 - 반복과 패턴의 마법":
+    - "for 반복문 — 100개의 별을 한 번에": chapter10.md
+    - "while 반복문 — 끝나지 않는 시뮬레이션": chapter11.md
+    - "리스트 — 물체를 모아서 관리하기": chapter12.md
+  - "Part 5 - 함수, 위젯, 그리고 종합 프로젝트":
+    - "함수 — 나만의 명령어 만들기": chapter13.md
+    - "위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기": chapter14.md
+    - "최종 프로젝트 — 나만의 3D 시뮬레이션 만들기": chapter15.md
