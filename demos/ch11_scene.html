@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  .glowscript { width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  div > canvas { display: block; }
+</style>
+</head>
+<body>
 <div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
@@ -10,6 +23,8 @@
 ;(function() {
 function __main__() {
     var scene = canvas();
+    scene.width = window.innerWidth;
+    scene.height = window.innerHeight;
     // 5x5 격자, 위치에 따라 색 자동 변화
     for (var x = 0; x < 5; x++) {
         for (var y = 0; y < 5; y++) {
@@ -22,3 +37,5 @@ function __main__() {
 
 //--><!]]></script>
 </div>
+</body>
+</html>

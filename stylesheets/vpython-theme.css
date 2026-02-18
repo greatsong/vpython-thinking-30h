@@ -122,6 +122,24 @@
 .part-4 { border-left: 4px solid #2979ff; }
 .part-5 { border-left: 4px solid #d50000; }
 
+/* ===== 히어로 데모 쇼케이스 ===== */
+.hero-demos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.hero-demo-card {
+  background: var(--md-code-bg-color);
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.hero-demo-card h3 { margin-top: 0; margin-bottom: 0.3rem; }
+.hero-demo-card > p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem; }
+
 /* ===== GlowScript iframe ===== */
 .glowscript-demo {
   border: 2px solid var(--md-primary-fg-color);
@@ -133,15 +151,16 @@
 
 .glowscript-demo iframe {
   width: 100%;
-  height: 400px;
+  height: 500px;
   border: none;
   display: block;
+  background: #1a1a2e;
 }
 
 .glowscript-demo .demo-label {
   background: var(--md-primary-fg-color);
   color: white;
-  padding: 0.3rem 0.8rem;
+  padding: 0.4rem 1rem;
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -279,9 +298,11 @@
   .hero-banner { padding: 2rem 1rem; }
   .hero-banner h1 { font-size: 1.5rem; }
   .thinking-cards { grid-template-columns: 1fr 1fr; }
-  .glowscript-demo iframe { height: 300px; }
+  .hero-demos { grid-template-columns: 1fr; }
+  .glowscript-demo iframe { height: 400px; }
 }
 
 @media (max-width: 480px) {
   .thinking-cards { grid-template-columns: 1fr; }
+  .glowscript-demo iframe { height: 350px; }
 }
