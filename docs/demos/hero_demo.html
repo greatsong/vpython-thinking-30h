@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #020210; font-family: 'Noto Sans KR', sans-serif; }
+  .glowscript { width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  div > canvas { display: block; }
+
+  #hero-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    color: white;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(2,2,16,0.3) 70%);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    font-weight: 700;
+    background: rgba(100,140,255,0.2);
+    border: 1px solid rgba(100,140,255,0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-bottom: 1rem;
+    animation: fadeSlideIn 1s ease-out 0.3s both;
+  }
+
+  #hero-overlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 30px rgba(60,100,255,0.5), 0 2px 8px rgba(0,0,0,0.8);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    animation: fadeSlideIn 1s ease-out 0.5s both;
+  }
+
+  #hero-overlay .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    opacity: 0.95;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    animation: fadeSlideIn 1s ease-out 0.7s both;
+  }
+
+  #hero-overlay .desc {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 560px;
+    animation: fadeSlideIn 1s ease-out 0.9s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeSlideIn 1s ease-out 1.1s both;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat .number {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .hero-stat .label {
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    opacity: 0.6;
+    margin-top: 0.2rem;
+  }
+
+  .scroll-hint {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    animation: bounce 2s ease-in-out 2s infinite;
+  }
+
+  .scroll-hint .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(255,255,255,0.4);
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    transform: rotate(45deg);
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+</style>
+<script src="keyboard-passthrough.js"></script>
+</head>
+<body>
+
+<div id="hero-overlay">
+  <div class="hero-badge">GlowScript VPython &middot; 파이썬 기초 30시간</div>
+  <h1>코드 한 줄이<br>3D 세계를 만든다</h1>
+  <div class="subtitle">VPython으로 키우는 사고력</div>
+  <div class="desc">
+    문법을 외우는 교재가 아닙니다.<br>
+    코드를 <strong>읽고</strong>, <strong>예측하고</strong>, <strong>실험하고</strong>, <strong>창작하며</strong><br>
+    사고력을 키우는 새로운 프로그래밍 교육입니다.
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="number">0</div>
+      <div class="label">필요한 사전 경험</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">15</div>
+      <div class="label">챕터 (30시간)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">3D</div>
+      <div class="label">결과물</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">4</div>
+      <div class="label">사고 훈련 유형</div>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-hint">
+  <span>아래로 스크롤</span>
+  <div class="arrow"></div>
+</div>
+
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.width = window.innerWidth;
+    scene.height = window.innerHeight;
+    scene.background = vec(0.01, 0.01, 0.04);
+    scene.range = 16;
+    scene.autoscale = false;
+    scene.userzoom = false;
+    scene.userpan = false;
+
+    // === Starfield ===
+    for (var i = 0; i < 250; i++) {
+        var r = 35 + Math.random() * 30;
+        var theta = Math.random() * 2 * Math.PI;
+        var phi = Math.acos(2 * Math.random() - 1);
+        var bright = 0.5 + Math.random() * 0.5;
+        sphere({
+            pos: vec(r*Math.sin(phi)*Math.cos(theta), r*Math.sin(phi)*Math.sin(theta), r*Math.cos(phi)),
+            radius: 0.03 + Math.random() * 0.07,
+            color: vec(bright, bright, 0.9 + Math.random()*0.1),
+            emissive: true
+        });
+    }
+
+    // === Central glowing core ===
+    var coreColor = vec(0.3, 0.45, 1);
+    sphere({pos: vec(0,0,0), radius: 1.6, color: coreColor, emissive: true});
+    var glow1 = sphere({pos: vec(0,0,0), radius: 2.2, color: vec(0.2, 0.35, 0.9), emissive: true, opacity: 0.25});
+    var glow2 = sphere({pos: vec(0,0,0), radius: 3.0, color: vec(0.15, 0.2, 0.6), emissive: true, opacity: 0.1});
+
+    // === Orbital rings ===
+    ring({pos: vec(0,0,0), axis: vec(0,1,0.08), radius: 5, thickness: 0.03, color: vec(0.4,0.5,1), opacity: 0.2});
+    ring({pos: vec(0,0,0), axis: vec(0.15,1,-0.05), radius: 8, thickness: 0.025, color: vec(0.6,0.3,0.9), opacity: 0.15});
+    ring({pos: vec(0,0,0), axis: vec(-0.1,1,0.12), radius: 11.5, thickness: 0.02, color: vec(0.3,0.7,0.6), opacity: 0.12});
+
+    // === Orbiting objects ===
+    var orbiters = [];
+    var palette = [
+        vec(1, 0.3, 0.35), vec(1, 0.6, 0.15), vec(1, 0.95, 0.25), vec(0.25, 1, 0.4),
+        vec(0.3, 0.85, 1), vec(0.55, 0.35, 1), vec(1, 0.4, 0.75), vec(0.95, 0.95, 1)
+    ];
+
+    for (var i = 0; i < 8; i++) {
+        var dist = 4.5 + i * 1.7;
+        var angle = i * Math.PI * 2 / 8 + Math.random() * 0.3;
+        var speed = 0.006 / (0.8 + i * 0.12);
+        var tiltX = (Math.random() - 0.5) * 0.35;
+        var tiltZ = (Math.random() - 0.5) * 0.35;
+        var sz = 0.3 + Math.random() * 0.4;
+        var c = palette[i];
+
+        var obj;
+        var kind = i % 5;
+        if (kind === 0) {
+            obj = sphere({pos: vec(0,0,0), radius: sz, color: c,
+                make_trail: true, trail_type: 'curve', trail_color: c, retain: 50});
+        } else if (kind === 1) {
+            obj = box({pos: vec(0,0,0), size: vec(sz*2, sz*2, sz*2), color: c});
+        } else if (kind === 2) {
+            obj = cylinder({pos: vec(0,0,0), radius: sz*0.5, axis: vec(0, sz*2, 0), color: c});
+        } else if (kind === 3) {
+            obj = cone({pos: vec(0,0,0), radius: sz*0.7, axis: vec(0, sz*2.2, 0), color: c});
+        } else {
+            obj = pyramid({pos: vec(0,0,0), size: vec(sz*2, sz*2, sz*2), color: c});
+        }
+
+        orbiters.push({obj: obj, dist: dist, angle: angle, speed: speed,
+            tiltX: tiltX, tiltZ: tiltZ, kind: kind});
+    }
+
+    // === Floating particles ===
+    var particles = [];
+    for (var i = 0; i < 50; i++) {
+        var px = (Math.random()-0.5) * 28;
+        var py = (Math.random()-0.5) * 20;
+        var pz = (Math.random()-0.5) * 28;
+        var ps = sphere({
+            pos: vec(px, py, pz),
+            radius: 0.04 + Math.random() * 0.06,
+            color: vec(0.4+Math.random()*0.4, 0.4+Math.random()*0.3, 1),
+            emissive: true,
+            opacity: 0.3 + Math.random() * 0.4
+        });
+        particles.push({obj: ps, speed: 0.3 + Math.random() * 0.7, baseY: py, phase: Math.random() * 10});
+    }
+
+    // === Animation ===
+    var t = 0;
+    var camAngle = 0;
+
+    async function anim() {
+        while (true) {
+            await rate(60);
+            t += 1/60;
+
+            for (var i = 0; i < orbiters.length; i++) {
+                var o = orbiters[i];
+                o.angle += o.speed;
+                var x = o.dist * Math.cos(o.angle);
+                var z = o.dist * Math.sin(o.angle);
+                var y = o.dist * (o.tiltX * Math.sin(o.angle) + o.tiltZ * Math.cos(o.angle));
+                o.obj.pos = vec(x, y, z);
+
+                if (o.kind === 1 || o.kind === 4) {
+                    o.obj.rotate({angle: 0.015, axis: vec(0.3, 1, 0.2)});
+                } else if (o.kind === 2 || o.kind === 3) {
+                    o.obj.rotate({angle: 0.01, axis: vec(1, 0.2, 0)});
+                }
+            }
+
+            glow1.opacity = 0.2 + 0.08 * Math.sin(t * 2);
+            glow1.radius = 2.2 + 0.3 * Math.sin(t * 1.5);
+            glow2.opacity = 0.08 + 0.05 * Math.sin(t * 1.2 + 1);
+            glow2.radius = 3.0 + 0.5 * Math.sin(t * 0.8);
+
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+                p.obj.pos.y = p.baseY + 1.5 * Math.sin(t * p.speed + p.phase);
+                p.obj.opacity = 0.2 + 0.3 * Math.abs(Math.sin(t * 0.5 + p.phase));
+            }
+
+            camAngle += 0.0015;
+            scene.forward = vec(Math.sin(camAngle), -0.12, Math.cos(camAngle));
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>
+</body>
+</html>

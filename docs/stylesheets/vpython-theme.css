@@ -1,0 +1,535 @@
+/* VPython 사고력 교재 — 커스텀 테마 */
+
+/* ===== 3D 히어로 (인터렉티브) ===== */
+.hero-3d {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-3d > iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.hero-3d-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem 2rem;
+  background: linear-gradient(transparent 0%, rgba(2, 2, 16, 0.6) 30%, rgba(2, 2, 16, 0.88) 100%);
+  color: white;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-3d-overlay h1 {
+  font-size: 2.4rem;
+  margin: 0 0 0.2rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  letter-spacing: -0.02em;
+}
+
+.hero-3d-overlay .hero-subtitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  opacity: 0.95;
+  margin: 0 0 0.5rem;
+}
+
+.hero-3d-overlay .hero-desc {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0 0 0.8rem;
+  line-height: 1.5;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(4px);
+}
+
+h2.nowrap { white-space: nowrap; }
+
+/* ===== 사고력 활동 카드 ===== */
+.thinking-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.thinking-card {
+  padding: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.thinking-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.thinking-card h3 {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.thinking-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.thinking-card.predict {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-left: 4px solid #1976d2;
+}
+
+.thinking-card.reverse {
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-left: 4px solid #f9a825;
+}
+
+.thinking-card.debug {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  border-left: 4px solid #e91e63;
+}
+
+.thinking-card.create {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  border-left: 4px solid #43a047;
+}
+
+/* ===== 파트 카드 ===== */
+.part-section {
+  margin: 1.5rem 0;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background: var(--md-code-bg-color);
+}
+
+.part-section h3 { margin-top: 0; }
+
+.part-1 { border-left: 4px solid #7c4dff; }
+.part-2 { border-left: 4px solid #ff6d00; }
+.part-3 { border-left: 4px solid #00c853; }
+.part-4 { border-left: 4px solid #2979ff; }
+.part-5 { border-left: 4px solid #d50000; }
+
+/* ===== 히어로 데모 쇼케이스 ===== */
+.hero-demos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.hero-demo-card {
+  background: var(--md-code-bg-color);
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.hero-demo-card h3 { margin-top: 0; margin-bottom: 0.3rem; }
+.hero-demo-card > p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem; }
+
+/* ===== GlowScript iframe ===== */
+.glowscript-demo {
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.glowscript-demo iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: block;
+  background: #1a1a2e;
+}
+
+.glowscript-demo .demo-label {
+  background: var(--md-primary-fg-color);
+  color: white;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ===== 코드 결과 미리보기 ===== */
+.scene-preview {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 1rem 0;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-preview .obj {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ===== 좌표계 다이어그램 ===== */
+.coord-diagram {
+  background: #0f0f23;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== 사고력 뱃지 (인라인) ===== */
+.thinking-badge {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.thinking-badge.predict { background: #dbeafe; color: #1e40af; }
+.thinking-badge.reverse { background: #fef3c7; color: #92400e; }
+.thinking-badge.debug   { background: #fce7f3; color: #9d174d; }
+.thinking-badge.create  { background: #d1fae5; color: #065f46; }
+
+/* ===== admonition 커스텀 ===== */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #ff9800;
+}
+
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.md-typeset .admonition.bug,
+.md-typeset details.bug {
+  border-color: #e91e63;
+}
+
+.md-typeset .bug > .admonition-title,
+.md-typeset .bug > summary {
+  background-color: rgba(233, 30, 99, 0.1);
+}
+
+.md-typeset details.success {
+  border-color: #10b981;
+}
+
+.md-typeset details.question {
+  border-color: #3b82f6;
+}
+
+/* ===== 코드 실행 결과 블록 ===== */
+.code-result {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-left: 4px solid #e2b714;
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin: -0.5rem 0 1.5rem 0;
+  color: #a0aec0;
+  font-size: 0.9em;
+}
+
+.code-result strong {
+  color: #e2b714;
+}
+
+/* ===== 다크모드 ===== */
+[data-md-color-scheme="slate"] .thinking-card.predict {
+  background: linear-gradient(135deg, #1a237e33, #0d47a133);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.reverse {
+  background: linear-gradient(135deg, #f57f1733, #ff6f0033);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.debug {
+  background: linear-gradient(135deg, #88003833, #c6002833);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.create {
+  background: linear-gradient(135deg, #1b5e2033, #2e7d3233);
+}
+
+[data-md-color-scheme="slate"] .part-section {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] .hero-3d {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+[data-md-color-scheme="slate"] .code-result {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+}
+
+[data-md-color-scheme="slate"] .thinking-badge.predict { background: #1e3a5f; color: #93c5fd; }
+[data-md-color-scheme="slate"] .thinking-badge.reverse { background: #422006; color: #fcd34d; }
+[data-md-color-scheme="slate"] .thinking-badge.debug   { background: #4a1942; color: #f9a8d4; }
+[data-md-color-scheme="slate"] .thinking-badge.create  { background: #064e3b; color: #6ee7b7; }
+
+/* ===== 인트로 훅 섹션 ===== */
+.intro-hook {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.intro-hook h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro-hook p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* ===== Before / After 섹션 ===== */
+.before-after {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.ba-card {
+  padding: 1.5rem;
+  border-radius: 14px;
+}
+
+.ba-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.ba-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ba-card li {
+  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.ba-before {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-left: 4px solid #ef4444;
+}
+
+.ba-after {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-left: 4px solid #10b981;
+}
+
+[data-md-color-scheme="slate"] .ba-before {
+  background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.05));
+}
+
+[data-md-color-scheme="slate"] .ba-after {
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+}
+
+/* ===== 학습 여정 로드맵 ===== */
+.journey-roadmap {
+  position: relative;
+  max-width: 720px;
+  margin: 1.5rem auto;
+}
+
+.journey-step {
+  position: relative;
+  padding: 1.5rem;
+  padding-left: 4rem;
+  border-radius: 14px;
+  background: var(--md-code-bg-color);
+  transition: box-shadow 0.2s;
+}
+
+.journey-step:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.journey-step h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.journey-hours {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+[data-md-color-scheme="slate"] .journey-hours {
+  background: rgba(129, 140, 248, 0.15);
+  color: #a5b4fc;
+}
+
+.journey-marker {
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.journey-marker.step-1 { background: linear-gradient(135deg, #7c4dff, #b388ff); }
+.journey-marker.step-2 { background: linear-gradient(135deg, #ff6d00, #ffab40); }
+.journey-marker.step-3 { background: linear-gradient(135deg, #00c853, #69f0ae); }
+.journey-marker.step-4 { background: linear-gradient(135deg, #2979ff, #82b1ff); }
+.journey-marker.step-5 { background: linear-gradient(135deg, #d50000, #ff5252); }
+
+.journey-connector {
+  width: 3px;
+  height: 1.5rem;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, var(--md-primary-fg-color), transparent);
+  opacity: 0.3;
+}
+
+.journey-step p {
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+}
+
+.journey-step ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.journey-step li {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== CTA 섹션 ===== */
+.cta-section {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+}
+
+[data-md-color-scheme="slate"] .cta-section {
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(59,130,246,0.08));
+}
+
+.cta-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.cta-button {
+  font-size: 1.1rem !important;
+  padding: 0.7rem 2rem !important;
+}
+
+.cta-button-secondary {
+  font-size: 1rem !important;
+  padding: 0.6rem 1.5rem !important;
+}
+
+/* ===== 푸터 노트 ===== */
+.footer-note {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .hero-3d { height: 50vh; min-height: 380px; }
+  .hero-3d-overlay h1 { font-size: 1.6rem; }
+  .hero-3d-overlay .hero-desc { display: none; }
+  .thinking-cards { grid-template-columns: 1fr 1fr; }
+  .hero-demos { grid-template-columns: 1fr; }
+  .glowscript-demo iframe { height: 400px; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .journey-step { padding-left: 3.5rem; }
+  .intro-hook h2 { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-3d { height: 45vh; min-height: 320px; }
+  .hero-3d-overlay h1 { font-size: 1.3rem; }
+  .hero-3d-overlay .hero-subtitle { font-size: 0.9rem; }
+  .hero-tag { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
+  .thinking-cards { grid-template-columns: 1fr; }
+  .glowscript-demo iframe { height: 350px; }
+  .ba-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .journey-step { padding: 1rem 1rem 1rem 3.2rem; }
+  .journey-marker { left: 0.7rem; width: 1.8rem; height: 1.8rem; font-size: 0.85rem; }
+  .intro-hook h2 { font-size: 1.2rem; }
+}

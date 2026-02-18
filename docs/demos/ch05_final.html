@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: rgb(12,12,38); }
+  .glowscript { width: 100% !important; }
+  canvas { max-width: 100% !important; }
+</style>
+<script src="keyboard-passthrough.js"></script>
+</head>
+<body>
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.width = window.innerWidth;
+    scene.height = window.innerHeight;
+    scene.background = vec(0.05, 0.05, 0.15);
+
+    // 별 5개 — 위치와 밝기가 모두 랜덤
+    sphere({pos: vec(Math.random()*10-5, Math.random()*3+1, 0),
+            radius: 0.08, color: vec(1, 1, Math.random())});
+    sphere({pos: vec(Math.random()*10-5, Math.random()*3+1, 0),
+            radius: 0.1, color: vec(1, 1, Math.random())});
+    sphere({pos: vec(Math.random()*10-5, Math.random()*3+1, 0),
+            radius: 0.06, color: vec(1, 1, Math.random())});
+    sphere({pos: vec(Math.random()*10-5, Math.random()*3+1, 0),
+            radius: 0.12, color: vec(1, 1, Math.random())});
+    sphere({pos: vec(Math.random()*10-5, Math.random()*3+1, 0),
+            radius: 0.07, color: vec(1, 1, Math.random())});
+
+    // 초록 땅
+    box({pos: vec(0, -1.5, 0), size: vec(12, 0.3, 6),
+         color: vec(0.15, 0.4, 0.1)});
+
+    // 꽃 5송이 — 랜덤 위치 + 따뜻한 랜덤 색 + 랜덤 크기
+    sphere({pos: vec(Math.random()*8-4, -1.2, Math.random()*3-1.5),
+            radius: Math.random()*0.15+0.08,
+            color: vec(1, Math.random()*0.5, Math.random()*0.3)});
+    sphere({pos: vec(Math.random()*8-4, -1.2, Math.random()*3-1.5),
+            radius: Math.random()*0.15+0.08,
+            color: vec(1, Math.random()*0.3, Math.random()*0.5)});
+    sphere({pos: vec(Math.random()*8-4, -1.2, Math.random()*3-1.5),
+            radius: Math.random()*0.15+0.08,
+            color: vec(Math.random()*0.3, Math.random()*0.5, 1)});
+    sphere({pos: vec(Math.random()*8-4, -1.2, Math.random()*3-1.5),
+            radius: Math.random()*0.15+0.08,
+            color: vec(1, 1, Math.random()*0.3)});
+    sphere({pos: vec(Math.random()*8-4, -1.2, Math.random()*3-1.5),
+            radius: Math.random()*0.15+0.08,
+            color: vec(1, Math.random(), Math.random()*0.2)});
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>
+</body>
+</html>

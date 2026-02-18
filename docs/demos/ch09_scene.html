@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  .glowscript { width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  div > canvas { display: block; }
+
+  #focus-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-direction: column; gap: 0.5rem;
+  }
+  #focus-overlay .msg {
+    color: white; font-size: 1.4rem; font-weight: bold;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  #focus-overlay .sub {
+    color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  }
+</style>
+<script src="keyboard-passthrough.js"></script>
+</head>
+<body>
+<div id="focus-overlay" onclick="this.remove(); window.focus();">
+  <div class="msg">&#9654; 클릭하여 게임 시작</div>
+  <div class="sub">WASD 또는 방향키로 조작</div>
+</div>
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.width = window.innerWidth;
+    scene.height = window.innerHeight;
+
+    // 게임 공간
+    var ground = box({pos: vec(0,-4.5,0), size: vec(12,0.2,0.5), color: color.white});
+
+    // 플레이어 (키보드로 조종)
+    var player = sphere({pos: vec(0,0,0), radius: 0.5, color: color.cyan});
+    // 목표 아이템
+    var target = sphere({pos: vec(3,2,0), radius: 0.4, color: color.red});
+
+    var speed = 0.1;
+    var tvx = -0.03;
+    var tvy = 0.02;
+
+    // 점수 표시
+    var score = 0;
+    var info = label({pos: vec(0,4.5,0), text: "점수: 0"});
+
+    // 애니메이션 루프
+    async function anim() {
+        while (true) {
+            await rate(60);
+            var keys = keysdown();
+
+            // 플레이어 4방향 이동
+            if (keys.indexOf('right') >= 0) player.pos.x += speed;
+            if (keys.indexOf('left') >= 0) player.pos.x -= speed;
+            if (keys.indexOf('up') >= 0) player.pos.y += speed;
+            if (keys.indexOf('down') >= 0) player.pos.y -= speed;
+
+            // 타겟 자동 이동 + 벽 튕기기
+            target.pos.x += tvx;
+            target.pos.y += tvy;
+            if (target.pos.x > 5 || target.pos.x < -5) tvx = -tvx;
+            if (target.pos.y > 4 || target.pos.y < -4) tvy = -tvy;
+
+            // 충돌 판단 — 거리가 반지름 합보다 작으면
+            var dx = player.pos.x - target.pos.x;
+            var dy = player.pos.y - target.pos.y;
+            var dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < player.radius + target.radius) {
+                target.pos = vec(Math.random()*8-4, Math.random()*6-3, 0);
+                score += 1;
+                info.text = "점수: " + score.toString();
+            }
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>
+</body>
+</html>
