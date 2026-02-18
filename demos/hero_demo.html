@@ -12,92 +12,159 @@
 
   #hero-overlay {
     position: fixed;
-    bottom: 0; left: 0; right: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     z-index: 100;
-    padding: 2rem 2rem 2.5rem;
-    background: linear-gradient(transparent 0%, rgba(2,2,16,0.5) 25%, rgba(2,2,16,0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     pointer-events: none;
     color: white;
-  }
-  #hero-overlay h1 {
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
-    font-weight: 900;
-    margin-bottom: 0.3rem;
-    text-shadow: 0 2px 20px rgba(60,100,255,0.4), 0 2px 8px rgba(0,0,0,0.6);
-    letter-spacing: -0.02em;
-  }
-  #hero-overlay .subtitle {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    font-weight: 700;
-    opacity: 0.9;
-    margin-bottom: 0.6rem;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-  }
-  #hero-overlay .desc {
-    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
-    opacity: 0.75;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    max-width: 600px;
-    margin-left: auto; margin-right: auto;
-  }
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .tag {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .tag.accent {
-    background: rgba(100,140,255,0.2);
-    border-color: rgba(100,140,255,0.4);
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(2,2,16,0.3) 70%);
   }
 
-  #hero-hint {
+  .hero-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    font-weight: 700;
+    background: rgba(100,140,255,0.2);
+    border: 1px solid rgba(100,140,255,0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-bottom: 1rem;
+    animation: fadeSlideIn 1s ease-out 0.3s both;
+  }
+
+  #hero-overlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 30px rgba(60,100,255,0.5), 0 2px 8px rgba(0,0,0,0.8);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    animation: fadeSlideIn 1s ease-out 0.5s both;
+  }
+
+  #hero-overlay .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    opacity: 0.95;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    animation: fadeSlideIn 1s ease-out 0.7s both;
+  }
+
+  #hero-overlay .desc {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 560px;
+    animation: fadeSlideIn 1s ease-out 0.9s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeSlideIn 1s ease-out 1.1s both;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat .number {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .hero-stat .label {
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    opacity: 0.6;
+    margin-top: 0.2rem;
+  }
+
+  .scroll-hint {
     position: fixed;
-    top: 1rem; right: 1rem;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.5);
     font-size: 0.75rem;
     pointer-events: none;
-    animation: fadeInOut 4s ease-in-out;
-    animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    animation: bounce 2s ease-in-out 2s infinite;
   }
-  @keyframes fadeInOut {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+
+  .scroll-hint .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(255,255,255,0.4);
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    transform: rotate(45deg);
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
   }
 </style>
+<script src="keyboard-passthrough.js"></script>
 </head>
 <body>
 
 <div id="hero-overlay">
-  <h1>VPython으로 키우는 사고력</h1>
-  <div class="subtitle">생각을 코드로, 코드를 3차원으로</div>
+  <div class="hero-badge">GlowScript VPython &middot; 파이썬 기초 30시간</div>
+  <h1>코드 한 줄이<br>3D 세계를 만든다</h1>
+  <div class="subtitle">VPython으로 키우는 사고력</div>
   <div class="desc">
-    프로그래밍 문법을 외우는 교재가 아닙니다.<br>
-    코드를 읽고, 예측하고, 실험하고, 창작하며 <strong>사고력</strong>을 키우는 교재입니다.
+    문법을 외우는 교재가 아닙니다.<br>
+    코드를 <strong>읽고</strong>, <strong>예측하고</strong>, <strong>실험하고</strong>, <strong>창작하며</strong><br>
+    사고력을 키우는 새로운 프로그래밍 교육입니다.
   </div>
-  <div class="tags">
-    <span class="tag accent">GlowScript VPython</span>
-    <span class="tag">30시간 (15회 × 2시간)</span>
-    <span class="tag">프로그래밍 경험 없어도 OK</span>
-    <span class="tag accent">컴퓨팅 사고력</span>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="number">0</div>
+      <div class="label">필요한 사전 경험</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">15</div>
+      <div class="label">챕터 (30시간)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">3D</div>
+      <div class="label">결과물</div>
+    </div>
+    <div class="hero-stat">
+      <div class="number">4</div>
+      <div class="label">사고 훈련 유형</div>
+    </div>
   </div>
 </div>
 
-<div id="hero-hint">마우스로 드래그하여 3D 장면을 돌려보세요</div>
+<div class="scroll-hint">
+  <span>아래로 스크롤</span>
+  <div class="arrow"></div>
+</div>
 
 <div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

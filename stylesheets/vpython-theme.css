@@ -69,6 +69,8 @@
   backdrop-filter: blur(4px);
 }
 
+h2.nowrap { white-space: nowrap; }
+
 /* ===== 사고력 활동 카드 ===== */
 .thinking-cards {
   display: grid;
