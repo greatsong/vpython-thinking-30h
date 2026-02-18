@@ -8,9 +8,27 @@
   html, body { width: 100%; height: 100%; overflow: hidden; background: rgb(12,12,25); }
   .glowscript { width: 100% !important; }
   canvas { max-width: 100% !important; }
+
+  #focus-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-direction: column; gap: 0.5rem;
+  }
+  #focus-overlay .msg {
+    color: white; font-size: 1.4rem; font-weight: bold;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  #focus-overlay .sub {
+    color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  }
 </style>
 </head>
 <body>
+<div id="focus-overlay" onclick="this.remove(); window.focus();">
+  <div class="msg">&#9654; 클릭하여 게임 시작</div>
+  <div class="sub">WASD 또는 방향키로 조작</div>
+</div>
 <div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
