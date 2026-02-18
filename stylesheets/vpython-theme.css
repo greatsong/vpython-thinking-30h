@@ -1,42 +1,55 @@
 /* VPython 사고력 교재 — 커스텀 테마 */
 
-/* ===== 히어로 배너 ===== */
-.hero-banner {
-  background: linear-gradient(135deg, #311b92 0%, #4a148c 30%, #1a237e 70%, #0d47a1 100%);
-  color: white;
-  padding: 3rem 2rem;
-  border-radius: 16px;
-  margin-bottom: 2rem;
-  text-align: center;
+/* ===== 3D 히어로 (인터렉티브) ===== */
+.hero-3d {
   position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 480px;
+  border-radius: 16px;
   overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.hero-banner::before {
-  content: "";
+.hero-3d > iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.hero-3d-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3), transparent);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem 2rem;
+  background: linear-gradient(transparent 0%, rgba(2, 2, 16, 0.6) 30%, rgba(2, 2, 16, 0.88) 100%);
+  color: white;
+  text-align: center;
   pointer-events: none;
 }
 
-.hero-banner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  position: relative;
+.hero-3d-overlay h1 {
+  font-size: 2.4rem;
+  margin: 0 0 0.2rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  letter-spacing: -0.02em;
 }
 
-.hero-banner p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  position: relative;
+.hero-3d-overlay .hero-subtitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  opacity: 0.95;
+  margin: 0 0 0.5rem;
+}
+
+.hero-3d-overlay .hero-desc {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0 0 0.8rem;
+  line-height: 1.5;
 }
 
 .hero-tags {
@@ -44,16 +57,16 @@
   gap: 0.5rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1rem;
-  position: relative;
+  margin-top: 0.8rem;
 }
 
 .hero-tag {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.3rem 0.8rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.25rem 0.7rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  backdrop-filter: blur(4px);
 }
 
 /* ===== 사고력 활동 카드 ===== */
@@ -280,8 +293,8 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-[data-md-color-scheme="slate"] .hero-banner {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+[data-md-color-scheme="slate"] .hero-3d {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
 [data-md-color-scheme="slate"] .code-result {
@@ -295,14 +308,19 @@
 
 /* ===== 반응형 ===== */
 @media (max-width: 768px) {
-  .hero-banner { padding: 2rem 1rem; }
-  .hero-banner h1 { font-size: 1.5rem; }
+  .hero-3d { height: 50vh; min-height: 380px; }
+  .hero-3d-overlay h1 { font-size: 1.6rem; }
+  .hero-3d-overlay .hero-desc { display: none; }
   .thinking-cards { grid-template-columns: 1fr 1fr; }
   .hero-demos { grid-template-columns: 1fr; }
   .glowscript-demo iframe { height: 400px; }
 }
 
 @media (max-width: 480px) {
+  .hero-3d { height: 45vh; min-height: 320px; }
+  .hero-3d-overlay h1 { font-size: 1.3rem; }
+  .hero-3d-overlay .hero-subtitle { font-size: 0.9rem; }
+  .hero-tag { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
   .thinking-cards { grid-template-columns: 1fr; }
   .glowscript-demo iframe { height: 350px; }
 }

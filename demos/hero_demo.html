@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #020210; }
+  .glowscript { width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  div > canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.width = window.innerWidth;
+    scene.height = window.innerHeight;
+    scene.background = vec(0.01, 0.01, 0.04);
+    scene.range = 16;
+    scene.autoscale = false;
+    scene.userzoom = false;
+    scene.userpan = false;
+
+    // === Starfield ===
+    for (var i = 0; i < 250; i++) {
+        var r = 35 + Math.random() * 30;
+        var theta = Math.random() * 2 * Math.PI;
+        var phi = Math.acos(2 * Math.random() - 1);
+        var bright = 0.5 + Math.random() * 0.5;
+        sphere({
+            pos: vec(r*Math.sin(phi)*Math.cos(theta), r*Math.sin(phi)*Math.sin(theta), r*Math.cos(phi)),
+            radius: 0.03 + Math.random() * 0.07,
+            color: vec(bright, bright, 0.9 + Math.random()*0.1),
+            emissive: true
+        });
+    }
+
+    // === Central glowing core ===
+    var coreColor = vec(0.3, 0.45, 1);
+    sphere({pos: vec(0,0,0), radius: 1.6, color: coreColor, emissive: true});
+    var glow1 = sphere({pos: vec(0,0,0), radius: 2.2, color: vec(0.2, 0.35, 0.9), emissive: true, opacity: 0.25});
+    var glow2 = sphere({pos: vec(0,0,0), radius: 3.0, color: vec(0.15, 0.2, 0.6), emissive: true, opacity: 0.1});
+
+    // === Orbital rings ===
+    ring({pos: vec(0,0,0), axis: vec(0,1,0.08), radius: 5, thickness: 0.03, color: vec(0.4,0.5,1), opacity: 0.2});
+    ring({pos: vec(0,0,0), axis: vec(0.15,1,-0.05), radius: 8, thickness: 0.025, color: vec(0.6,0.3,0.9), opacity: 0.15});
+    ring({pos: vec(0,0,0), axis: vec(-0.1,1,0.12), radius: 11.5, thickness: 0.02, color: vec(0.3,0.7,0.6), opacity: 0.12});
+
+    // === Orbiting objects (diverse shapes) ===
+    var orbiters = [];
+    var palette = [
+        vec(1, 0.3, 0.35),
+        vec(1, 0.6, 0.15),
+        vec(1, 0.95, 0.25),
+        vec(0.25, 1, 0.4),
+        vec(0.3, 0.85, 1),
+        vec(0.55, 0.35, 1),
+        vec(1, 0.4, 0.75),
+        vec(0.95, 0.95, 1)
+    ];
+
+    for (var i = 0; i < 8; i++) {
+        var dist = 4.5 + i * 1.7;
+        var angle = i * Math.PI * 2 / 8 + Math.random() * 0.3;
+        var speed = 0.006 / (0.8 + i * 0.12);
+        var tiltX = (Math.random() - 0.5) * 0.35;
+        var tiltZ = (Math.random() - 0.5) * 0.35;
+        var sz = 0.3 + Math.random() * 0.4;
+        var c = palette[i];
+
+        var obj;
+        var kind = i % 5;
+        if (kind === 0) {
+            obj = sphere({pos: vec(0,0,0), radius: sz, color: c,
+                make_trail: true, trail_type: 'curve', trail_color: c, retain: 50});
+        } else if (kind === 1) {
+            obj = box({pos: vec(0,0,0), size: vec(sz*2, sz*2, sz*2), color: c});
+        } else if (kind === 2) {
+            obj = cylinder({pos: vec(0,0,0), radius: sz*0.5, axis: vec(0, sz*2, 0), color: c});
+        } else if (kind === 3) {
+            obj = cone({pos: vec(0,0,0), radius: sz*0.7, axis: vec(0, sz*2.2, 0), color: c});
+        } else {
+            obj = pyramid({pos: vec(0,0,0), size: vec(sz*2, sz*2, sz*2), color: c});
+        }
+
+        orbiters.push({obj: obj, dist: dist, angle: angle, speed: speed,
+            tiltX: tiltX, tiltZ: tiltZ, kind: kind});
+    }
+
+    // === Floating particles ===
+    var particles = [];
+    for (var i = 0; i < 50; i++) {
+        var px = (Math.random()-0.5) * 28;
+        var py = (Math.random()-0.5) * 20;
+        var pz = (Math.random()-0.5) * 28;
+        var ps = sphere({
+            pos: vec(px, py, pz),
+            radius: 0.04 + Math.random() * 0.06,
+            color: vec(0.4+Math.random()*0.4, 0.4+Math.random()*0.3, 1),
+            emissive: true,
+            opacity: 0.3 + Math.random() * 0.4
+        });
+        particles.push({obj: ps, speed: 0.3 + Math.random() * 0.7, baseY: py, phase: Math.random() * 10});
+    }
+
+    // === Animation ===
+    var t = 0;
+    var camAngle = 0;
+
+    async function anim() {
+        while (true) {
+            await rate(60);
+            t += 1/60;
+
+            // Orbit objects
+            for (var i = 0; i < orbiters.length; i++) {
+                var o = orbiters[i];
+                o.angle += o.speed;
+                var x = o.dist * Math.cos(o.angle);
+                var z = o.dist * Math.sin(o.angle);
+                var y = o.dist * (o.tiltX * Math.sin(o.angle) + o.tiltZ * Math.cos(o.angle));
+                o.obj.pos = vec(x, y, z);
+
+                if (o.kind === 1 || o.kind === 4) {
+                    o.obj.rotate({angle: 0.015, axis: vec(0.3, 1, 0.2)});
+                } else if (o.kind === 2 || o.kind === 3) {
+                    o.obj.rotate({angle: 0.01, axis: vec(1, 0.2, 0)});
+                }
+            }
+
+            // Pulse glow
+            glow1.opacity = 0.2 + 0.08 * Math.sin(t * 2);
+            glow1.radius = 2.2 + 0.3 * Math.sin(t * 1.5);
+            glow2.opacity = 0.08 + 0.05 * Math.sin(t * 1.2 + 1);
+            glow2.radius = 3.0 + 0.5 * Math.sin(t * 0.8);
+
+            // Float particles
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+                p.obj.pos.y = p.baseY + 1.5 * Math.sin(t * p.speed + p.phase);
+                p.obj.opacity = 0.2 + 0.3 * Math.abs(Math.sin(t * 0.5 + p.phase));
+            }
+
+            // Gentle auto-rotate view
+            camAngle += 0.0015;
+            scene.forward = vec(Math.sin(camAngle), -0.12, Math.cos(camAngle));
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>
+</body>
+</html>
