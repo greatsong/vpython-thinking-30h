@@ -308,6 +308,206 @@ h2.nowrap { white-space: nowrap; }
 [data-md-color-scheme="slate"] .thinking-badge.debug   { background: #4a1942; color: #f9a8d4; }
 [data-md-color-scheme="slate"] .thinking-badge.create  { background: #064e3b; color: #6ee7b7; }
 
+/* ===== 인트로 훅 섹션 ===== */
+.intro-hook {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.intro-hook h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro-hook p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* ===== Before / After 섹션 ===== */
+.before-after {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.ba-card {
+  padding: 1.5rem;
+  border-radius: 14px;
+}
+
+.ba-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.ba-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ba-card li {
+  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.ba-before {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-left: 4px solid #ef4444;
+}
+
+.ba-after {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-left: 4px solid #10b981;
+}
+
+[data-md-color-scheme="slate"] .ba-before {
+  background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.05));
+}
+
+[data-md-color-scheme="slate"] .ba-after {
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+}
+
+/* ===== 학습 여정 로드맵 ===== */
+.journey-roadmap {
+  position: relative;
+  max-width: 720px;
+  margin: 1.5rem auto;
+}
+
+.journey-step {
+  position: relative;
+  padding: 1.5rem;
+  padding-left: 4rem;
+  border-radius: 14px;
+  background: var(--md-code-bg-color);
+  transition: box-shadow 0.2s;
+}
+
+.journey-step:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.journey-step h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.journey-hours {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+[data-md-color-scheme="slate"] .journey-hours {
+  background: rgba(129, 140, 248, 0.15);
+  color: #a5b4fc;
+}
+
+.journey-marker {
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.journey-marker.step-1 { background: linear-gradient(135deg, #7c4dff, #b388ff); }
+.journey-marker.step-2 { background: linear-gradient(135deg, #ff6d00, #ffab40); }
+.journey-marker.step-3 { background: linear-gradient(135deg, #00c853, #69f0ae); }
+.journey-marker.step-4 { background: linear-gradient(135deg, #2979ff, #82b1ff); }
+.journey-marker.step-5 { background: linear-gradient(135deg, #d50000, #ff5252); }
+
+.journey-connector {
+  width: 3px;
+  height: 1.5rem;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, var(--md-primary-fg-color), transparent);
+  opacity: 0.3;
+}
+
+.journey-step p {
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+}
+
+.journey-step ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.journey-step li {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== CTA 섹션 ===== */
+.cta-section {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+}
+
+[data-md-color-scheme="slate"] .cta-section {
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(59,130,246,0.08));
+}
+
+.cta-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.cta-button {
+  font-size: 1.1rem !important;
+  padding: 0.7rem 2rem !important;
+}
+
+.cta-button-secondary {
+  font-size: 1rem !important;
+  padding: 0.6rem 1.5rem !important;
+}
+
+/* ===== 푸터 노트 ===== */
+.footer-note {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
 /* ===== 반응형 ===== */
 @media (max-width: 768px) {
   .hero-3d { height: 50vh; min-height: 380px; }
@@ -316,6 +516,9 @@ h2.nowrap { white-space: nowrap; }
   .thinking-cards { grid-template-columns: 1fr 1fr; }
   .hero-demos { grid-template-columns: 1fr; }
   .glowscript-demo iframe { height: 400px; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .journey-step { padding-left: 3.5rem; }
+  .intro-hook h2 { font-size: 1.4rem; }
 }
 
 @media (max-width: 480px) {
@@ -325,4 +528,8 @@ h2.nowrap { white-space: nowrap; }
   .hero-tag { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
   .thinking-cards { grid-template-columns: 1fr; }
   .glowscript-demo iframe { height: 350px; }
+  .ba-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .journey-step { padding: 1rem 1rem 1rem 3.2rem; }
+  .journey-marker { left: 0.7rem; width: 1.8rem; height: 1.8rem; font-size: 0.85rem; }
+  .intro-hook h2 { font-size: 1.2rem; }
 }
