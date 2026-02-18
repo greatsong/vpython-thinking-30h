@@ -3,14 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; height: 100%; overflow: hidden; background: #020210; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #020210; font-family: 'Noto Sans KR', sans-serif; }
   .glowscript { width: 100% !important; padding: 0 !important; margin: 0 !important; }
   div > canvas { display: block; }
+
+  #hero-overlay {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 2rem 2rem 2.5rem;
+    background: linear-gradient(transparent 0%, rgba(2,2,16,0.5) 25%, rgba(2,2,16,0.85) 100%);
+    text-align: center;
+    pointer-events: none;
+    color: white;
+  }
+  #hero-overlay h1 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 2px 20px rgba(60,100,255,0.4), 0 2px 8px rgba(0,0,0,0.6);
+    letter-spacing: -0.02em;
+  }
+  #hero-overlay .subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 700;
+    opacity: 0.9;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  }
+  #hero-overlay .desc {
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    opacity: 0.75;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+  }
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .tag.accent {
+    background: rgba(100,140,255,0.2);
+    border-color: rgba(100,140,255,0.4);
+  }
+
+  #hero-hint {
+    position: fixed;
+    top: 1rem; right: 1rem;
+    z-index: 100;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    pointer-events: none;
+    animation: fadeInOut 4s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 </style>
 </head>
 <body>
+
+<div id="hero-overlay">
+  <h1>VPython으로 키우는 사고력</h1>
+  <div class="subtitle">생각을 코드로, 코드를 3차원으로</div>
+  <div class="desc">
+    프로그래밍 문법을 외우는 교재가 아닙니다.<br>
+    코드를 읽고, 예측하고, 실험하고, 창작하며 <strong>사고력</strong>을 키우는 교재입니다.
+  </div>
+  <div class="tags">
+    <span class="tag accent">GlowScript VPython</span>
+    <span class="tag">30시간 (15회 × 2시간)</span>
+    <span class="tag">프로그래밍 경험 없어도 OK</span>
+    <span class="tag accent">컴퓨팅 사고력</span>
+  </div>
+</div>
+
+<div id="hero-hint">마우스로 드래그하여 3D 장면을 돌려보세요</div>
+
 <div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
@@ -56,17 +144,11 @@ function __main__() {
     ring({pos: vec(0,0,0), axis: vec(0.15,1,-0.05), radius: 8, thickness: 0.025, color: vec(0.6,0.3,0.9), opacity: 0.15});
     ring({pos: vec(0,0,0), axis: vec(-0.1,1,0.12), radius: 11.5, thickness: 0.02, color: vec(0.3,0.7,0.6), opacity: 0.12});
 
-    // === Orbiting objects (diverse shapes) ===
+    // === Orbiting objects ===
     var orbiters = [];
     var palette = [
-        vec(1, 0.3, 0.35),
-        vec(1, 0.6, 0.15),
-        vec(1, 0.95, 0.25),
-        vec(0.25, 1, 0.4),
-        vec(0.3, 0.85, 1),
-        vec(0.55, 0.35, 1),
-        vec(1, 0.4, 0.75),
-        vec(0.95, 0.95, 1)
+        vec(1, 0.3, 0.35), vec(1, 0.6, 0.15), vec(1, 0.95, 0.25), vec(0.25, 1, 0.4),
+        vec(0.3, 0.85, 1), vec(0.55, 0.35, 1), vec(1, 0.4, 0.75), vec(0.95, 0.95, 1)
     ];
 
     for (var i = 0; i < 8; i++) {
@@ -122,7 +204,6 @@ function __main__() {
             await rate(60);
             t += 1/60;
 
-            // Orbit objects
             for (var i = 0; i < orbiters.length; i++) {
                 var o = orbiters[i];
                 o.angle += o.speed;
@@ -138,20 +219,17 @@ function __main__() {
                 }
             }
 
-            // Pulse glow
             glow1.opacity = 0.2 + 0.08 * Math.sin(t * 2);
             glow1.radius = 2.2 + 0.3 * Math.sin(t * 1.5);
             glow2.opacity = 0.08 + 0.05 * Math.sin(t * 1.2 + 1);
             glow2.radius = 3.0 + 0.5 * Math.sin(t * 0.8);
 
-            // Float particles
             for (var i = 0; i < particles.length; i++) {
                 var p = particles[i];
                 p.obj.pos.y = p.baseY + 1.5 * Math.sin(t * p.speed + p.phase);
                 p.obj.opacity = 0.2 + 0.3 * Math.abs(Math.sin(t * 0.5 + p.phase));
             }
 
-            // Gentle auto-rotate view
             camAngle += 0.0015;
             scene.forward = vec(Math.sin(camAngle), -0.12, Math.cos(camAngle));
         }
