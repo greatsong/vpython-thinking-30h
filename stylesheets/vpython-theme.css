@@ -1,0 +1,287 @@
+/* VPython 사고력 교재 — 커스텀 테마 */
+
+/* ===== 히어로 배너 ===== */
+.hero-banner {
+  background: linear-gradient(135deg, #311b92 0%, #4a148c 30%, #1a237e 70%, #0d47a1 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3), transparent);
+  pointer-events: none;
+}
+
+.hero-banner h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.hero-banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* ===== 사고력 활동 카드 ===== */
+.thinking-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.thinking-card {
+  padding: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.thinking-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.thinking-card h3 {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.thinking-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.thinking-card.predict {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-left: 4px solid #1976d2;
+}
+
+.thinking-card.reverse {
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-left: 4px solid #f9a825;
+}
+
+.thinking-card.debug {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  border-left: 4px solid #e91e63;
+}
+
+.thinking-card.create {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  border-left: 4px solid #43a047;
+}
+
+/* ===== 파트 카드 ===== */
+.part-section {
+  margin: 1.5rem 0;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background: var(--md-code-bg-color);
+}
+
+.part-section h3 { margin-top: 0; }
+
+.part-1 { border-left: 4px solid #7c4dff; }
+.part-2 { border-left: 4px solid #ff6d00; }
+.part-3 { border-left: 4px solid #00c853; }
+.part-4 { border-left: 4px solid #2979ff; }
+.part-5 { border-left: 4px solid #d50000; }
+
+/* ===== GlowScript iframe ===== */
+.glowscript-demo {
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.glowscript-demo iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.glowscript-demo .demo-label {
+  background: var(--md-primary-fg-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ===== 코드 결과 미리보기 ===== */
+.scene-preview {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 1rem 0;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-preview .obj {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ===== 좌표계 다이어그램 ===== */
+.coord-diagram {
+  background: #0f0f23;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== 사고력 뱃지 (인라인) ===== */
+.thinking-badge {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.thinking-badge.predict { background: #dbeafe; color: #1e40af; }
+.thinking-badge.reverse { background: #fef3c7; color: #92400e; }
+.thinking-badge.debug   { background: #fce7f3; color: #9d174d; }
+.thinking-badge.create  { background: #d1fae5; color: #065f46; }
+
+/* ===== admonition 커스텀 ===== */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #ff9800;
+}
+
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.md-typeset .admonition.bug,
+.md-typeset details.bug {
+  border-color: #e91e63;
+}
+
+.md-typeset .bug > .admonition-title,
+.md-typeset .bug > summary {
+  background-color: rgba(233, 30, 99, 0.1);
+}
+
+.md-typeset details.success {
+  border-color: #10b981;
+}
+
+.md-typeset details.question {
+  border-color: #3b82f6;
+}
+
+/* ===== 코드 실행 결과 블록 ===== */
+.code-result {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-left: 4px solid #e2b714;
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin: -0.5rem 0 1.5rem 0;
+  color: #a0aec0;
+  font-size: 0.9em;
+}
+
+.code-result strong {
+  color: #e2b714;
+}
+
+/* ===== 다크모드 ===== */
+[data-md-color-scheme="slate"] .thinking-card.predict {
+  background: linear-gradient(135deg, #1a237e33, #0d47a133);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.reverse {
+  background: linear-gradient(135deg, #f57f1733, #ff6f0033);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.debug {
+  background: linear-gradient(135deg, #88003833, #c6002833);
+}
+
+[data-md-color-scheme="slate"] .thinking-card.create {
+  background: linear-gradient(135deg, #1b5e2033, #2e7d3233);
+}
+
+[data-md-color-scheme="slate"] .part-section {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] .hero-banner {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+[data-md-color-scheme="slate"] .code-result {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+}
+
+[data-md-color-scheme="slate"] .thinking-badge.predict { background: #1e3a5f; color: #93c5fd; }
+[data-md-color-scheme="slate"] .thinking-badge.reverse { background: #422006; color: #fcd34d; }
+[data-md-color-scheme="slate"] .thinking-badge.debug   { background: #4a1942; color: #f9a8d4; }
+[data-md-color-scheme="slate"] .thinking-badge.create  { background: #064e3b; color: #6ee7b7; }
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .hero-banner { padding: 2rem 1rem; }
+  .hero-banner h1 { font-size: 1.5rem; }
+  .thinking-cards { grid-template-columns: 1fr 1fr; }
+  .glowscript-demo iframe { height: 300px; }
+}
+
+@media (max-width: 480px) {
+  .thinking-cards { grid-template-columns: 1fr; }
+}

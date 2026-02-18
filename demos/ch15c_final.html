@@ -1,0 +1,161 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.background = vec(0.1, 0.2, 0.4);
+
+    var W = 20, H = 12, D = 14;
+
+    box({pos: vec(0, -H/2, 0), size: vec(W, 0.3, D), color: vec(0.85, 0.75, 0.55)});
+
+    var fishes = [];
+    var fish_dirs = [];
+
+    function create_fish() {
+        var x = Math.random()*W*0.8 - W*0.4;
+        var y = Math.random()*H*0.6 - H*0.2;
+        var z = Math.random()*D*0.8 - D*0.4;
+        var f = sphere({
+            pos: vec(x, y, z),
+            radius: 0.25 + Math.random()*0.2,
+            color: vec(Math.random(), Math.random()*0.5 + 0.5, Math.random())
+        });
+        fishes.push(f);
+        var dx = Math.random()*0.08 - 0.04;
+        var dy = Math.random()*0.04 - 0.02;
+        var dz = Math.random()*0.06 - 0.03;
+        fish_dirs.push(vec(dx, dy, dz));
+    }
+
+    for (var i = 0; i < 12; i++) create_fish();
+
+    for (var i = 0; i < 6; i++) {
+        var sx = Math.random()*W*0.8 - W*0.4;
+        var sz = Math.random()*D*0.8 - D*0.4;
+        var sh = 1 + Math.random()*3;
+        cylinder({
+            pos: vec(sx, -H/2, sz),
+            axis: vec(0, sh, 0),
+            radius: 0.08,
+            color: vec(0.1, 0.5+Math.random()*0.3, 0.1)
+        });
+    }
+
+    var food_list = [];
+
+    function drop_food(b) {
+        for (var i = 0; i < 5; i++) {
+            var f = sphere({
+                pos: vec(Math.random()*W*0.6 - W*0.3, H/2 - 1, Math.random()*D*0.6 - D*0.3),
+                radius: 0.1,
+                color: color.yellow
+            });
+            food_list.push(f);
+        }
+    }
+
+    button({text: "먹이 주기", bind: drop_food});
+
+    var fish_speed = 1;
+
+    function set_fish_speed(s) {
+        fish_speed = s.value;
+    }
+
+    slider({min: 0.2, max: 3, value: 1, bind: set_fish_speed});
+    wtext({text: "  물고기 속도"});
+
+    label({pos: vec(0, H/2 + 1, 0), text: '나의 3D 수족관', height: 20, color: color.white, box: false});
+
+    var bubbles = [];
+
+    function vdist(a, b) {
+        var dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;
+        return Math.sqrt(dx*dx + dy*dy + dz*dz);
+    }
+
+    async function anim() {
+        while (true) {
+            await rate(60);
+
+            for (var i = 0; i < fishes.length; i++) {
+                fishes[i].pos.x += fish_dirs[i].x * fish_speed;
+                fishes[i].pos.y += fish_dirs[i].y * fish_speed;
+                fishes[i].pos.z += fish_dirs[i].z * fish_speed;
+
+                if (Math.random() < 0.02) {
+                    fish_dirs[i] = vec(
+                        Math.random()*0.08 - 0.04,
+                        fish_dirs[i].y,
+                        Math.random()*0.06 - 0.03
+                    );
+                }
+
+                if (Math.abs(fishes[i].pos.x) > W/2 - 1)
+                    fish_dirs[i] = vec(-fish_dirs[i].x, fish_dirs[i].y, fish_dirs[i].z);
+                if (fishes[i].pos.y > H/2 - 1 || fishes[i].pos.y < -H/2 + 1)
+                    fish_dirs[i] = vec(fish_dirs[i].x, -fish_dirs[i].y, fish_dirs[i].z);
+                if (Math.abs(fishes[i].pos.z) > D/2 - 1)
+                    fish_dirs[i] = vec(fish_dirs[i].x, fish_dirs[i].y, -fish_dirs[i].z);
+            }
+
+            for (var fi = 0; fi < food_list.length; fi++) {
+                if (!food_list[fi].visible) continue;
+                food_list[fi].pos.y -= 0.02;
+                if (food_list[fi].pos.y < -H/2) {
+                    food_list[fi].visible = false;
+                    continue;
+                }
+                for (var j = 0; j < fishes.length; j++) {
+                    var dist = vdist(fishes[j].pos, food_list[fi].pos);
+                    if (dist < 3) {
+                        var tx = (food_list[fi].pos.x - fishes[j].pos.x) * 0.01;
+                        var ty = (food_list[fi].pos.y - fishes[j].pos.y) * 0.01;
+                        var tz = (food_list[fi].pos.z - fishes[j].pos.z) * 0.01;
+                        fish_dirs[j] = vec(
+                            fish_dirs[j].x + tx,
+                            fish_dirs[j].y + ty,
+                            fish_dirs[j].z + tz
+                        );
+                    }
+                    if (dist < fishes[j].radius + food_list[fi].radius) {
+                        food_list[fi].visible = false;
+                    }
+                }
+            }
+
+            if (Math.random() < 0.05) {
+                var bx = Math.random()*W*0.6 - W*0.3;
+                var bz = Math.random()*D*0.6 - D*0.3;
+                var bub = sphere({
+                    pos: vec(bx, -H/2 + 0.5, bz),
+                    radius: 0.05 + Math.random()*0.08,
+                    color: vec(0.7, 0.85, 1),
+                    opacity: 0.4
+                });
+                bubbles.push(bub);
+            }
+
+            for (var bi = 0; bi < bubbles.length; bi++) {
+                if (!bubbles[bi].visible) continue;
+                bubbles[bi].pos.y += 0.03 + Math.random()*0.01;
+                if (bubbles[bi].pos.y > H/2) {
+                    bubbles[bi].visible = false;
+                }
+            }
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>

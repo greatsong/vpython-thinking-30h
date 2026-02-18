@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" width="420" height="340">
+  <rect width="420" height="340" rx="8" fill="#0f0f23"/>
+  <defs>
+    <marker id="aR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ff6b6b"/>
+    </marker>
+    <marker id="aG" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#55efc4"/>
+    </marker>
+    <marker id="aB" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#74b9ff"/>
+    </marker>
+  </defs>
+  <!-- 격자선 -->
+  <line x1="90" y1="170" x2="330" y2="170" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="210" y1="50" x2="210" y2="270" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="4"/>
+  <!-- X축 (빨강) -->
+  <line x1="70" y1="170" x2="350" y2="170" stroke="#ff6b6b" stroke-width="2.5" marker-end="url(#aR)"/>
+  <!-- Y축 (초록) -->
+  <line x1="210" y1="280" x2="210" y2="40" stroke="#55efc4" stroke-width="2.5" marker-end="url(#aG)"/>
+  <!-- Z축 (파랑, 대각선) -->
+  <line x1="270" y1="230" x2="150" y2="110" stroke="#74b9ff" stroke-width="2.5" marker-end="url(#aB)"/>
+  <!-- 원점 -->
+  <circle cx="210" cy="170" r="5" fill="white"/>
+  <!-- X 라벨 -->
+  <text x="358" y="165" fill="#ff6b6b" font-size="15" font-weight="bold" font-family="monospace">+x</text>
+  <text x="358" y="182" fill="#ff8787" font-size="11" font-family="sans-serif">오른쪽</text>
+  <text x="28" y="165" fill="#ff6b6b" font-size="15" font-weight="bold" font-family="monospace">−x</text>
+  <text x="28" y="182" fill="#ff8787" font-size="11" font-family="sans-serif">왼쪽</text>
+  <!-- Y 라벨 -->
+  <text x="218" y="34" fill="#55efc4" font-size="15" font-weight="bold" font-family="monospace">+y</text>
+  <text x="218" y="50" fill="#7dffcd" font-size="11" font-family="sans-serif">위</text>
+  <text x="218" y="296" fill="#55efc4" font-size="15" font-weight="bold" font-family="monospace">−y</text>
+  <text x="218" y="312" fill="#7dffcd" font-size="11" font-family="sans-serif">아래</text>
+  <!-- Z 라벨 -->
+  <text x="125" y="100" fill="#74b9ff" font-size="15" font-weight="bold" font-family="monospace">+z</text>
+  <text x="110" y="116" fill="#93c5fd" font-size="11" font-family="sans-serif">화면 앞</text>
+  <text x="275" y="248" fill="#74b9ff" font-size="15" font-weight="bold" font-family="monospace">−z</text>
+  <text x="275" y="264" fill="#93c5fd" font-size="11" font-family="sans-serif">화면 뒤</text>
+  <!-- 원점 라벨 -->
+  <text x="220" y="190" fill="white" font-size="12" font-family="monospace">(0, 0, 0)</text>
+</svg>

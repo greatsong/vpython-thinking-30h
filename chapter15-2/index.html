@@ -1,0 +1,1884 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="생각을 코드로, 코드를 3차원으로. GlowScript VPython을 도구로 삼아 '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 사고 훈련을 합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Ch.15-B — 최종 프로젝트 B: 먹고 먹히는 구 게임 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch15-b-b" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch.15-B — 최종 프로젝트 B: 먹고 먹히는 구 게임
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 첫 걸음
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변화와 움직임
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter07/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 게임을 향해
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter11/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 패턴과 구조
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 설계와 완성
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 첫 걸음
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 첫 걸음
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계로!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    다양한 물체, 다양한 속성
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변화와 움직임
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변화와 움직임
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수와 계산 — 기억하고 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    랜덤의 마법 — 매번 다른 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 게임을 향해
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 게임을 향해
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    벽에 부딪히면? — if문의 탄생
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    미니 프로젝트 — 나만의 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 패턴과 구조
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 패턴과 구조
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 패턴의 힘
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 설계와 완성
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 설계와 완성
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 조종하고 관찰하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 오늘의 미션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 설계하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 설계하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        세 가지 질문으로 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        물체 목록
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용하는 개념
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 단계별 구현 가이드
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 단계별 구현 가이드">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 무대 만들기 — 경기장과 플레이어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 먹이 뿌리기 — 함수 + 리스트 + 랜덤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 키보드 조종 — 이동과 경계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 먹이 먹기 — 충돌 감지 + 성장
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: 적 등장 — AI 경쟁자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: 마무리 — 점수, 게임 오버, 재시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 흔한 문제와 해결
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 완성 예시
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 업그레이드 아이디어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 업그레이드 아이디어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        적도 먹이를 먹고 성장
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        플레이어 궤적 남기기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        슬라이더로 난이도 조절
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        적 추가 생성 버튼
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 3줄 정리
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ch15-b-b">Ch.15-B — 최종 프로젝트 B: 먹고 먹히는 구 게임<a class="headerlink" href="#ch15-b-b" title="Permanent link">&para;</a></h1>
+<p><strong>Part 5: 설계와 완성</strong> | 핵심: 키보드 조종 + 충돌 감지 + 조건 분기</p>
+<hr />
+<h2 id="_1">🎬 오늘의 미션<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>여러분은 혹시 <strong>Agar.io</strong>라는 게임을 알고 있나요?</p>
+<p>화면에 작은 구가 있습니다. 여러분이 이 구를 조종합니다.
+먹이(아주 작은 구)를 먹으면 조금씩 커지고, 다른 적 구와 만나면 — <strong>더 큰 쪽이 작은 쪽을 먹어버립니다.</strong></p>
+<p>단순한 규칙이지만, 플레이할수록 긴장감이 생깁니다.
+"저 빨간 구보다 내가 더 클까? 먹을 수 있을까, 도망쳐야 할까?"</p>
+<p>오늘의 미션: <strong>구를 조종하며 먹이를 먹고, 적보다 커지고, 먹히지 않는 게임을 만들기.</strong></p>
+<p>Ch.8에서 배운 키보드 조종, Ch.9의 충돌 감지, Ch.7의 조건문이 모두 합쳐집니다.</p>
+<hr />
+<h2 id="_2">📋 설계하기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">세 가지 질문으로 정리<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>무엇이 움직이나요?</strong>
+플레이어 구가 키보드로 움직이고, 적 구가 랜덤으로 돌아다닌다.</p>
+<p><strong>사용자가 뭘 조절하나요?</strong>
+WASD 또는 방향키로 플레이어를 이동한다.</p>
+<p><strong>어떤 규칙이 적용되나요?</strong>
+먹이를 먹으면 플레이어가 커진다. 적과 부딪히면 큰 쪽이 작은 쪽을 먹는다. 플레이어가 먹히면 게임 오버.</p>
+<h3 id="_4">물체 목록<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>플레이어</strong> (sphere, 하늘색, 키보드로 조종)</li>
+<li><strong>먹이 30개</strong> (sphere, 아주 작고 알록달록, 먹으면 리스폰)</li>
+<li><strong>적 5마리</strong> (sphere, 다양한 크기, 랜덤 이동)</li>
+<li><strong>경기장 테두리</strong> (curve, 흰색 직사각형)</li>
+<li><strong>점수 라벨</strong> (label)</li>
+<li><strong>다시 시작 버튼</strong> (button)</li>
+</ul>
+<h3 id="_5">사용하는 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>sphere</strong> — 플레이어, 먹이, 적</li>
+<li><strong>keysdown()</strong> — 플레이어 이동 (Ch.8)</li>
+<li><strong>mag()</strong> — 충돌 감지 (Ch.9)</li>
+<li><strong>if/elif/else</strong> — 크기 비교 → 먹기/먹히기 (Ch.7)</li>
+<li><strong>for + 리스트</strong> — 먹이 30개, 적 5마리 관리 (Ch.11-12)</li>
+<li><strong>random()</strong> — 먹이/적 위치, 적 이동 방향 (Ch.5)</li>
+<li><strong>함수</strong> — 먹이 생성, 적 생성 (Ch.13)</li>
+<li><strong>button</strong> — 다시 시작 (Ch.14)</li>
+<li><strong>애니메이션</strong> — while True + rate() (Ch.6)</li>
+</ul>
+<hr />
+<h2 id="_6">🛠️ 단계별 구현 가이드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 무대 만들기 — 경기장과 플레이어<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>배경을 어둡게 설정하고, 경기장 테두리와 플레이어를 만듭니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;먹고 먹히는 구 게임</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="c1"># 경기장 크기</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># 경기장 테두리</span>
+<span class="n">curve</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">vector</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">)],</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># 플레이어</span>
+<span class="n">player</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">)</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mf">0.2</span>
+</code></pre></div>
+<p>실행하면 어두운 배경에 흰색 테두리 경기장, 그리고 중앙에 하늘색 구가 보입니다. 아직 움직이지는 않아요.</p>
+<h3 id="step-2">Step 2: 먹이 뿌리기 — 함수 + 리스트 + 랜덤<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>경기장 곳곳에 알록달록한 먹이를 뿌립니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">foods</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">create_food</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()))</span>
+    <span class="n">foods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">create_food</span><span class="p">()</span>
+</code></pre></div>
+<p><code>random()*2*L - L</code>은 -15에서 +15 사이의 랜덤 좌표를 만듭니다. 먹이 30개가 경기장 곳곳에 흩어집니다.</p>
+<div class="admonition tip">
+<p class="admonition-title">먹이 수 바꾸기</p>
+<p><code>range(30)</code>의 숫자를 바꾸면 먹이 수가 달라집니다. 50개, 100개도 가능해요!</p>
+</div>
+<h3 id="step-3">Step 3: 키보드 조종 — 이동과 경계<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>Ch.8에서 배운 <code>keysdown()</code>으로 플레이어를 움직입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">keysdown</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;d&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;right&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;left&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;w&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;up&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;s&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;down&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">speed</span>
+
+    <span class="c1"># 경기장 밖으로 나가지 않게</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span>
+</code></pre></div>
+<p>실행해 보세요! WASD 또는 방향키로 하늘색 구를 움직일 수 있습니다. 경기장 테두리 밖으로는 나갈 수 없어요.</p>
+<h3 id="step-4">Step 4: 먹이 먹기 — 충돌 감지 + 성장<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p>이제 핵심입니다! 플레이어가 먹이에 닿으면 먹이를 먹고 조금 커집니다.</p>
+<p>메인 루프 안에 아래 코드를 추가합니다. (Step 3의 <code>while True</code> 안에)</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1"># 먹이 충돌 검사</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">foods</span><span class="p">:</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="c1"># 먹었다! 커지기</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+=</span> <span class="mf">0.02</span>
+            <span class="c1"># 먹이를 새 위치로 리스폰</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+                <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+                <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><code>mag(player.pos - f.pos)</code>는 두 구 사이의 거리입니다 (Ch.9에서 배웠죠). 거리가 두 구의 반지름 합보다 작으면 충돌!</p>
+<p>실행하면 먹이를 먹을 때마다 플레이어가 조금씩 커지는 걸 볼 수 있습니다.</p>
+<h3 id="step-5-ai">Step 5: 적 등장 — AI 경쟁자<a class="headerlink" href="#step-5-ai" title="Permanent link">&para;</a></h3>
+<p>게임에 긴장감을 더합시다. 적 구들이 등장해 경기장을 돌아다닙니다.</p>
+<p><code>while True</code> 위에 적 생성 코드를 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">enemies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">enemy_dirs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">create_enemy</span><span class="p">():</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">enemies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.1</span> <span class="o">-</span> <span class="mf">0.05</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.1</span> <span class="o">-</span> <span class="mf">0.05</span>
+    <span class="n">enemy_dirs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vector</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">create_enemy</span><span class="p">()</span>
+</code></pre></div>
+<p>적의 반지름은 <code>0.3 + random()*0.7</code>이므로 0.3~1.0 사이입니다. 플레이어 시작 크기(0.5)보다 작을 수도, 클 수도 있어요!</p>
+<p>메인 루프 안에 적 이동 코드를 추가합니다.</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1"># 적 이동</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># 벽에 닿으면 방향 전환</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+            <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+            <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
+</code></pre></div>
+<p>그리고 적과의 충돌을 검사합니다. <strong>여기가 Agar.io의 핵심 규칙입니다!</strong></p>
+<div class="highlight"><pre><span></span><code>    <span class="c1"># 적과 충돌 — 크기 비교!</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="c1"># 내가 더 크다 → 먹기!</span>
+                <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+=</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="mf">0.2</span>
+                <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 적이 더 크다 → 먹힘! 게임 오버</span>
+                <span class="n">game_over</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">player</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+</code></pre></div>
+<p><code>if player.radius &gt; enemies[i].radius</code> — 이 한 줄이 게임의 운명을 결정합니다!</p>
+<h3 id="step-6">Step 6: 마무리 — 점수, 게임 오버, 재시작<a class="headerlink" href="#step-6" title="Permanent link">&para;</a></h3>
+<p>점수 표시와 게임 오버 처리, 다시 시작 버튼을 추가합니다.</p>
+<p><code>while True</code> 위에 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">score_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;점수: 0&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
+    <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">game_over</span><span class="p">,</span> <span class="n">score</span>
+    <span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: 0&#39;</span>
+    <span class="c1"># 적 리스폰</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;다시 시작&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">restart</span><span class="p">)</span>
+</code></pre></div>
+<p>메인 루프에서 점수 업데이트 코드를 추가합니다.</p>
+<p>먹이를 먹을 때:</p>
+<div class="highlight"><pre><span></span><code>            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</code></pre></div>
+<p>적을 먹을 때:</p>
+<div class="highlight"><pre><span></span><code>                <span class="n">score</span> <span class="o">+=</span> <span class="mi">10</span>
+                <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</code></pre></div>
+<p>게임 오버일 때:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">if</span> <span class="n">game_over</span><span class="p">:</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;게임 오버! 점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="k">continue</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">🐛 흔한 문제와 해결<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="admonition bug">
+<p class="admonition-title">플레이어가 안 움직여요!</p>
+<p><code>keysdown()</code>을 <code>while True</code> 루프 <strong>안에서</strong> 매 프레임 호출하고 있는지 확인하세요. 루프 밖에서 한 번만 호출하면 첫 프레임의 키 상태만 읽습니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">먹이를 먹어도 커지지 않아요!</p>
+<p><code>player.radius += 0.02</code>에서 <code>+=</code>인지 확인하세요. <code>=</code>을 쓰면 매번 0.02로 고정됩니다. 또한 충돌 조건 <code>dist &lt; player.radius + f.radius</code>에서 부등호 방향이 맞는지 확인하세요.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">적과 부딪혀도 아무 일도 안 일어나요!</p>
+<p><code>enemies[i].visible</code>을 확인하는 <code>if not enemies[i].visible: continue</code>가 충돌 검사 <strong>앞에</strong> 있는지 확인하세요. 이미 먹은 적(visible=False)은 건너뛰어야 합니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">게임 오버 후 다시 시작이 안 돼요!</p>
+<p><code>restart</code> 함수 안에 <code>global game_over, score</code>를 넣었는지 확인하세요. 함수 안에서 전역 변수를 바꾸려면 <code>global</code> 선언이 필요합니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">적이 한쪽으로만 쏠려요!</p>
+<p><code>enemy_dirs</code>의 x, y 값이 양수만 되고 있지 않은지 확인하세요. <code>random()*0.1 - 0.05</code>처럼 <strong>- 0.05</strong>를 빼야 음수 방향도 나옵니다.</p>
+</div>
+<hr />
+<h2 id="_8">📝 완성 예시<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>무대와 플레이어를 만듭니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="c1"># WHAT: 어두운 배경의 경기장</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;먹고 먹히는 구 게임</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># WHAT: 경기장 테두리</span>
+<span class="n">curve</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">vector</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="o">-</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">)],</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># WHAT: 플레이어 — 하늘색 구</span>
+<span class="n">player</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">)</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+<p>먹이 생성 함수와 30개 먹이를 뿌립니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 먹이 리스트와 생성 함수</span>
+<span class="c1"># WHY: 먹으면 새 위치로 리스폰해야 하므로 리스트로 관리</span>
+<span class="n">foods</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">create_food</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()))</span>
+    <span class="n">foods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">create_food</span><span class="p">()</span>
+</code></pre></div>
+<p>적 생성 함수와 5마리 적을 배치합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 적 리스트와 생성 함수</span>
+<span class="c1"># WHY: 적마다 크기와 이동 방향이 다르다</span>
+<span class="n">enemies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">enemy_dirs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">create_enemy</span><span class="p">():</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">enemies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.1</span> <span class="o">-</span> <span class="mf">0.05</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.1</span> <span class="o">-</span> <span class="mf">0.05</span>
+    <span class="n">enemy_dirs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vector</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">create_enemy</span><span class="p">()</span>
+</code></pre></div>
+<p>점수 라벨과 다시 시작 버튼을 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 점수 표시</span>
+<span class="n">score_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;점수: 0&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
+    <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># WHAT: 다시 시작 버튼</span>
+<span class="c1"># WHY: 게임 오버 후 처음부터 다시</span>
+<span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">game_over</span><span class="p">,</span> <span class="n">score</span>
+    <span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span>
+    <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: 0&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+            <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;다시 시작&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">restart</span><span class="p">)</span>
+</code></pre></div>
+<p>마지막으로 메인 루프입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 메인 루프</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># 게임 오버면 멈춤</span>
+    <span class="k">if</span> <span class="n">game_over</span><span class="p">:</span>
+        <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;게임 오버! 점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># WHAT: 키보드 이동</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">keysdown</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;d&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;right&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;left&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;w&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;up&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed</span>
+    <span class="k">if</span> <span class="s1">&#39;s&#39;</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">or</span> <span class="s1">&#39;down&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">speed</span>
+
+    <span class="c1"># WHAT: 경계 체크</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">L</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span>
+
+    <span class="c1"># WHAT: 먹이 충돌 → 성장</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">foods</span><span class="p">:</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+=</span> <span class="mf">0.02</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+                <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+                <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># WHAT: 적 이동 + 벽 반사</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+            <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
+            <span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">enemy_dirs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># WHAT: 적 충돌 → 크기 비교</span>
+    <span class="c1"># WHY: 큰 쪽이 작은 쪽을 먹는 핵심 규칙</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">player</span><span class="o">.</span><span class="n">radius</span> <span class="o">+=</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="mf">0.2</span>
+                <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="mi">10</span>
+                <span class="n">score_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;점수: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">game_over</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">player</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">red</span>
+</code></pre></div>
+<div class="glowscript-demo">
+<div class="demo-label">실행 결과 — WASD로 움직이며 먹이를 먹고 적을 피하세요!</div>
+<iframe src="../demos/ch15b_final.html"></iframe>
+</div>
+<details class="success">
+<summary>실행 결과</summary>
+<p>어두운 경기장에 하늘색 플레이어 구가 중앙에 있고, 알록달록한 먹이 30개와 붉은 계열의 적 5마리가 보입니다.</p>
+<p>WASD로 움직이며 먹이를 먹으면 점수가 오르고 플레이어가 조금씩 커집니다. 작은 적을 만나면 먹어서 한번에 10점! 하지만 나보다 큰 적을 만나면... 게임 오버.</p>
+<p>"다시 시작" 버튼을 누르면 처음부터 다시 도전할 수 있습니다.</p>
+</details>
+<hr />
+<h2 id="_9">💡 업그레이드 아이디어<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">적도 먹이를 먹고 성장<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>현재 적은 크기가 고정되어 있습니다. 적도 먹이를 먹으면 커지게 하면 훨씬 긴장감이 생깁니다!</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1"># 적도 먹이를 먹는다</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enemies</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">foods</span><span class="p">:</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+                <span class="n">enemies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">radius</span> <span class="o">+=</span> <span class="mf">0.01</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+                    <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
+                    <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_11">플레이어 궤적 남기기<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>플레이어가 지나간 자리에 궤적을 남기면 멋집니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">player</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span>
+    <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">trail_type</span><span class="o">=</span><span class="s2">&quot;points&quot;</span><span class="p">,</span>
+    <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">retain</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_12">슬라이더로 난이도 조절<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>적의 속도를 슬라이더로 조절할 수 있게 하면 난이도 설정이 가능합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">difficulty</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">set_difficulty</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">difficulty</span>
+    <span class="n">difficulty</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="n">set_difficulty</span><span class="p">)</span>
+<span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;  난이도&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>메인 루프에서 적 이동할 때 <code>enemy_dirs[i] * difficulty</code>를 곱하면 됩니다.</p>
+<h3 id="_13">적 추가 생성 버튼<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>게임 도중 적을 더 추가하는 버튼으로 스릴을 높여 보세요!</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_enemy</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">create_enemy</span><span class="p">()</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;적 추가!&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">add_enemy</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3">✅ 3줄 정리<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>keysdown()</code>으로 실시간 이동, <code>mag()</code>로 충돌 감지 — Ch.8과 Ch.9가 게임의 핵심 엔진이 됩니다</li>
+<li><code>if player.radius &gt; enemy.radius</code> 한 줄이 "먹기 vs 먹히기"를 결정합니다 — <strong>조건문은 게임의 규칙을 코드로 표현하는 도구</strong>입니다</li>
+<li><code>visible = False</code>로 먹힌 적을 숨기고, 버튼의 <code>restart</code> 함수로 모든 상태를 초기화합니다 — <strong>게임 상태 관리</strong>가 완성도를 만듭니다</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

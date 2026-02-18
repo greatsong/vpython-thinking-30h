@@ -1,0 +1,55 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+
+    // 게임 공간: 바닥 + 좌우 벽
+    var ground = box({pos: vec(0,-1,0), size: vec(12,0.1,0.2), color: color.white});
+    var wall_L = box({pos: vec(-6,0.5,0), size: vec(0.2,3,0.2), color: color.white});
+    var wall_R = box({pos: vec(6,0.5,0), size: vec(0.2,3,0.2), color: color.white});
+
+    // 조종할 공과 먹을 아이템
+    var ball = sphere({pos: vec(-4,0,0), color: color.yellow, radius: 0.4});
+    var item = sphere({pos: vec(4,0,0), color: color.red, radius: 0.3});
+    var speed = 0.05;
+
+    // 애니메이션 루프
+    async function anim() {
+        while (true) {
+            await rate(60);
+            var keys = keysdown();
+
+            // 4방향 이동
+            if (keys.indexOf('left') >= 0) ball.pos.x -= speed;
+            if (keys.indexOf('right') >= 0) ball.pos.x += speed;
+            if (keys.indexOf('up') >= 0) ball.pos.y += speed;
+            if (keys.indexOf('down') >= 0) ball.pos.y -= speed;
+
+            // 벽 밖으로 못 나가게 제한
+            if (ball.pos.x > 5.5) ball.pos.x = 5.5;
+            if (ball.pos.x < -5.5) ball.pos.x = -5.5;
+            if (ball.pos.y > 2.5) ball.pos.y = 2.5;
+            if (ball.pos.y < -0.8) ball.pos.y = -0.8;
+
+            // 아이템 근처에 가면 먹기
+            if (ball.pos.x > 3.5 && ball.pos.x < 4.5) {
+                if (ball.pos.y > -0.5 && ball.pos.y < 0.5) {
+                    item.visible = false;
+                }
+            }
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>

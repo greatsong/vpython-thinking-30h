@@ -1,0 +1,130 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.background = vec(0.05, 0.05, 0.1);
+
+    var L = 15;
+    curve({pos: [vec(-L,-L,0), vec(L,-L,0), vec(L,L,0), vec(-L,L,0), vec(-L,-L,0)], color: color.white});
+
+    var player = sphere({pos: vec(0,0,0), radius: 0.5, color: color.cyan});
+    var spd = 0.2;
+    var score = 0;
+    var game_over = false;
+
+    var foods = [];
+    function create_food() {
+        var f = sphere({
+            pos: vec(Math.random()*2*L - L, Math.random()*2*L - L, 0),
+            radius: 0.15,
+            color: vec(Math.random(), Math.random(), Math.random())
+        });
+        foods.push(f);
+    }
+    for (var i = 0; i < 30; i++) create_food();
+
+    var enemies = [];
+    var enemy_dirs = [];
+    function create_enemy() {
+        var e = sphere({
+            pos: vec(Math.random()*2*L - L, Math.random()*2*L - L, 0),
+            radius: 0.3 + Math.random()*0.7,
+            color: vec(Math.random()*0.5 + 0.5, Math.random()*0.3, Math.random()*0.3)
+        });
+        enemies.push(e);
+        var dx = Math.random()*0.1 - 0.05;
+        var dy = Math.random()*0.1 - 0.05;
+        enemy_dirs.push(vec(dx, dy, 0));
+    }
+    for (var i = 0; i < 5; i++) create_enemy();
+
+    var score_label = label({pos: vec(0, L+2, 0), text: '점수: 0', height: 18, color: color.white, box: false});
+
+    function restart(b) {
+        game_over = false;
+        score = 0;
+        player.radius = 0.5;
+        player.pos = vec(0,0,0);
+        player.color = color.cyan;
+        score_label.text = '점수: 0';
+        for (var i = 0; i < enemies.length; i++) {
+            enemies[i].visible = true;
+            enemies[i].pos = vec(Math.random()*2*L - L, Math.random()*2*L - L, 0);
+        }
+    }
+    button({text: "다시 시작", bind: restart});
+
+    function vdist(a, b) {
+        var dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;
+        return Math.sqrt(dx*dx + dy*dy + dz*dz);
+    }
+
+    async function anim() {
+        while (true) {
+            await rate(60);
+
+            if (game_over) {
+                score_label.text = '게임 오버! 점수: ' + score.toString();
+                continue;
+            }
+
+            var keys = keysdown();
+            if (keys.indexOf('d') >= 0 || keys.indexOf('right') >= 0) player.pos.x += spd;
+            if (keys.indexOf('a') >= 0 || keys.indexOf('left') >= 0) player.pos.x -= spd;
+            if (keys.indexOf('w') >= 0 || keys.indexOf('up') >= 0) player.pos.y += spd;
+            if (keys.indexOf('s') >= 0 || keys.indexOf('down') >= 0) player.pos.y -= spd;
+
+            if (player.pos.x > L) player.pos.x = L;
+            if (player.pos.x < -L) player.pos.x = -L;
+            if (player.pos.y > L) player.pos.y = L;
+            if (player.pos.y < -L) player.pos.y = -L;
+
+            for (var fi = 0; fi < foods.length; fi++) {
+                var dist = vdist(player.pos, foods[fi].pos);
+                if (dist < player.radius + foods[fi].radius) {
+                    player.radius += 0.02;
+                    score += 1;
+                    score_label.text = '점수: ' + score.toString();
+                    foods[fi].pos = vec(Math.random()*2*L - L, Math.random()*2*L - L, 0);
+                }
+            }
+
+            for (var ei = 0; ei < enemies.length; ei++) {
+                if (!enemies[ei].visible) continue;
+                enemies[ei].pos.x += enemy_dirs[ei].x;
+                enemies[ei].pos.y += enemy_dirs[ei].y;
+                if (Math.abs(enemies[ei].pos.x) > L) enemy_dirs[ei] = vec(-enemy_dirs[ei].x, enemy_dirs[ei].y, 0);
+                if (Math.abs(enemies[ei].pos.y) > L) enemy_dirs[ei] = vec(enemy_dirs[ei].x, -enemy_dirs[ei].y, 0);
+            }
+
+            for (var ei = 0; ei < enemies.length; ei++) {
+                if (!enemies[ei].visible) continue;
+                var dist = vdist(player.pos, enemies[ei].pos);
+                if (dist < player.radius + enemies[ei].radius) {
+                    if (player.radius > enemies[ei].radius) {
+                        player.radius += enemies[ei].radius * 0.2;
+                        enemies[ei].visible = false;
+                        score += 10;
+                        score_label.text = '점수: ' + score.toString();
+                    } else {
+                        game_over = true;
+                        player.color = color.red;
+                    }
+                }
+            }
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>

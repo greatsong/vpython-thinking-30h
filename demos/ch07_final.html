@@ -1,0 +1,43 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+
+    // 벽 4개 (상하좌우)
+    var wall_R = box({pos: vec(6,0,0), size: vec(0.2,10,0.2), color: color.white});
+    var wall_L = box({pos: vec(-6,0,0), size: vec(0.2,10,0.2), color: color.white});
+    var wall_T = box({pos: vec(0,5,0), size: vec(12,0.2,0.2), color: color.white});
+    var wall_B = box({pos: vec(0,-5,0), size: vec(12,0.2,0.2), color: color.white});
+
+    // 공과 속도
+    var ball = sphere({pos: vec(0,0,0), radius: 0.3, color: color.cyan});
+    var vx = 0.05;
+    var vy = 0.03;
+
+    // 애니메이션 루프
+    async function anim() {
+        while (true) {
+            await rate(60);
+            ball.pos.x += vx;
+            ball.pos.y += vy;
+            // 벽 충돌 검사
+            if (ball.pos.x > 5.5) vx = -vx;
+            if (ball.pos.x < -5.5) vx = -vx;
+            if (ball.pos.y > 4.5) vy = -vy;
+            if (ball.pos.y < -4.5) vy = -vy;
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>

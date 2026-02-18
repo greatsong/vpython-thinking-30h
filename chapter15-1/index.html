@@ -1,0 +1,1615 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="생각을 코드로, 코드를 3차원으로. GlowScript VPython을 도구로 삼아 '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 사고 훈련을 합니다.">
+      
+      
+        <meta name="author" content="Created with EduFlow">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Ch.15-A — 최종 프로젝트 A: 태양계 시뮬레이션 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch15-a-a" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-header__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VPython으로 키우는 사고력 — 파이썬 기초 30시간
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch.15-A — 최종 프로젝트 A: 태양계 시뮬레이션
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 3D 첫 걸음
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter04/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 변화와 움직임
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter07/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 게임을 향해
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter11/" class="md-tabs__link">
+          
+  
+  
+  Part 4 - 패턴과 구조
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter13/" class="md-tabs__link">
+          
+  
+  
+  Part 5 - 설계와 완성
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VPython으로 키우는 사고력 — 파이썬 기초 30시간" class="md-nav__button md-logo" aria-label="VPython으로 키우는 사고력 — 파이썬 기초 30시간" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VPython으로 키우는 사고력 — 파이썬 기초 30시간
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 3D 첫 걸음
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 3D 첫 걸음
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPython의 세계로!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표의 비밀 — 3D 공간 이해하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    다양한 물체, 다양한 속성
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 변화와 움직임
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 변화와 움직임
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변수와 계산 — 기억하고 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    랜덤의 마법 — 매번 다른 세계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    움직여라! — 애니메이션의 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 게임을 향해
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 게임을 향해
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    벽에 부딪히면? — if문의 탄생
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    키보드로 조종하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    미니 프로젝트 — 나만의 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4 - 패턴과 구조
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4 - 패턴과 구조
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for 반복문 — 패턴의 힘
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리스트 — 물체를 모아서 관리하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 5 - 설계와 완성
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 5 - 설계와 완성
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    함수 — 나만의 명령어 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위젯과 대시보드 — 조종하고 관찰하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최종 프로젝트 — 나만의 3D 시뮬레이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 오늘의 미션: 태양계 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 단계별 구현 가이드
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 단계별 구현 가이드">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 무대 만들기 — 태양 배치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 행성 만들기 — 함수와 리스트 활용
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 슬라이더로 속도 조절
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 애니메이션 루프 — 행성 공전
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: 테스트하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: 마무리 — 제목과 리셋 버튼
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 흔한 문제와 해결
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 완성 예시
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 업그레이드 아이디어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 업그레이드 아이디어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행성 이름표 달기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행성 크기 슬라이더
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버튼으로 행성 추가
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 3줄 정리
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ch15-a-a">Ch.15-A — 최종 프로젝트 A: 태양계 시뮬레이션<a class="headerlink" href="#ch15-a-a" title="Permanent link">&para;</a></h1>
+<p><strong>Part 5: 설계와 완성</strong> | 핵심: 함수 + 리스트 + 삼각함수 + 슬라이더</p>
+<hr />
+<h2 id="_1">🎬 오늘의 미션: 태양계 시뮬레이션<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>태양 주위를 행성들이 돌고 있습니다. 슬라이더로 시간 속도를 조절하면 행성이 빠르게 또는 느리게 공전합니다.</p>
+<p><strong>사용하는 개념</strong>: sphere(태양+행성), for+리스트(여러 행성), 함수(행성 생성), slider(속도 조절), 애니메이션(공전), 삼각함수(원 궤도)</p>
+<details class="hint">
+<summary>설계 정리</summary>
+<p><strong>무엇이 움직이나요?</strong> 행성 4개가 태양 주위를 원 궤도로 공전한다</p>
+<p><strong>사용자가 뭘 조절하나요?</strong> 슬라이더로 공전 속도를 빠르게/느리게 조절</p>
+<p><strong>규칙:</strong> 각 행성은 고유한 공전 반지름과 속도를 가진다. 안쪽 행성이 더 빠르다.</p>
+<p><strong>물체:</strong> 노란 sphere(태양), 4색 sphere(행성), slider(속도), label(제목)</p>
+<p><strong>개념:</strong> 변수(각도), for+리스트(행성 관리), 함수(행성 생성), slider(속도), 애니메이션, sin/cos(원 궤도)</p>
+</details>
+<hr />
+<h2 id="_2">🛠️ 단계별 구현 가이드<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 무대 만들기 — 태양 배치<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>가장 먼저, 배경과 중심 물체를 만듭니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;태양계 시뮬레이션</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="n">sun</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
+    <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>실행하면 검은 우주 배경에 빛나는 노란 태양이 보입니다. <code>emissive=True</code>는 물체가 스스로 빛나는 것처럼 보이게 합니다.</p>
+<h3 id="step-2">Step 2: 행성 만들기 — 함수와 리스트 활용<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>행성 하나하나를 따로 만드는 대신, 함수로 만들어 리스트에 담겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">planets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">add_planet</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">spd</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">planets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+</code></pre></div>
+<p><code>make_trail=True</code>는 행성이 지나간 자리에 궤적을 남깁니다.</p>
+<p>이제 행성을 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dists</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">]</span>
+<span class="n">speeds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">add_planet</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">speeds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">행성 수 바꾸기</p>
+<p>리스트에 값을 추가하면 행성이 늘어납니다. 6개, 8개도 간단해요!</p>
+</div>
+<h3 id="step-3">Step 3: 슬라이더로 속도 조절<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>사용자가 시간 흐름 속도를 조절할 수 있게 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">speed_factor</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">speed_factor</span>
+    <span class="n">speed_factor</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="n">set_speed</span><span class="p">)</span>
+<span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;  시간 속도&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>speed_factor</code>는 기본값 1이고, 슬라이더를 오른쪽으로 밀면 최대 5배속까지 빨라집니다.</p>
+<h3 id="step-4">Step 4: 애니메이션 루프 — 행성 공전<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p>이제 핵심입니다. 행성을 원 궤도로 돌립니다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)):</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">speeds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">speed_factor</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+            <span class="n">r</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div>
+<p><code>cos</code>와 <code>sin</code>은 원 위의 좌표를 계산하는 수학 함수입니다. 각도가 조금씩 늘어나면서 행성이 원을 그리며 돕니다.</p>
+<details class="question">
+<summary>cos와 sin이 뭔가요?</summary>
+<p>원 위의 한 점을 (x, z)로 표현하면 <code>x = r * cos(각도)</code>, <code>z = r * sin(각도)</code>입니다. 각도가 0에서 시작해 점점 커지면, 점이 원을 따라 한 바퀴 돕니다.</p>
+<p>지금은 공식을 외울 필요 없어요. "각도가 바뀌면 원을 그린다"는 것만 기억하면 됩니다!</p>
+</details>
+<h3 id="step-5">Step 5: 테스트하기<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p>여기서 잠깐 멈추고 실행해 보세요. 확인할 것들입니다.</p>
+<ul>
+<li>태양이 중앙에 있는가?</li>
+<li>행성 4개가 각각 다른 거리에서 도는가?</li>
+<li>안쪽 행성이 바깥 행성보다 빠른가?</li>
+<li>슬라이더를 움직이면 속도가 바뀌는가?</li>
+</ul>
+<p>문제가 있다면 다음 섹션을 참고하세요.</p>
+<h3 id="step-6">Step 6: 마무리 — 제목과 리셋 버튼<a class="headerlink" href="#step-6" title="Permanent link">&para;</a></h3>
+<p>제목 라벨과 리셋 버튼을 추가해서 완성도를 높입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;나의 태양계&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
+    <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>리셋 버튼을 추가하면 궤적을 지우고 처음부터 다시 시작할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)):</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;리셋&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="_3">🐛 흔한 문제와 해결<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition bug">
+<p class="admonition-title">행성이 원이 아니라 이상한 궤도를 그려요!</p>
+<p><code>cos</code>와 <code>sin</code>에 같은 각도를 넣었는지 확인하세요. 그리고 <code>r</code>(공전 반지름)이 매 프레임 바뀌고 있지는 않은지 확인하세요. <code>r = dists[i]</code>처럼 고정된 값을 써야 합니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">슬라이더가 작동하지 않아요!</p>
+<p><code>bind=set_speed</code>에서 함수 이름 뒤에 괄호 <code>()</code>를 붙이지 마세요. <code>bind=set_speed</code>가 맞고 <code>bind=set_speed()</code>는 틀립니다.</p>
+<p>또한 <code>global speed_factor</code>를 함수 안에 썼는지 확인하세요. 이걸 빼면 슬라이더를 움직여도 전역 변수가 바뀌지 않습니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">리스트 인덱스 오류가 나요!</p>
+<p><code>planets</code>, <code>angles</code>, <code>dists</code>, <code>speeds</code> 리스트의 길이가 모두 같은지 확인하세요. 행성을 4개 만들었으면 네 리스트 모두 요소가 4개여야 합니다.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">화면이 너무 빠르거나 느려요!</p>
+<p><code>rate(60)</code> 값을 확인하세요. 60이면 초당 60프레임입니다. 그리고 <code>speeds</code> 리스트의 값이 너무 크면 행성이 순간이동하듯 보일 수 있어요. 0.01~0.05 사이가 적당합니다.</p>
+</div>
+<hr />
+<h2 id="_4">📝 완성 예시<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>먼저 무대와 태양을 만듭니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="c1"># WHAT: 우주 배경 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;태양계 시뮬레이션</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="c1"># WHAT: 태양 — 중앙에 고정</span>
+<span class="c1"># WHY: emissive=True로 스스로 빛나는 효과</span>
+<span class="n">sun</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
+    <span class="n">emissive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>행성 생성 함수를 정의합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 행성 데이터를 담을 리스트</span>
+<span class="n">planets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># WHAT: 행성을 만드는 함수</span>
+<span class="c1"># WHY: 같은 패턴을 반복하지 않기 위해</span>
+<span class="k">def</span> <span class="nf">add_planet</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">spd</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">radius</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">make_trail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">planets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>행성 4개를 리스트와 for로 생성합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 행성별 설정값</span>
+<span class="c1"># WHY: 리스트로 관리하면 행성 추가가 쉽다</span>
+<span class="n">dists</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">]</span>
+<span class="n">speeds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">add_planet</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">speeds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</code></pre></div>
+<p>슬라이더와 리셋 버튼을 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 시간 속도 조절 슬라이더</span>
+<span class="n">speed_factor</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">speed_factor</span>
+    <span class="n">speed_factor</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="n">set_speed</span><span class="p">)</span>
+<span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;  시간 속도  &quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 리셋 버튼</span>
+<span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)):</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">clear_trail</span><span class="p">()</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;리셋&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+</code></pre></div>
+<p>제목 라벨을 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;나의 태양계&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
+    <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>마지막으로 애니메이션 루프입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WHAT: 메인 루프 — 매 프레임 행성 위치 갱신</span>
+<span class="c1"># WHY: cos/sin으로 원 궤도를 계산</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)):</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">speeds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">speed_factor</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span>
+            <span class="n">r</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div>
+<div class="glowscript-demo">
+<div class="demo-label">실행 결과 — 슬라이더로 공전 속도를 조절해 보세요!</div>
+<iframe src="../demos/ch15a_final.html"></iframe>
+</div>
+<details class="success">
+<summary>실행 결과</summary>
+<p>검은 우주에 빛나는 노란 태양이 중앙에 있고, 빨강/초록/하늘/주황 행성 4개가 각자의 궤도를 따라 돕니다.</p>
+<p>안쪽 행성(빨강)이 가장 빠르고, 바깥 행성(주황)이 가장 느립니다. 행성이 지나간 자리에 궤적이 남아 원 궤도가 눈에 보입니다.</p>
+<p>슬라이더를 오른쪽으로 밀면 5배속, 왼쪽으로 밀면 0.1배속. 리셋 버튼을 누르면 궤적이 사라지고 처음부터 다시 시작합니다.</p>
+</details>
+<hr />
+<h2 id="_5">💡 업그레이드 아이디어<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">행성 이름표 달기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>각 행성 옆에 이름을 표시할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;수성&quot;</span><span class="p">,</span> <span class="s2">&quot;금성&quot;</span><span class="p">,</span> <span class="s2">&quot;지구&quot;</span><span class="p">,</span> <span class="s2">&quot;화성&quot;</span><span class="p">]</span>
+<span class="n">name_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)):</span>
+    <span class="n">lb</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">xoffset</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">name_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lb</span><span class="p">)</span>
+</code></pre></div>
+<p>메인 루프에서 라벨 위치를 매 프레임 업데이트하면 행성을 따라다닙니다.</p>
+<h3 id="_7">행성 크기 슬라이더<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>슬라이더를 하나 더 추가해서 행성 크기를 실시간으로 바꿔 보세요.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">set_size</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">planets</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">sizes</span><span class="p">[</span><span class="n">planets</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="o">*</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">slider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="n">set_size</span><span class="p">)</span>
+<span class="n">wtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;  행성 크기&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_8">버튼으로 행성 추가<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>버튼을 누를 때마다 새 행성이 추가되는 기능은 어떨까요?</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_new</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">())</span>
+    <span class="n">add_planet</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="mf">0.04</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">))</span>
+
+<span class="n">button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;행성 추가&quot;</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">add_new</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3">✅ 3줄 정리<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>설계 → 분해 → 구현 → 테스트</strong>가 프로젝트의 핵심 사이클입니다 — 코드부터 쓰지 말고 먼저 계획합니다</li>
+<li><code>cos</code>과 <code>sin</code>으로 <strong>원 궤도</strong>를 계산하고, <code>for + 리스트</code>로 여러 행성을 한꺼번에 관리합니다</li>
+<li><code>slider</code>로 실행 중에 값을 바꿀 수 있습니다 — <code>global</code> 키워드를 잊지 마세요</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

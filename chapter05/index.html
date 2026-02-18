@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="컴퓨팅 사고력을 키우는 것이 목표입니다. VPython 3D 시각화를 도구로 삼아, '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 3방향 사고 훈련을 통해 생각을 코드로, 코드를 3차원으로 구현합니다.">
+        <meta name="description" content="생각을 코드로, 코드를 3차원으로. GlowScript VPython을 도구로 삼아 '코드→결과 예측', '결과→코드 역추적', '상상→코드 창작'의 사고 훈련을 합니다.">
       
       
         <meta name="author" content="Created with EduFlow">
@@ -27,7 +27,7 @@
     
     
       
-        <title>연산과 수식 — 물체를 계산으로 배치하기 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
+        <title>랜덤의 마법 — 매번 다른 세계 - VPython으로 키우는 사고력 — 파이썬 기초 30시간</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-5" class="md-skip">
+        <a href="#ch5" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              연산과 수식 — 물체를 계산으로 배치하기
+              랜덤의 마법 — 매번 다른 세계
             
           </span>
         </div>
@@ -202,7 +202,7 @@
           
   
   
-  Part 1 - 3D 세계에 첫 발을 내딛다
+  Part 1 - 3D 첫 걸음
 
         </a>
       </li>
@@ -224,7 +224,7 @@
           
   
   
-  Part 2 - 변수와 움직임의 세계
+  Part 2 - 변화와 움직임
 
         </a>
       </li>
@@ -244,7 +244,7 @@
           
   
   
-  Part 3 - 조건과 선택의 힘
+  Part 3 - 게임을 향해
 
         </a>
       </li>
@@ -260,11 +260,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
+        <a href="../chapter11/" class="md-tabs__link">
           
   
   
-  Part 4 - 반복과 패턴의 마법
+  Part 4 - 패턴과 구조
 
         </a>
       </li>
@@ -284,7 +284,7 @@
           
   
   
-  Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+  Part 5 - 설계와 완성
 
         </a>
       </li>
@@ -382,7 +382,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 3D 세계에 첫 발을 내딛다
+    Part 1 - 3D 첫 걸음
   
 
     
@@ -398,7 +398,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 3D 세계에 첫 발을 내딛다
+    Part 1 - 3D 첫 걸음
   
 
           </label>
@@ -418,7 +418,7 @@
   <span class="md-ellipsis">
     
   
-    VPython의 세계에 오신 것을 환영합니다
+    VPython의 세계로!
   
 
     
@@ -474,7 +474,7 @@
   <span class="md-ellipsis">
     
   
-    색칠하고 꾸미기 — 속성과 표현
+    다양한 물체, 다양한 속성
   
 
     
@@ -530,7 +530,7 @@
   <span class="md-ellipsis">
     
   
-    Part 2 - 변수와 움직임의 세계
+    Part 2 - 변화와 움직임
   
 
     
@@ -546,7 +546,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 2 - 변수와 움직임의 세계
+    Part 2 - 변화와 움직임
   
 
           </label>
@@ -566,7 +566,7 @@
   <span class="md-ellipsis">
     
   
-    변수 — 이름표를 붙여 기억하기
+    변수와 계산 — 기억하고 조종하기
   
 
     
@@ -603,7 +603,7 @@
   <span class="md-ellipsis">
     
   
-    연산과 수식 — 물체를 계산으로 배치하기
+    랜덤의 마법 — 매번 다른 세계
   
 
     
@@ -621,7 +621,7 @@
   <span class="md-ellipsis">
     
   
-    연산과 수식 — 물체를 계산으로 배치하기
+    랜덤의 마법 — 매번 다른 세계
   
 
     
@@ -650,7 +650,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎬 오늘의 장면
       
     </span>
   </a>
@@ -661,19 +661,30 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 왜 이걸 배우나요?
+        🔍 코드 읽기 챌린지
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        계산이 곧 배치다
+        🛠️ 직접 만들어보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 직접 만들어보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 1: random()을 만나다
       
     </span>
   </a>
@@ -681,10 +692,93 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 2: 범위를 넓히기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 3: 음수 범위까지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 4: 랜덤 색상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 5: 랜덤 크기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 6: 밤하늘 별 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 이 장의 사고력 포인트
+        🔄 역추적 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 역추적 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        문제 1: 왼쪽 절반에만 공 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        문제 2: 따뜻한 색만 나오게
       
     </span>
   </a>
@@ -700,19 +794,19 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 핵심 개념
+        📖 알고 넘어가기
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📚 핵심 개념">
+    <nav class="md-nav" aria-label="📖 알고 넘어가기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#random" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 파이썬의 산술 연산자
+        random()의 비밀
       
     </span>
   </a>
@@ -720,60 +814,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 2: 나머지 연산(%)과 몫 연산(//)의 쓸모
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-math" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 3: math 모듈과 삼각함수 맛보기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 4: 입력(input) 받기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: 연산으로 계단 만들기
+        범위 조절하기
       
     </span>
   </a>
@@ -781,82 +825,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: 원형 배치 — 꽃잎 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: 사용자 입력으로 3D 막대그래프 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 전체 코드
+        랜덤 색, 랜덤 위치, 랜덤 크기
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 사고력 챌린지
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 코드 → 결과 예측 (⭐⭐)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 결과 → 코드 역추적 (⭐⭐)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 상상 → 코드 창작 (⭐)
+        확률적 사고
       
     </span>
   </a>
@@ -865,6 +848,117 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 버그 사냥
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐛 버그 사냥">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 1: 인자를 넣었더니
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 2: -3~3 사이를 원했는데
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 3: 별이 안 보여요
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 상상 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 꽃밭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 나만의 랜덤 세계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 오늘의 완성 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 3줄 정리
+      
+    </span>
+  </a>
   
 </li>
       
@@ -872,41 +966,19 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚠️ 자주 하는 실수
+        🚀 더 탐험하기
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="🚀 더 탐험하기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 구구단 타워 만들기
+        별을 더 많이!
       
     </span>
   </a>
@@ -914,10 +986,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 2: 나선형 계단 만들기
+        색 팔레트 실험
       
     </span>
   </a>
@@ -925,10 +997,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 연산 퀴즈 시각화
+        랜덤 크기 도형 모음
       
     </span>
   </a>
@@ -937,17 +1009,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1025,7 +1086,7 @@
   <span class="md-ellipsis">
     
   
-    Part 3 - 조건과 선택의 힘
+    Part 3 - 게임을 향해
   
 
     
@@ -1041,7 +1102,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 조건과 선택의 힘
+    Part 3 - 게임을 향해
   
 
           </label>
@@ -1061,7 +1122,7 @@
   <span class="md-ellipsis">
     
   
-    if문 — 조건에 따라 달라지는 세상
+    벽에 부딪히면? — if문의 탄생
   
 
     
@@ -1089,7 +1150,7 @@
   <span class="md-ellipsis">
     
   
-    키보드와 마우스 — 내가 조종하는 3D 세계
+    키보드로 조종하기
   
 
     
@@ -1118,6 +1179,34 @@
     
   
     충돌 감지 — 부딪히면 어떻게 될까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    미니 프로젝트 — 나만의 게임 만들기
   
 
     
@@ -1168,7 +1257,7 @@
   <span class="md-ellipsis">
     
   
-    Part 4 - 반복과 패턴의 마법
+    Part 4 - 패턴과 구조
   
 
     
@@ -1184,39 +1273,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 반복과 패턴의 마법
+    Part 4 - 패턴과 구조
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter10/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    for 반복문 — 100개의 별을 한 번에
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1232,7 +1293,7 @@
   <span class="md-ellipsis">
     
   
-    while 반복문 — 끝나지 않는 시뮬레이션
+    for 반복문 — 패턴의 힘
   
 
     
@@ -1311,7 +1372,7 @@
   <span class="md-ellipsis">
     
   
-    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+    Part 5 - 설계와 완성
   
 
     
@@ -1327,7 +1388,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 함수, 위젯, 그리고 종합 프로젝트
+    Part 5 - 설계와 완성
   
 
           </label>
@@ -1375,7 +1436,7 @@
   <span class="md-ellipsis">
     
   
-    위젯과 대시보드 — 슬라이더, 버튼, 그래프로 조종하기
+    위젯과 대시보드 — 조종하고 관찰하기
   
 
     
@@ -1403,7 +1464,7 @@
   <span class="md-ellipsis">
     
   
-    최종 프로젝트 — 나만의 3D 시뮬레이션 만들기
+    최종 프로젝트 — 나만의 3D 시뮬레이션
   
 
     
@@ -1454,7 +1515,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎬 오늘의 장면
       
     </span>
   </a>
@@ -1465,19 +1526,30 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 왜 이걸 배우나요?
+        🔍 코드 읽기 챌린지
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        계산이 곧 배치다
+        🛠️ 직접 만들어보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 직접 만들어보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 1: random()을 만나다
       
     </span>
   </a>
@@ -1485,10 +1557,93 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 2: 범위를 넓히기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 3: 음수 범위까지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 4: 랜덤 색상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 5: 랜덤 크기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계 6: 밤하늘 별 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 이 장의 사고력 포인트
+        🔄 역추적 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 역추적 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        문제 1: 왼쪽 절반에만 공 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        문제 2: 따뜻한 색만 나오게
       
     </span>
   </a>
@@ -1504,19 +1659,19 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 핵심 개념
+        📖 알고 넘어가기
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📚 핵심 개념">
+    <nav class="md-nav" aria-label="📖 알고 넘어가기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#random" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 파이썬의 산술 연산자
+        random()의 비밀
       
     </span>
   </a>
@@ -1524,60 +1679,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 2: 나머지 연산(%)과 몫 연산(//)의 쓸모
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-math" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 3: math 모듈과 삼각함수 맛보기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개념 4: 입력(input) 받기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: 연산으로 계단 만들기
+        범위 조절하기
       
     </span>
   </a>
@@ -1585,82 +1690,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: 원형 배치 — 꽃잎 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: 사용자 입력으로 3D 막대그래프 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 전체 코드
+        랜덤 색, 랜덤 위치, 랜덤 크기
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 사고력 챌린지
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🧠 사고력 챌린지">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 코드 → 결과 예측 (⭐⭐)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 결과 → 코드 역추적 (⭐⭐)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 상상 → 코드 창작 (⭐)
+        확률적 사고
       
     </span>
   </a>
@@ -1669,6 +1713,117 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 버그 사냥
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐛 버그 사냥">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 1: 인자를 넣었더니
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 2: -3~3 사이를 원했는데
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버그 3: 별이 안 보여요
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 상상 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 상상 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 1: 꽃밭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도전 2: 나만의 랜덤 세계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 오늘의 완성 코드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 3줄 정리
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1676,41 +1831,19 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚠️ 자주 하는 실수
+        🚀 더 탐험하기
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="🚀 더 탐험하기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 구구단 타워 만들기
+        별을 더 많이!
       
     </span>
   </a>
@@ -1718,10 +1851,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 2: 나선형 계단 만들기
+        색 팔레트 실험
       
     </span>
   </a>
@@ -1729,10 +1862,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 연산 퀴즈 시각화
+        랜덤 크기 도형 모음
       
     </span>
   </a>
@@ -1741,17 +1874,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1772,718 +1894,342 @@
 
 
 
-<h1 id="chapter-5">Chapter 5: 연산과 수식 — 물체를 계산으로 배치하기<a class="headerlink" href="#chapter-5" title="Permanent link">&para;</a></h1>
-<p><strong>Part 2: 변수와 움직임의 세계</strong></p>
+<h1 id="ch5">Ch.5 — 랜덤의 마법<a class="headerlink" href="#ch5" title="Permanent link">&para;</a></h1>
+<p><strong>Part 2: 변화와 움직임</strong> | 핵심: <code>random()</code>, <code>범위 조절</code></p>
 <hr />
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>이번 시간이 끝나면 여러분은 이런 것을 할 수 있게 됩니다.</p>
-<ul>
-<li><strong>사칙연산과 나머지 연산을 파이썬으로 수행</strong>할 수 있다 — <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code></li>
-<li><strong>수식을 사용하여 물체의 위치와 크기를 계산</strong>할 수 있다 — 원형 배치, 크기 비례</li>
-<li><strong>입력(input)을 받아 계산 결과를 3D로 보여줄 수 있다</strong> — 3D 막대그래프</li>
-</ul>
-<blockquote>
-<p>🖥️ <strong>이번 시간에 만들 것</strong>: 사용자에게 숫자를 입력받아 3D 막대그래프를 자동으로 생성하는 프로그램을 완성합니다. 그 과정에서 물체를 원형으로 배치하고, 크기를 계산으로 결정하는 방법도 배웁니다.</p>
-</blockquote>
+<h2 id="_1">🎬 오늘의 장면<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>밤하늘을 올려다본 적 있나요?</p>
+<p>별은 누가 자리를 정해준 게 아닙니다. 제각각 다른 위치에, 다른 밝기로 빛나고 있죠.</p>
+<p>오늘 우리는 컴퓨터로 그런 밤하늘을 만들어 봅니다. 그런데 신기한 일이 벌어집니다. <strong>같은 코드를 실행할 때마다 별의 위치와 색이 달라져요.</strong> 한 글자도 바꾸지 않았는데!</p>
+<p>비밀은 바로 <code>random()</code>이라는 함수에 있습니다.</p>
+<div class="glowscript-demo">
+<div class="demo-label">밤하늘과 꽃밭 — 실행할 때마다 달라져요!</div>
+<iframe src="../demos/ch05_scene.html"></iframe>
+</div>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">계산이 곧 배치다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>지난 시간에 변수를 배웠습니다. <code>x = 3</code>처럼 값을 이름에 저장하는 것이죠. 그런데 가만 생각해 보세요. 물체 10개를 나란히 놓으려면 위치를 <code>0, 2, 4, 6, 8, ...</code>으로 일일이 지정해야 할까요?</p>
-<p><strong>아닙니다.</strong> 연산을 쓰면 됩니다.</p>
-<p><code>i * 2</code>라고 쓰면, <code>i</code>가 0일 때 위치는 0, 1일 때 2, 2일 때 4... 자동으로 계산됩니다. 나중에 반복문을 배우면 이 패턴이 폭발적으로 강력해지지만, 지금은 <strong>"계산 한 줄이 배치를 결정한다"</strong>는 감각을 먼저 익혀봅시다.</p>
-<h3 id="_4">🧠 이 장의 사고력 포인트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>🔍 <strong>코드 → 결과 예측</strong>: 수식이 포함된 코드를 읽고, 물체가 어디에 나타날지 머릿속으로 계산하기</li>
-<li>🔄 <strong>결과 → 코드 역추적</strong>: 배치 패턴을 보고, 어떤 수식이 사용되었는지 추론하기</li>
-<li>💡 <strong>상상 → 코드 창작</strong>: "이런 모양으로 배치하고 싶다"는 생각을 수식으로 바꾸기</li>
-</ul>
-<hr />
-<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="1">개념 1: 파이썬의 산술 연산자<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>📖 <strong>파이썬 문법: 산술 연산자</strong></p>
-<p>파이썬에서 사용할 수 있는 산술 연산자는 7가지입니다.</p>
-<ul>
-<li><strong><code>+</code> (덧셈)</strong>: <code>3 + 2</code> → <code>5</code></li>
-<li><strong><code>-</code> (뺄셈)</strong>: <code>3 - 2</code> → <code>1</code></li>
-<li><strong><code>*</code> (곱셈)</strong>: <code>3 * 2</code> → <code>6</code></li>
-<li><strong><code>/</code> (나눗셈)</strong>: <code>7 / 2</code> → <code>3.5</code> (항상 소수점 결과)</li>
-<li><strong><code>//</code> (몫)</strong>: <code>7 // 2</code> → <code>3</code> (소수점 버림)</li>
-<li><strong><code>%</code> (나머지)</strong>: <code>7 % 2</code> → <code>1</code> (나눈 나머지)</li>
-<li><strong><code>**</code> (거듭제곱)</strong>: <code>3 ** 2</code> → <code>9</code> (3의 2승)</li>
-</ul>
-<p>연산 우선순위는 수학과 같습니다: <code>**</code> → <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code> → <code>+</code>, <code>-</code>
-괄호 <code>()</code>로 우선순위를 바꿀 수 있습니다.</p>
-</blockquote>
-<p><strong>🎭 비유로 시작하기</strong></p>
-<p>계산기를 떠올려 보세요. 파이썬은 세상에서 가장 강력한 계산기입니다. 일반 계산기에는 없는 <code>//</code>(몫만), <code>%</code>(나머지만), <code>**</code>(거듭제곱)까지 있으니까요.</p>
-<p>그런데 이 계산 결과를 단순히 숫자로 보는 것이 아니라, <strong>3D 물체의 위치나 크기로 바로 연결</strong>할 수 있다면 어떨까요? 이것이 VPython에서 연산을 배우는 이유입니다.</p>
-<p><strong>💻 VPython에서 확인하기</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
+<h2 id="_2">🔍 코드 읽기 챌린지<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>아래 코드를 천천히 읽어 보세요. 아직 실행하지 마세요!</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
 
-<span class="c1"># 연산 결과를 물체의 위치로 사용하기</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
 
-<span class="c1"># 덧셈 결과 → x 위치</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># 곱셈 결과 → y 위치</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># 거듭제곱 결과 → 반지름</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">a</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># 결과를 label로 표시</span>
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;a+b = </span><span class="si">{</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;a*b = </span><span class="si">{</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;sqrt(a) = </span><span class="si">{</span><span class="n">a</span><span class="o">**</span><span class="mf">0.5</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
 </code></pre></div>
-<p>실행하면 세 개의 공이 나타납니다. 빨간 공은 <code>3+2=5</code>인 x=5 위치에, 파란 공은 <code>3*2=6</code>인 y=6 위치에, 초록 공은 <code>3**0.5≈1.73</code>의 반지름을 가집니다. <strong>계산 결과가 물체의 모습을 결정합니다!</strong></p>
-<hr />
-<h3 id="2">개념 2: 나머지 연산(%)과 몫 연산(//)의 쓸모<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p><strong>🎭 비유로 시작하기</strong></p>
-<p>사탕 7개를 친구 2명에게 나눠주면 어떻게 될까요? 한 명에게 3개씩 주면(<code>7 // 2 = 3</code>), 1개가 남습니다(<code>7 % 2 = 1</code>). 프로그래밍에서 이 두 연산은 "깔끔하게 나누기"를 할 때 매우 유용합니다.</p>
-<p><strong>💻 VPython에서 확인하기</strong></p>
-<p>물체 5개를 2열로 배치해 봅시다. 몫과 나머지를 사용하면 격자 배치가 가능합니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 5개의 물체를 2열로 배치</span>
-<span class="c1"># 나머지(%) → 열(x 위치), 몫(//) → 행(y 위치)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span>       <span class="c1"># 0, 1, 0, 1, 0 → 열 번호</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">2</span>      <span class="c1"># 0, 0, 1, 1, 2 → 행 번호</span>
-    <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">col</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="n">row</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">col</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="n">row</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;i=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</code></pre></div>
-<blockquote>
-<p>💡 <code>for</code>와 <code>range</code>는 아직 정식으로 배우지 않았지만, 여기서는 "i를 0부터 4까지 바꿔가며 반복하라"는 의미라고만 알면 됩니다. Chapter 10에서 자세히 배웁니다!</p>
-</blockquote>
-<hr />
-<h3 id="3-math">개념 3: math 모듈과 삼각함수 맛보기<a class="headerlink" href="#3-math" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>📖 <strong>파이썬 문법: math 모듈</strong></p>
-<p>파이썬에 내장된 수학 함수 모음입니다. 사용하려면 <code>import math</code>가 필요합니다.</p>
-<ul>
-<li><strong><code>math.pi</code></strong>: 원주율 π (3.14159...)</li>
-<li><strong><code>math.sin(각도)</code></strong>: 사인 값 (각도는 라디안 단위)</li>
-<li><strong><code>math.cos(각도)</code></strong>: 코사인 값 (각도는 라디안 단위)</li>
-<li><strong><code>math.sqrt(x)</code></strong>: 제곱근 (x의 0.5승과 같음)</li>
-<li><strong><code>math.radians(도)</code></strong>: 도(°)를 라디안으로 변환</li>
-</ul>
-<p>VPython에서는 <code>from vpython import *</code>만으로 <code>sin</code>, <code>cos</code>, <code>pi</code>, <code>sqrt</code> 등을 바로 사용할 수 있습니다 (math 모듈을 따로 import할 필요 없음!).</p>
-</blockquote>
-<p><strong>🎭 비유로 시작하기</strong></p>
-<p>시계 바늘을 떠올려 보세요. 바늘 끝은 원을 따라 돌아갑니다. 원 위의 한 점의 위치를 계산하려면 <code>sin</code>과 <code>cos</code>가 필요합니다. 수학 시간에 배우는 삼각함수가 바로 이것인데, 지금은 공식만 사용할 줄 알면 됩니다.</p>
-<p><strong>핵심 공식</strong>은 딱 이것입니다.</p>
-<ul>
-<li><strong>원 위의 x좌표</strong> = 반지름 × cos(각도)</li>
-<li><strong>원 위의 y좌표</strong> = 반지름 × sin(각도)</li>
-</ul>
-<p><strong>💻 VPython에서 확인하기</strong></p>
-<p>공 8개를 원형으로 배치해 봅시다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 원형 배치: 8개의 공을 반지름 4인 원 위에 배치</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">4</span>         <span class="c1"># 원의 반지름</span>
-<span class="n">num_objects</span> <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># 물체 개수</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_objects</span><span class="p">):</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">num_objects</span>   <span class="c1"># 각도를 균등하게 나누기</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>            <span class="c1"># x좌표 계산</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>            <span class="c1"># y좌표 계산</span>
-
-    <span class="c1"># 각도에 따라 색상을 다르게</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">num_objects</span><span class="p">)</span>              <span class="c1"># 0.0 ~ 0.875</span>
-    <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
-
-<span class="c1"># 중심에 작은 노란 공</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-</code></pre></div>
-<p>실행하면 <strong>마치 시계 숫자판처럼</strong> 8개의 공이 원형으로 나타납니다. 중심에는 노란 공이 있고, 바깥 공들은 색상이 점점 변합니다. 삼각함수를 몰라도, 이 공식 두 줄(<code>cos</code>와 <code>sin</code>)만 기억하면 원형 배치를 할 수 있습니다!</p>
-<hr />
-<h3 id="4-input">개념 4: 입력(input) 받기<a class="headerlink" href="#4-input" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>📖 <strong>파이썬 문법: input()과 형 변환</strong></p>
-<ul>
-<li><strong><code>input("메시지")</code></strong>: 사용자에게 텍스트를 입력받습니다. 결과는 항상 <strong>문자열(str)</strong> 입니다.</li>
-<li><strong><code>int(x)</code></strong>: x를 정수로 변환합니다. <code>int("42")</code> → <code>42</code></li>
-<li><strong><code>float(x)</code></strong>: x를 소수로 변환합니다. <code>float("3.14")</code> → <code>3.14</code></li>
-<li><strong><code>str(x)</code></strong>: x를 문자열로 변환합니다. <code>str(42)</code> → <code>"42"</code></li>
-</ul>
-<p><code>input()</code>의 결과는 문자열이므로, 숫자로 계산하려면 반드시 <code>int()</code> 또는 <code>float()</code>로 변환해야 합니다!</p>
-</blockquote>
-<p><strong>🎭 비유로 시작하기</strong></p>
-<p>지금까지는 코드에 숫자를 직접 적었습니다. 하지만 실제 프로그램은 <strong>사용자에게 물어보고</strong> 그 답에 따라 다르게 동작합니다. 카페 키오스크처럼요 — "몇 잔 주문하시겠습니까?"라고 물은 뒤, 입력에 따라 총 금액을 계산합니다.</p>
-<p><strong>💻 VPython에서 확인하기</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 사용자에게 공의 개수를 입력받기</span>
-<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;공을 몇 개 만들까요? (1~10): &quot;</span><span class="p">))</span>
-
-<span class="c1"># 입력받은 수만큼 공을 나란히 배치</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="n">x_pos</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">2.5</span> <span class="o">-</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.25</span>   <span class="c1"># 가운데 정렬 계산</span>
-    <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
-
-<span class="c1"># 결과 안내</span>
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s1">개의 공이 생성되었습니다!&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>실행하면 콘솔에 "공을 몇 개 만들까요?"라고 물어봅니다. 숫자를 입력하면 그만큼 공이 나란히 나타납니다. 핵심은 <code>int(input(...))</code>입니다 — <code>input()</code>으로 받은 문자열을 <code>int()</code>로 정수 변환해야 계산에 쓸 수 있습니다.</p>
-<blockquote>
-<p>⚠️ <strong>GlowScript 참고</strong>: GlowScript에서는 <code>input()</code> 대신 <code>winput()</code>이나 <code>slider()</code>를 사용합니다. 이 교재의 <code>input()</code> 코드는 로컬 환경(<code>.py</code> 파일)에서 실행하세요.</p>
-</blockquote>
-<hr />
-<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>자, 이제 직접 해 봅시다! 오늘의 목표는 <strong>사용자 입력을 받아 3D 막대그래프를 만드는 프로그램</strong>을 완성하는 것입니다. 하나씩 쌓아 올라갑시다.</p>
-<h3 id="step-1">Step 1: 연산으로 계단 만들기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p>먼저 간단한 것부터 — 연산을 사용해서 계단 모양을 만들어 봅시다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 계단 만들기: 높이가 점점 올라가는 상자 5개</span>
-<span class="n">step1</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
-<span class="n">step2</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
-<span class="n">step3</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-<span class="n">step4</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
-<span class="n">step5</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">)</span>
-</code></pre></div>
-<p>코드를 자세히 보세요. 패턴이 보이나요?</p>
-<ul>
-<li><strong>x 위치</strong>: <code>-4, -2, 0, 2, 4</code> → 2씩 증가</li>
-<li><strong>y 위치</strong>: <code>0.5, 1.0, 1.5, 2.0, 2.5</code> → 0.5씩 증가</li>
-<li><strong>높이</strong>: <code>1, 2, 3, 4, 5</code> → 1씩 증가</li>
-</ul>
-<p>이 패턴을 수식으로 표현하면 이렇습니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 같은 계단을 수식으로 만들기</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span>         <span class="c1"># -4, -2, 0, 2, 4</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>         <span class="c1"># 1, 2, 3, 4, 5</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span>         <span class="c1"># 상자의 중심이 바닥에서 높이의 절반 위치</span>
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="c1"># 바닥판</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>핵심 통찰</strong>: <code>i * 2 - 4</code>라는 수식 하나로 5개 물체의 x 위치를 모두 결정했습니다. 수식이 곧 배치입니다!</p>
-<hr />
-<h3 id="step-2">Step 2: 원형 배치 — 꽃잎 만들기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p>이번에는 삼각함수를 사용해서 물체를 원형으로 배치해 봅시다. 꽃잎 모양을 만들어 보겠습니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 꽃의 중심</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-
-<span class="c1"># 꽃잎 12장을 원형으로 배치</span>
-<span class="n">num_petals</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">petal_radius</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># 꽃잎이 놓일 원의 반지름</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_petals</span><span class="p">):</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">num_petals</span>    <span class="c1"># 각도 균등 분배</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">petal_radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">petal_radius</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-
-    <span class="c1"># 꽃잎은 타원형 상자로 표현</span>
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>       <span class="c1"># 분홍색</span>
-        <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># 바깥을 향하도록 회전</span>
-
-<span class="c1"># 줄기</span>
-<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
-
-<span class="c1"># 잎 2장</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div>
-<p>실행하면 분홍색 꽃이 나타납니다! 꽃잎 하나하나의 위치가 <code>cos</code>과 <code>sin</code>으로 계산되었습니다. <code>num_petals</code>를 바꿔보세요 — 6으로 하면 6잎 꽃, 20으로 하면 촘촘한 꽃이 됩니다.</p>
-<blockquote>
-<p>💡 <strong>이해가 안 되어도 괜찮아요!</strong> <code>cos</code>과 <code>sin</code>의 원리는 수학 시간에 배우게 됩니다. 지금은 "이 공식을 쓰면 원형으로 배치할 수 있구나"라는 감각만 가져가세요. 마법 주문처럼 사용해도 됩니다!</p>
-</blockquote>
-<hr />
-<h3 id="step-3-3d">Step 3: 사용자 입력으로 3D 막대그래프 만들기<a class="headerlink" href="#step-3-3d" title="Permanent link">&para;</a></h3>
-<p>이제 모든 것을 합쳐서 최종 프로젝트를 만듭니다. 사용자에게 숫자 여러 개를 입력받아 3D 막대그래프로 보여주는 프로그램입니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># === 3D 막대그래프 생성기 ===</span>
-
-<span class="c1"># 1단계: 사용자에게 데이터 입력받기</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 3D 막대그래프 생성기 ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;과목별 점수를 입력하세요 (0~100)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="n">korean</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;국어 점수: &quot;</span><span class="p">))</span>
-<span class="n">math_score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;수학 점수: &quot;</span><span class="p">))</span>   <span class="c1"># math는 모듈 이름이라 math_score로!</span>
-<span class="n">english</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;영어 점수: &quot;</span><span class="p">))</span>
-<span class="n">science</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;과학 점수: &quot;</span><span class="p">))</span>
-<span class="n">social</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;사회 점수: &quot;</span><span class="p">))</span>
-
-<span class="c1"># 데이터를 리스트로 정리</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">korean</span><span class="p">,</span> <span class="n">math_score</span><span class="p">,</span> <span class="n">english</span><span class="p">,</span> <span class="n">science</span><span class="p">,</span> <span class="n">social</span><span class="p">]</span>
-<span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;국어&quot;</span><span class="p">,</span> <span class="s2">&quot;수학&quot;</span><span class="p">,</span> <span class="s2">&quot;영어&quot;</span><span class="p">,</span> <span class="s2">&quot;과학&quot;</span><span class="p">,</span> <span class="s2">&quot;사회&quot;</span><span class="p">]</span>
-<span class="n">bar_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">purple</span><span class="p">]</span>
-
-<span class="c1"># 2단계: 점수를 3D 막대로 변환</span>
-<span class="n">max_height</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># 100점일 때 막대 높이</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="c1"># 점수를 높이로 변환: 100점 → 높이 10, 50점 → 높이 5</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span>
-    <span class="n">x_pos</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span>    <span class="c1"># -6, -3, 0, 3, 6 (가운데 정렬)</span>
-
-    <span class="c1"># 막대 생성</span>
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">bar_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
-
-    <span class="c1"># 과목명 라벨</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-          <span class="n">height</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
-          <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># 점수 라벨</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">,</span>
-          <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-          <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># 3단계: 바닥과 제목</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-<span class="c1"># 평균 계산</span>
-<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_height</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-      <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;📊 나의 성적표 (평균: </span><span class="si">{</span><span class="n">average</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">점)&#39;</span><span class="p">,</span>
-      <span class="n">height</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
-      <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># 평균선 표시</span>
-<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">average</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">average</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-      <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;평균 </span><span class="si">{</span><span class="n">average</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-      <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-      <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
-      <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-<p>이 코드를 실행하면 먼저 콘솔에서 5과목의 점수를 물어봅니다. 입력을 마치면 3D 막대그래프가 짜잔 하고 나타납니다! 노란색 수평선은 평균을 나타냅니다.</p>
-<p><strong>코드에 사용된 연산 총정리</strong></p>
-<ul>
-<li><code>scores[i] / 100 * max_height</code> — 점수를 높이로 비례 변환 (나눗셈 + 곱셈)</li>
-<li><code>i * 3 - 6</code> — 막대 위치 계산 (곱셈 + 뺄셈)</li>
-<li><code>height / 2</code> — 상자의 중심 위치 (나눗셈)</li>
-<li><code>sum(scores) / len(scores)</code> — 평균 계산 (덧셈 + 나눗셈)</li>
-</ul>
-<hr />
-<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>이 장에서 만든 최종 작품의 전체 코드입니다. 복사해서 바로 실행할 수 있습니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># === WHAT: 사용자 입력을 받아 3D 막대그래프를 생성하는 프로그램 ===</span>
-<span class="c1"># --- WHY: 연산 결과를 물체의 위치와 크기로 변환하는 경험을 하기 위해 ---</span>
-
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="c1"># 1. 사용자 입력 받기</span>
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 🎨 3D 막대그래프 생성기 ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;과목별 점수를 입력하세요 (0~100)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="n">korean</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;국어 점수: &quot;</span><span class="p">))</span>
-<span class="n">math_score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;수학 점수: &quot;</span><span class="p">))</span>
-<span class="n">english</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;영어 점수: &quot;</span><span class="p">))</span>
-<span class="n">science</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;과학 점수: &quot;</span><span class="p">))</span>
-<span class="n">social</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;사회 점수: &quot;</span><span class="p">))</span>
-
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">korean</span><span class="p">,</span> <span class="n">math_score</span><span class="p">,</span> <span class="n">english</span><span class="p">,</span> <span class="n">science</span><span class="p">,</span> <span class="n">social</span><span class="p">]</span>
-<span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;국어&quot;</span><span class="p">,</span> <span class="s2">&quot;수학&quot;</span><span class="p">,</span> <span class="s2">&quot;영어&quot;</span><span class="p">,</span> <span class="s2">&quot;과학&quot;</span><span class="p">,</span> <span class="s2">&quot;사회&quot;</span><span class="p">]</span>
-<span class="n">bar_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">purple</span><span class="p">]</span>
-
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="c1"># 2. 3D 막대그래프 그리기</span>
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="n">max_height</span> <span class="o">=</span> <span class="mi">10</span>    <span class="c1"># 100점 = 높이 10</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span>      <span class="c1"># 비례 변환</span>
-    <span class="n">x_pos</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span>                           <span class="c1"># 가운데 정렬</span>
-
-    <span class="c1"># 막대</span>
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">bar_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
-
-    <span class="c1"># 과목명</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># 점수</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="c1"># 3. 바닥, 평균선, 제목</span>
-<span class="c1"># ──────────────────────────────────────</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-
-<span class="c1"># 평균선</span>
-<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">average</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">average</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">max_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-      <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;평균 </span><span class="si">{</span><span class="n">average</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-      <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># 제목</span>
-<span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_height</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-      <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;나의 성적표 (평균: </span><span class="si">{</span><span class="n">average</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">점)&#39;</span><span class="p">,</span>
-      <span class="n">height</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>실행하면 이런 장면이 보입니다</strong>: 5개의 과목별 막대가 점수에 비례한 높이로 솟아 있고, 노란색 평균선이 가로로 그어져 있습니다. 마우스로 돌려보면 진짜 3D 막대그래프입니다! 입력한 점수에 따라 그래프 모양이 달라지니, 여러 번 실행해서 비교해 보세요.</p>
-<hr />
-<h2 id="_8">🧠 사고력 챌린지<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>여기서부터가 진짜입니다! 이 문제들을 통해 <strong>연산과 3D 배치의 관계</strong>를 꿰뚫어 봅시다.</p>
-<hr />
-<h3 id="_9">🔍 코드 → 결과 예측 (⭐⭐)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p><strong>문제</strong>: 아래 코드를 실행하면 어떤 모습이 나올까요? <strong>실행하지 말고</strong> 머릿속으로 먼저 계산해 보세요!</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="c1"># 물체 1</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
-
-<span class="c1"># 물체 2</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">//</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
-
-<span class="c1"># 물체 3</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
-
-<span class="c1"># 물체 4</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">a</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>생각해 볼 것</strong>:
-- <code>a / b</code> = <code>10 / 3</code> = ? (소수점까지 나오는 나눗셈)
-- <code>a // b</code> = <code>10 // 3</code> = ? (몫만 취하는 나눗셈)
-- <code>a % b</code> = <code>10 % 3</code> = ? (나머지)
-- <code>a ** 0.5</code> = <code>10 ** 0.5</code> = ? (제곱근)
-- 물체들의 y 위치는 각각 몇인가요?</p>
-<details>
-<summary>🔑 정답 확인하기</summary>
-
-계산 결과는 다음과 같습니다.
-
-- **빨간 공**: `10 / 3 ≈ 3.33` → x=3.33, y=0 위치
-- **파란 공**: `10 // 3 = 3` → x=3, y=2 위치
-- **초록 공**: `10 % 3 = 1` → x=1, y=4 위치
-- **노란 상자**: `10 ** 0.5 ≈ 3.16` → x=3.16, y=6 위치
-
-물체 4개가 **서로 다른 높이(y=0, 2, 4, 6)**에 배치됩니다. 가장 눈에 띄는 것은 초록 공입니다 — x=1로 혼자 왼쪽에 떨어져 있습니다. 빨간 공, 파란 공, 노란 상자는 x≈3 근처에 세로로 모여 있습니다.
-
-**핵심 포인트**: 같은 숫자 10과 3이라도 연산자(`/`, `//`, `%`, `**`)에 따라 결과가 완전히 달라집니다. 특히 `/`와 `//`의 차이(3.33 vs 3)에 주목하세요!
-
+<details class="question">
+<summary>질문 1: <code>random()</code>은 어떤 값을 돌려줄까요?</summary>
+<p>정확한 숫자는 아무도 모릅니다! 그게 바로 랜덤이니까요. 하지만 <strong>범위</strong>는 알 수 있어요. <code>random()</code>은 <strong>0 이상 1 미만</strong>의 실수를 돌려줍니다. 예를 들어 <code>0.7382…</code> 같은 값이요.</p>
 </details>
-
-<hr />
-<h3 id="_10">🔄 결과 → 코드 역추적 (⭐⭐)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p><strong>문제</strong>: 아래 장면을 만드는 코드를 작성해 보세요.</p>
-</blockquote>
-<p><strong>장면 설명</strong>:
-- 상자 4개가 <strong>나란히</strong> 있습니다 (x 위치: -3, 0, 3, 6)
-- 각 상자의 <strong>높이가 다릅니다</strong>: 2, 4, 6, 8
-- 상자의 <strong>색상</strong>은 높이가 높을수록 빨간색에 가깝습니다
-- 모든 상자의 <strong>가로와 깊이</strong>는 1.5입니다
-- 상자들은 <strong>바닥에 붙어</strong> 있습니다 (y 위치 = 높이 / 2)</p>
-<p><strong>힌트</strong>:
-- x 위치 패턴: <code>-3, 0, 3, 6</code> → <code>i * 3 - 3</code>으로 표현할 수 있을까요?
-- 높이 패턴: <code>2, 4, 6, 8</code> → <code>(i + 1) * 2</code>로 표현할 수 있을까요?
-- 색상: <code>vector(비율, 0, 0)</code> 형식으로 빨간색 농도를 조절해 보세요</p>
-<details>
-<summary>💡 힌트 더 보기</summary>
-
-- `for i in range(4):`로 4번 반복합니다
-- 색상의 빨간색 값을 `(i + 1) / 4`로 하면 0.25, 0.5, 0.75, 1.0이 됩니다
-- `box()`의 `pos`에서 y 좌표는 `height / 2`로 설정하면 바닥에 붙습니다
-
+<details class="question">
+<summary>질문 2: <code>random()*4</code>는 어떤 범위일까요?</summary>
+<p><code>random()</code>이 0~1 사이니까, 거기에 4를 곱하면 <strong>0~4 사이</strong>가 됩니다. 0.0일 수도 있고, 3.14일 수도 있고, 1.87일 수도 있어요.</p>
 </details>
-
-<details>
-<summary>🔑 정답 예시</summary>
-
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">3</span>              <span class="c1"># -3, 0, 3, 6</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>       <span class="c1"># 2, 4, 6, 8</span>
-    <span class="n">red_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>    <span class="c1"># 0.25, 0.5, 0.75, 1.0</span>
-
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">red_value</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-<span class="c1"># 바닥</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-</code></pre></div>
-
-핵심 포인트: 결과물의 **패턴(규칙)**을 찾아 **수식**으로 표현하는 것이 핵심입니다. `i * 3 - 3`이라는 수식 하나가 4개 물체의 위치를 결정하고, `(i + 1) * 2`라는 수식 하나가 높이를 결정합니다. 이것이 바로 **패턴 인식(Pattern Recognition)** — 컴퓨팅 사고력의 핵심 요소입니다!
-
+<details class="question">
+<summary>질문 3: 공 3개의 위치가 서로 같을까요, 다를까요?</summary>
+<p>거의 확실하게 <strong>다릅니다!</strong> 각 줄의 <code>random()</code>은 매번 새로운 무작위 값을 만들어 냅니다. 그래서 세 공은 제각각 다른 곳에 나타나요.</p>
 </details>
-
+<p>이제 실행해 보세요. 그리고 <strong>한 번 더</strong> 실행해 보세요. 위치가 달라졌죠?</p>
 <hr />
-<h3 id="_11">💡 상상 → 코드 창작 (⭐)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p><strong>문제</strong>: 연산을 사용하여 <strong>여러분이 원하는 3D 데이터 시각화</strong>를 만들어 보세요!</p>
-</blockquote>
-<p><strong>아이디어가 안 떠오른다면</strong>:
-- 📊 <strong>가족 키 비교</strong>: 가족 구성원의 키를 입력받아 3D 인형(cylinder+sphere)의 높이로 표현
-- 🌡️ <strong>일주일 기온</strong>: 월~일 7일 기온을 입력받아 막대그래프로 표현, 영하 기온은 아래로
-- 🎯 <strong>과녁 점수판</strong>: 원형 배치(sin/cos)를 사용해서 점수를 원형 그래프로 표현
-- 🏙️ <strong>도시 스카이라인</strong>: 건물 높이를 랜덤 또는 입력으로 받아 도시 풍경 만들기</p>
-<p><strong>규칙</strong>:
-- <code>from vpython import *</code>로 시작할 것
-- <strong>연산(+, -, *, / 등) 중 최소 3가지</strong> 이상 사용할 것
-- <code>input()</code>으로 사용자 입력을 <strong>1개 이상</strong> 받을 것
-- 정답은 없습니다! 자유롭게 만들어 보세요</p>
-<details>
-<summary>🔑 예시 답안: 가족 키 비교 시각화</summary>
+<h2 id="_3">🛠️ 직접 만들어보기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-random">단계 1: random()을 만나다<a class="headerlink" href="#1-random" title="Permanent link">&para;</a></h3>
+<p>가장 단순한 형태부터 시작합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
 
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># 가족 구성원의 키 입력받기</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 👨‍👩‍👧‍👦 가족 키 비교 시각화 ===&quot;</span><span class="p">)</span>
-<span class="n">num_family</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;가족 구성원 수: &quot;</span><span class="p">))</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heights</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_family</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">번째 가족 이름: &quot;</span><span class="p">)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">의 키(cm): &quot;</span><span class="p">))</span>
-    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">heights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-
-<span class="c1"># 키를 3D 크기로 변환 (실제 키의 1/20 비율)</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">20</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_family</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="n">num_family</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span>   <span class="c1"># 가운데 정렬</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">scale</span>                 <span class="c1"># cm → 3D 단위</span>
-
-    <span class="c1"># 몸체 (원기둥)</span>
-    <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-             <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-             <span class="n">radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-             <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
-
-    <span class="c1"># 머리 (구)</span>
-    <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-           <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-           <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
-
-    <span class="c1"># 이름과 키 라벨</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">cm&#39;</span><span class="p">,</span>
-          <span class="n">height</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># 바닥</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">num_family</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
 </code></pre></div>
+<p>실행할 때마다 공의 x 위치가 달라집니다. 0과 1 사이 어딘가에 나타나요.</p>
+<p>여러 번 실행해 보세요. 공이 매번 다른 곳에 있죠?</p>
+<h3 id="2">단계 2: 범위를 넓히기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>0~1은 너무 좁습니다. 곱하기로 범위를 넓혀 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
 
-이것은 하나의 예시일 뿐입니다. 여러분만의 데이터를 시각화해 보세요!
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+</code></pre></div>
+<p>이제 공이 x좌표 0~8 사이 어딘가에 나타납니다. 훨씬 넓어졌죠?</p>
+<div class="admonition tip">
+<p class="admonition-title">범위 조절 공식</p>
+<p><strong><code>random() * N</code></strong> → <strong>0 ~ N</strong> 사이의 랜덤 값을 만듭니다. N이 클수록 범위가 넓어져요.</p>
+</div>
+<h3 id="3">단계 3: 음수 범위까지<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>화면 가운데를 기준으로 왼쪽(-), 오른쪽(+) 모두 사용하고 싶다면?</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
 
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+<p><code>random()*6</code>은 0~6 사이 값을 만들고, 거기서 3을 빼면 <strong>-3 ~ 3</strong> 사이가 됩니다!</p>
+<div class="admonition tip">
+<p class="admonition-title">중심 맞추기 공식</p>
+<p><strong><code>random() * N - N/2</code></strong> → <strong>-N/2 ~ N/2</strong> 사이. 가운데(0)를 중심으로 양쪽에 퍼집니다.</p>
+</div>
+<h3 id="4">단계 4: 랜덤 색상<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>위치뿐 아니라 색도 랜덤으로 만들 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()))</span>
+</code></pre></div>
+<p><code>vector(R, G, B)</code>에서 R, G, B가 모두 랜덤이니까 실행할 때마다 완전히 다른 색이 나타납니다. 분홍이 될 수도 있고, 연두가 될 수도 있고, 갈색이 될 수도 있어요.</p>
+<h3 id="5">단계 5: 랜덤 크기<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>크기도 랜덤으로 만들어 봅시다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">cyan</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">magenta</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+</code></pre></div>
+<p><code>random()*0.5 + 0.1</code>은 <strong>0.1 ~ 0.6</strong> 사이의 반지름을 만듭니다. 너무 작아서 안 보이는 걸 방지하려고 0.1을 더했어요.</p>
+<h3 id="6">단계 6: 밤하늘 별 만들기<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>이제 모든 것을 합쳐 봅시다!</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+</code></pre></div>
+<p>다섯 개의 별이 밤하늘에 흩뿌려집니다. 색은 <code>vector(1, 1, random())</code>이라서 노란빛~흰빛 사이의 별빛이 나와요. R=1, G=1, B=랜덤이니까요.</p>
+<p>같은 줄을 다섯 번이나 복사해야 한다니, 좀 번거롭죠? 나중에 Ch.11에서 <code>for</code>를 배우면 한 줄로 100개도 만들 수 있습니다. 지금은 조금만 참아 주세요!</p>
+<hr />
+<h2 id="_4">🔄 역추적 챌린지<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>결과를 먼저 보고, 코드를 <strong>거꾸로</strong> 추론해 보세요.</p>
+<h3 id="1">문제 1: 왼쪽 절반에만 공 만들기<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>화면의 <strong>왼쪽 절반</strong>(x가 -5 ~ 0)에만 랜덤 공이 나타나게 하고 싶어요.</p>
+</blockquote>
+<div class="scene-preview">
+  <div class="obj" style="left: 12%; top: 35%; width: 25px; height: 25px; background: radial-gradient(circle at 35% 35%, #6bff6b, #27ae60);"></div>
+  <div class="obj" style="left: 28%; top: 60%; width: 25px; height: 25px; background: radial-gradient(circle at 35% 35%, #6bff6b, #27ae60);"></div>
+  <div class="obj" style="left: 38%; top: 25%; width: 25px; height: 25px; background: radial-gradient(circle at 35% 35%, #6bff6b, #27ae60);"></div>
+</div>
+
+<details class="hint">
+<summary>힌트</summary>
+<p><code>random()</code>은 0~1 사이 값을 만듭니다. 여기에 뭘 곱하고 뭘 빼면 -5~0 사이가 될까요?</p>
 </details>
-
-<hr />
-<h2 id="_12">⚠️ 자주 하는 실수<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>프로그래밍에서 연산을 다룰 때 누구나 한 번쯤 겪는 실수들입니다.</p>
-<p><strong>실수 1: <code>input()</code> 결과를 숫자로 변환하지 않음</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ❌ input()의 결과는 문자열이라 계산할 수 없습니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;x 위치: &quot;</span><span class="p">)</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="c1"># TypeError: can&#39;t convert str to float</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># ✅ int() 또는 float()로 변환해야 합니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;x 위치: &quot;</span><span class="p">))</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<p><code>input()</code>은 항상 <strong>문자열</strong>을 돌려줍니다. 숫자로 쓰려면 <code>int()</code> 또는 <code>float()</code>로 감싸세요!</p>
-</blockquote>
-<p><strong>실수 2: 변수 이름으로 <code>math</code>를 사용</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ❌ math는 파이썬의 모듈 이름이라 변수로 쓰면 안 됩니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">math</span> <span class="o">=</span> <span class="mi">95</span>
-<span class="c1"># 이후 math.sin() 등이 작동하지 않게 됩니다!</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 의미를 살린 다른 이름을 사용합니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">math_score</span> <span class="o">=</span> <span class="mi">95</span>
-</code></pre></div>
-<blockquote>
-<p>파이썬의 내장 이름(<code>math</code>, <code>list</code>, <code>str</code>, <code>int</code> 등)은 변수명으로 사용하지 마세요. 원래 기능이 사라집니다!</p>
-</blockquote>
-<p><strong>실수 3: 정수 나눗셈의 혼동</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ⚠️ / 와 // 의 차이를 혼동하면 위치가 어긋납니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># / → 소수점까지 계산 (3.5)</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># // → 소수점 버림 (3)</span>
-<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div>
-<blockquote>
-<p>정확한 나눗셈이 필요하면 <code>/</code>, 정수 결과만 원하면 <code>//</code>를 사용하세요. 특히 <strong>인덱스나 개수</strong> 계산에는 <code>//</code>가 적합합니다.</p>
-</blockquote>
-<p><strong>실수 4: 상자(box)의 pos는 중심이다</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 높이가 6인 상자를 바닥에 놓고 싶을 때</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
-<span class="c1"># → 상자의 절반이 바닥 아래로 빠집니다!</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># ✅ y 위치를 높이의 절반으로 설정합니다</span>
-<span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">height</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
-<span class="c1"># → 상자가 바닥 위에 깔끔하게 서 있습니다</span>
-</code></pre></div>
-<blockquote>
-<p><code>box()</code>의 <code>pos</code>는 상자의 <strong>중심</strong>입니다. 바닥에 붙이려면 <code>y = height / 2</code>로 설정하세요. 이것은 <strong>나눗셈이 실제로 쓰이는</strong> 대표적인 예입니다!</p>
-</blockquote>
-<hr />
-<h2 id="_13">✅ 스스로 점검하기<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>이 장을 잘 이해했는지 스스로 확인해 봅시다. 아래 질문에 답할 수 있다면 성공입니다!</p>
+<details class="success">
+<summary>정답</summary>
+<p><code>random()*5 - 5</code>를 사용하면 됩니다!</p>
 <ul>
-<li>[ ] <strong><code>7 / 2</code>와 <code>7 // 2</code>의 차이를 설명할 수 있나요?</strong> → <code>/</code>는 소수점까지(3.5), <code>//</code>는 몫만(3)</li>
-<li>[ ] <strong><code>7 % 2</code>의 결과가 무엇인지 바로 말할 수 있나요?</strong> → 1 (7을 2로 나눈 나머지)</li>
-<li>[ ] <strong><code>3 ** 2</code>의 결과가 무엇인지 알고 있나요?</strong> → 9 (3의 2승)</li>
-<li>[ ] <strong>수식으로 물체의 위치를 계산할 수 있나요?</strong> → <code>i * 2 - 4</code>처럼 패턴을 수식으로 표현</li>
-<li>[ ] <strong><code>cos</code>과 <code>sin</code>으로 원형 배치를 하는 공식을 알고 있나요?</strong> → <code>x = r * cos(angle)</code>, <code>y = r * sin(angle)</code></li>
-<li>[ ] <strong><code>input()</code>으로 받은 값을 숫자로 변환할 수 있나요?</strong> → <code>int(input(...))</code> 또는 <code>float(input(...))</code></li>
+<li><code>random()*5</code> → 0~5 사이</li>
+<li><code>random()*5 - 5</code> → -5~0 사이</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">5</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h3 id="2_1">문제 2: 따뜻한 색만 나오게<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>💪 체크가 4개 이상이면 다음 장으로 넘어갈 준비가 된 것입니다!</p>
+<p>빨강~노랑 계열의 <strong>따뜻한 색</strong>만 랜덤으로 나오게 하고 싶어요.</p>
 </blockquote>
+<details class="hint">
+<summary>힌트</summary>
+<p>따뜻한 색은 R이 높고, G는 중간, B는 낮은 색입니다. 어떤 값을 고정하고 어떤 값을 랜덤으로 할까요?</p>
+</details>
+<details class="success">
+<summary>정답</summary>
+<p>R은 1로 고정, G는 랜덤(0~1), B는 0으로 고정하면 빨강~노랑이 나옵니다!</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">(),</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+</details>
 <hr />
-<h2 id="_14">🚀 더 해보기<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<p>시간이 남거나 더 도전하고 싶다면 아래를 시도해 보세요!</p>
-<h3 id="1_1">도전 1: 구구단 타워 만들기<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p>특정 단의 구구단을 3D 탑으로 쌓아 봅시다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">dan</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;몇 단을 만들까요? (2~9): &quot;</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">dan</span> <span class="o">*</span> <span class="n">i</span>                    <span class="c1"># 구구단 결과</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">result</span> <span class="o">/</span> <span class="mi">10</span>                <span class="c1"># 결과를 높이로 변환</span>
-
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">dan</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">9</span><span class="p">))</span>
-
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">dan</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dan</span><span class="si">}</span><span class="s1"> x </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-          <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="2_1">도전 2: 나선형 계단 만들기<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p><code>sin</code>, <code>cos</code>와 높이 변화를 결합하면 나선형(spiral)이 됩니다!</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">12</span>           <span class="c1"># 12개마다 한 바퀴</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.5</span>                        <span class="c1"># 점점 올라감</span>
-
-    <span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">num_steps</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">/</span> <span class="n">num_steps</span><span class="p">),</span>
-        <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)))</span>
-
-<span class="c1"># 중심 기둥</span>
-<span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_steps</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-         <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
-         <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="3">도전 3: 연산 퀴즈 시각화<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>사용자에게 연산 문제를 내고, 정답을 3D로 보여주는 프로그램을 만들어 보세요!</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vpython</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-
-<span class="c1"># 랜덤 문제 생성</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;문제: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = ?&quot;</span><span class="p">)</span>
-<span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;정답: &quot;</span><span class="p">))</span>
-<span class="n">correct</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="c1"># 정답을 3D로 시각화</span>
-<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">correct</span><span class="p">:</span>
-    <span class="c1"># 맞으면 초록 구를 correct 개만큼 원형으로 배치</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">correct</span><span class="p">):</span>
-        <span class="n">angle</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">correct</span>
-        <span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-               <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;정답! </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">+</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">correct</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="c1"># 틀리면 빨간 X 표시</span>
-    <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-             <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
-    <span class="n">cylinder</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-             <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
-    <span class="n">label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;오답! 정답은 </span><span class="si">{</span><span class="n">correct</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-</code></pre></div>
+<h2 id="_5">📖 알고 넘어가기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="random">random()의 비밀<a class="headerlink" href="#random" title="Permanent link">&para;</a></h3>
+<p><code>random()</code> 함수는 호출할 때마다 <strong>0 이상 1 미만</strong>의 실수를 하나 돌려줍니다. 예를 들어 <code>0.28173...</code> 같은 값이에요.</p>
+<p>핵심은 이겁니다. <strong>어떤 값이 나올지 아무도 모른다.</strong> 우리가 아는 건 범위뿐이에요.</p>
+<p>GlowScript VPython에서는 별도의 import 없이 그냥 <code>random()</code>이라고 쓰면 됩니다.</p>
+<h3 id="_6">범위 조절하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>random()</code></strong> → 0 ~ 1</li>
+<li><strong><code>random() * N</code></strong> → 0 ~ N</li>
+<li><strong><code>random() * N + A</code></strong> → A ~ A+N</li>
+<li><strong><code>random() * N - N/2</code></strong> → -N/2 ~ N/2 (가운데 정렬)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">빠른 계산법</p>
+<p>범위를 만들고 싶으면 두 가지만 생각하세요. <strong>1) 범위의 폭</strong> → 곱하기 값. <strong>2) 시작점</strong> → 더하기(또는 빼기) 값.</p>
+<p>예: <strong>2 ~ 8</strong> 사이를 원한다면? 폭 = 8 - 2 = 6, 시작점 = 2 → <code>random()*6 + 2</code></p>
+</div>
+<h3 id="_7">랜덤 색, 랜덤 위치, 랜덤 크기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>random()</code>은 숫자가 들어가는 곳이면 어디든 쓸 수 있습니다.</p>
+<ul>
+<li><strong>랜덤 위치</strong>: <code>pos=vector(random()*10-5, random()*6-3, 0)</code></li>
+<li><strong>랜덤 색</strong>: <code>color=vector(random(), random(), random())</code></li>
+<li><strong>랜덤 크기</strong>: <code>radius=random()*0.5 + 0.1</code></li>
+</ul>
+<h3 id="_8">확률적 사고<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>프로그래밍에서는 보통 "같은 코드 = 같은 결과"입니다. 하지만 <code>random()</code>이 들어가면 <strong>"같은 코드인데 매번 다른 결과"</strong>가 됩니다. 이것을 <strong>확률적(probabilistic)</strong> 사고라고 합니다.</p>
+<p>게임의 아이템 드롭, 날씨 시뮬레이션, AI의 창작 — 모두 이 <code>random()</code>에서 시작합니다.</p>
 <hr />
-<h2 id="_15">🔗 다음 장으로<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>이번 장에서 우리는 <strong>연산으로 3D 세계를 설계하는 방법</strong>을 배웠습니다.</p>
-<p><strong>배운 것 정리</strong>:
-- <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code> = 파이썬의 7가지 산술 연산자
-- <code>cos</code>, <code>sin</code> = 원형 배치의 마법 주문
-- <code>input()</code> + <code>int()</code> = 사용자에게 숫자 입력받기
-- 수식 하나가 물체 여러 개의 위치를 결정한다</p>
-<p>가장 중요한 깨달음은 이것입니다: <strong>계산은 추상적인 숫자 놀이가 아니라, 눈에 보이는 3D 결과로 바로 연결됩니다.</strong> <code>i * 3 - 6</code>이라는 수식이 5개 막대의 배치를 결정하고, <code>score / 100 * max_height</code>라는 수식이 막대의 높이를 결정합니다.</p>
-<p>하지만 아직 한 가지 아쉬운 것이 있습니다. 물체를 배치하기만 했지, <strong>움직이지는</strong> 못했습니다. 공이 데굴데굴 굴러가게 하려면? 물체가 점점 커지게 하려면?</p>
-<p><strong>다음 장 "움직여라! — 애니메이션의 원리"</strong> 에서는 <code>rate()</code>와 <code>while</code> 루프로 물체를 움직이게 만듭니다. 코드로 만든 세상이 살아 움직이는 순간, 프로그래밍의 진짜 재미가 시작됩니다! 🎬</p>
+<h2 id="_9">🐛 버그 사냥<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>아래 코드에는 버그가 있습니다. 찾아서 고쳐 보세요!</p>
+<h3 id="1_1">버그 1: 인자를 넣었더니<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+</code></pre></div>
+<details class="bug">
+<summary>버그 정체</summary>
+<p>GlowScript의 <code>random()</code>은 <strong>인자를 받지 않습니다!</strong> <code>random(10)</code>이라고 쓰면 오류가 나요.</p>
+<p>0~10 사이 값을 원하면 <code>random()*10</code>으로 써야 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h3 id="2-33">버그 2: -3~3 사이를 원했는데<a class="headerlink" href="#2-33" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+<details class="bug">
+<summary>버그 정체</summary>
+<p><code>random()*6</code>의 범위는 <strong>0~6</strong>입니다. -3~3이 아니에요!</p>
+<p>-3~3 사이를 만들려면 3을 빼야 합니다: <code>random()*6 - 3</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h3 id="3_1">버그 3: 별이 안 보여요<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+</code></pre></div>
+<details class="bug">
+<summary>버그 정체</summary>
+<p>배경이 <strong>흰색</strong>(1,1,1)인데, 별 색이 <code>vector(1, 1, random())</code>이라서 <strong>거의 흰색</strong>에 가깝습니다. 흰 배경에 흰 별은 안 보이죠!</p>
+<p>밤하늘을 만들려면 배경을 어둡게 바꿔야 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="_10">💡 상상 챌린지<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><code>random()</code>으로 자연 풍경을 만들어 보세요!</p>
+<h3 id="1_2">도전 1: 꽃밭<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<p>초록 바닥 위에 랜덤 위치, 랜덤 색의 꽃(작은 구)을 여러 개 놓아 보세요.</p>
+<details class="hint">
+<summary>힌트</summary>
+<p>바닥은 <code>box()</code>로 만들고, 꽃은 <code>sphere()</code>를 여러 개 복사하세요. 위치의 y좌표를 0 근처로 고정하면 바닥 위에 놓입니다.</p>
+</details>
+<details class="success">
+<summary>예시 코드</summary>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">(),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+</code></pre></div>
+</details>
+<h3 id="2_2">도전 2: 나만의 랜덤 세계<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>위치, 색, 크기, 도형 종류를 조합해서 여러분만의 장면을 만들어 보세요. <code>sphere</code>, <code>box</code>, <code>cylinder</code>, <code>cone</code> — Ch.3에서 배운 모든 도형을 쓸 수 있습니다!</p>
+<hr />
+<h2 id="_11">📝 오늘의 완성 코드<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>별이 빛나는 밤하늘, 그 아래 랜덤 꽃밭이 있는 풍경입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GlowScript</span> <span class="mf">3.2</span> <span class="n">VPython</span>
+
+<span class="c1"># 📝 어두운 밤하늘 배경 설정</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+
+<span class="c1"># 📝 별 5개 — 위치와 밝기가 모두 랜덤</span>
+<span class="c1"># 📝 random()*10-5 → x가 -5~5 사이에 흩뿌려짐</span>
+<span class="c1"># 📝 random()*3+1 → y가 1~4 사이 (하늘 위쪽)</span>
+<span class="c1"># 📝 vector(1,1,random()) → R=1, G=1, B=랜덤 → 노랑~흰색 별빛</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()))</span>
+
+<span class="c1"># 📝 초록 땅 — box로 넓은 바닥을 깔아줌</span>
+<span class="n">box</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># 📝 꽃 5송이 — 랜덤 위치 + 따뜻한 랜덤 색 + 랜덤 크기</span>
+<span class="c1"># 📝 random()*0.15+0.08 → 반지름 0.08~0.23 (너무 작지 않게)</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.5</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.15</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.5</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.15</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.5</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.15</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.5</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.15</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.5</span><span class="p">),</span>
+       <span class="n">radius</span><span class="o">=</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.15</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.2</span><span class="p">))</span>
+</code></pre></div>
+<div class="glowscript-demo">
+<div class="demo-label">실행 결과 — 밤하늘과 꽃밭 (매번 달라져요!)</div>
+<iframe src="../demos/ch05_final.html"></iframe>
+</div>
+<p>실행할 때마다 별의 위치, 꽃의 색과 크기가 달라집니다. <strong>한 글자도 바꾸지 않았는데 매번 새로운 세계가 펼쳐져요!</strong></p>
+<hr />
+<h2 id="3_2">✅ 3줄 정리<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">오늘 배운 것</p>
+<ol>
+<li><strong><code>random()</code></strong>은 0~1 사이 무작위 실수를 만든다 — 호출할 때마다 다른 값!</li>
+<li><strong><code>random()*N + A</code></strong>로 원하는 범위를 만든다 — 곱하기는 폭, 더하기는 시작점</li>
+<li>위치, 색, 크기 어디든 <code>random()</code>을 넣으면 <strong>같은 코드, 매번 다른 결과!</strong></li>
+</ol>
+</div>
+<hr />
+<h2 id="_12">🚀 더 탐험하기<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">별을 더 많이!<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>완성 코드의 별 부분을 복사해서 10개, 15개로 늘려 보세요. 코드가 점점 길어지죠?</p>
+<p>같은 줄을 계속 복사하고 있는 자신을 발견하게 될 거예요. "이걸 자동으로 반복할 수는 없을까?" — 그 답은 Ch.11의 <code>for</code> 반복문에 있습니다!</p>
+<h3 id="_14">색 팔레트 실험<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>차가운 색만</strong>: <code>vector(0, random(), 1)</code> — 파랑~청록 계열</li>
+<li><strong>따뜻한 색만</strong>: <code>vector(1, random(), 0)</code> — 빨강~노랑 계열</li>
+<li><strong>보라 계열</strong>: <code>vector(random(), 0, 1)</code> — 어두운 보라~밝은 보라</li>
+</ul>
+<p>하나를 골라서 같은 계열 공을 여러 개 만들어 보세요. 통일감 있으면서도 다양한 장면이 나옵니다.</p>
+<h3 id="_15">랜덤 크기 도형 모음<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><code>sphere</code>뿐 아니라 <code>box</code>, <code>cylinder</code>, <code>cone</code>의 크기도 랜덤으로 만들어 보세요. 추상 미술 작품처럼 보일 거예요!</p>
+<hr />
 <blockquote>
-<p>🌟 <strong>오늘의 한마디</strong>: 수학 수업에서 배운 연산이 여기서 이렇게 쓰인다니, 놀랍지 않나요? 수식은 차가운 숫자가 아닙니다 — 여러분의 상상을 3D로 바꿔주는 마법 주문입니다. 다음 시간에는 그 마법에 '움직임'까지 더해 봅시다!</p>
+<p><strong>다음 시간</strong>: Ch.6에서는 물체를 <strong>움직이게</strong> 만듭니다! <code>while True</code>와 <code>rate()</code>로 애니메이션 루프를 만들면, 공이 진짜로 굴러갑니다. 정지 화면에서 살아 움직이는 세계로!</p>
 </blockquote>
 
 
@@ -2544,6 +2290,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
       
     
   </body>

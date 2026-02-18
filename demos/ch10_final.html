@@ -1,0 +1,54 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+;(function() {
+function __main__() {
+    var scene = canvas();
+    scene.background = color.black;
+
+    var ground = box({pos: vec(0,-0.5,0), size: vec(10,0.1,10), color: color.white});
+    var player = sphere({pos: vec(0,0,0), radius: 0.3, color: color.cyan});
+    var gem = sphere({pos: vec(Math.random()*8-4, 0, Math.random()*8-4), radius: 0.2, color: color.yellow});
+    var spd = 0.05;
+    var score = 0;
+    var scoreboard = label({pos: vec(0, 3, 0), text: '점수: 0', height: 20, color: color.white, box: false});
+
+    function vdist(a, b) {
+        var dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;
+        return Math.sqrt(dx*dx + dy*dy + dz*dz);
+    }
+
+    async function anim() {
+        while (true) {
+            await rate(60);
+            var keys = keysdown();
+            if (keys.indexOf('left') >= 0) player.pos.x -= spd;
+            if (keys.indexOf('right') >= 0) player.pos.x += spd;
+            if (keys.indexOf('up') >= 0) player.pos.z -= spd;
+            if (keys.indexOf('down') >= 0) player.pos.z += spd;
+
+            if (player.pos.x > 4.7) player.pos.x = 4.7;
+            if (player.pos.x < -4.7) player.pos.x = -4.7;
+            if (player.pos.z > 4.7) player.pos.z = 4.7;
+            if (player.pos.z < -4.7) player.pos.z = -4.7;
+
+            var dist = vdist(player.pos, gem.pos);
+            if (dist < player.radius + gem.radius) {
+                score += 1;
+                scoreboard.text = '점수: ' + score.toString();
+                gem.pos = vec(Math.random()*8-4, 0, Math.random()*8-4);
+            }
+        }
+    }
+    anim();
+}
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+
+//--><!]]></script>
+</div>
