@@ -533,3 +533,6 @@ h2.nowrap { white-space: nowrap; }
   .journey-marker { left: 0.7rem; width: 1.8rem; height: 1.8rem; font-size: 0.85rem; }
   .intro-hook h2 { font-size: 1.2rem; }
 }
+
+/* 헤더 제목 클릭 시 홈으로 이동 */
+.md-header__title { cursor: pointer; }
